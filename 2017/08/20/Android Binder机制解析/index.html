@@ -1,0 +1,979 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Binder,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="森.林木" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="Binder&amp;#x539F;&amp;#x7406;   &amp;#x9996;&amp;#x5148;&amp;#xFF0C;Server&amp;#x8FDB;&amp;#x7A0B;&amp;#x8981;&amp;#x5411;SM&amp;#x6CE8;&amp;#x518C;&amp;#xFF1B;&amp;#x544A;&amp;#x8BC9;&amp;#x81EA;&amp;#x5DF1;&amp;#x662F;&amp;#x8C01;&amp;#xFF0C;&amp;#x81EA;&amp;#x5DF1;&amp;#x6709;&amp;#x4EC0">
+<meta name="keywords" content="Binder">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Binder机制解析">
+<meta property="og:url" content="http://xhrong.github.io/2017/08/20/Android Binder机制解析/index.html">
+<meta property="og:site_name" content="森.林木">
+<meta property="og:description" content="Binder&amp;#x539F;&amp;#x7406;   &amp;#x9996;&amp;#x5148;&amp;#xFF0C;Server&amp;#x8FDB;&amp;#x7A0B;&amp;#x8981;&amp;#x5411;SM&amp;#x6CE8;&amp;#x518C;&amp;#xFF1B;&amp;#x544A;&amp;#x8BC9;&amp;#x81EA;&amp;#x5DF1;&amp;#x662F;&amp;#x8C01;&amp;#xFF0C;&amp;#x81EA;&amp;#x5DF1;&amp;#x6709;&amp;#x4EC0">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://xhrong.github.io/2017/08/20/Android%20Binder机制解析/1503110271391.jpg">
+<meta property="og:updated_time" content="2019-10-05T09:54:50.029Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Binder机制解析">
+<meta name="twitter:description" content="Binder&amp;#x539F;&amp;#x7406;   &amp;#x9996;&amp;#x5148;&amp;#xFF0C;Server&amp;#x8FDB;&amp;#x7A0B;&amp;#x8981;&amp;#x5411;SM&amp;#x6CE8;&amp;#x518C;&amp;#xFF1B;&amp;#x544A;&amp;#x8BC9;&amp;#x81EA;&amp;#x5DF1;&amp;#x662F;&amp;#x8C01;&amp;#xFF0C;&amp;#x81EA;&amp;#x5DF1;&amp;#x6709;&amp;#x4EC0">
+<meta name="twitter:image" content="http://xhrong.github.io/2017/08/20/Android%20Binder机制解析/1503110271391.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xhrong.github.io/2017/08/20/Android Binder机制解析/">
+
+
+
+
+
+  <title> Android Binder机制解析 | 森.林木 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">森.林木</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xhrong.github.io/2017/08/20/Android Binder机制解析/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="xhrong">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="森.林木">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="森.林木" src>
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android Binder机制解析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-20T00:00:00+08:00">
+                2017-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/08/20/Android Binder机制解析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/20/Android Binder机制解析/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/08/20/Android Binder机制解析/" class="leancloud_visitors" data-flag-title="Android Binder机制解析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Binder&#x539F;&#x7406;"><a href="#Binder&#x539F;&#x7406;" class="headerlink" title="Binder&#x539F;&#x7406;"></a>Binder&#x539F;&#x7406;</h2><p><img src="/2017/08/20/Android Binder&#x673A;&#x5236;&#x89E3;&#x6790;/1503110271391.jpg" alt="enter description here"></p>
+<p>  &#x9996;&#x5148;&#xFF0C;Server&#x8FDB;&#x7A0B;&#x8981;&#x5411;SM&#x6CE8;&#x518C;&#xFF1B;&#x544A;&#x8BC9;&#x81EA;&#x5DF1;&#x662F;&#x8C01;&#xFF0C;&#x81EA;&#x5DF1;&#x6709;&#x4EC0;&#x4E48;&#x80FD;&#x529B;&#xFF1B;&#x5728;&#x8FD9;&#x4E2A;&#x573A;&#x666F;&#x5C31;&#x662F;Server&#x544A;&#x8BC9;SM&#xFF0C;&#x5B83;&#x53EB;zhangsan&#xFF0C;&#x5B83;&#x6709;&#x4E00;&#x4E2A;object&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x6267;&#x884C;add &#x64CD;&#x4F5C;&#xFF1B;&#x4E8E;&#x662F;SM&#x5EFA;&#x7ACB;&#x4E86;&#x4E00;&#x5F20;&#x8868;&#xFF1A;zhangsan&#x8FD9;&#x4E2A;&#x540D;&#x5B57;&#x5BF9;&#x5E94;&#x8FDB;&#x7A0B;Server;</p>
+<p>&#x7136;&#x540E;Client&#x5411;SM&#x67E5;&#x8BE2;&#xFF1A;&#x6211;&#x9700;&#x8981;&#x8054;&#x7CFB;&#x4E00;&#x4E2A;&#x540D;&#x5B57;&#x53EB;&#x505A;zhangsan&#x7684;&#x8FDB;&#x7A0B;&#x91CC;&#x9762;&#x7684;object&#x5BF9;&#x8C61;&#xFF1B;&#x8FD9;&#x65F6;&#x5019;&#x5173;&#x952E;&#x6765;&#x4E86;&#xFF1A;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x901A;&#x4FE1;&#x7684;&#x6570;&#x636E;&#x90FD;&#x4F1A;&#x7ECF;&#x8FC7;&#x8FD0;&#x884C;&#x5728;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#x91CC;&#x9762;&#x7684;&#x9A71;&#x52A8;&#xFF0C;&#x9A71;&#x52A8;&#x5728;&#x6570;&#x636E;&#x6D41;&#x8FC7;&#x7684;&#x65F6;&#x5019;&#x505A;&#x4E86;&#x4E00;&#x70B9;&#x624B;&#x811A;&#xFF0C;&#x5B83;&#x5E76;&#x4E0D;&#x4F1A;&#x7ED9;Client&#x8FDB;&#x7A0B;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x7684;object&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x662F;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x770B;&#x8D77;&#x6765;&#x8DDF;object&#x4E00;&#x6A21;&#x4E00;&#x6837;&#x7684;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;objectProxy&#xFF0C;&#x8FD9;&#x4E2A;objectProxy&#x4E5F;&#x6709;&#x4E00;&#x4E2A;add&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E2A;add&#x65B9;&#x6CD5;&#x6CA1;&#x6709;Server&#x8FDB;&#x7A0B;&#x91CC;&#x9762;object&#x5BF9;&#x8C61;&#x7684;add&#x65B9;&#x6CD5;&#x90A3;&#x4E2A;&#x80FD;&#x529B;&#xFF1B;objectProxy&#x7684;add&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x5080;&#x5121;&#xFF0C;&#x5B83;&#x552F;&#x4E00;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#x5C31;&#x662F;&#x628A;&#x53C2;&#x6570;&#x5305;&#x88C5;&#x7136;&#x540E;&#x4EA4;&#x7ED9;&#x9A71;&#x52A8;&#x3002;(&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x7B80;&#x5316;&#x4E86;SM&#x7684;&#x6D41;&#x7A0B;&#xFF0C;&#x89C1;&#x4E0B;&#x6587;)</p>
+<p>&#x4F46;&#x662F;Client&#x8FDB;&#x7A0B;&#x5E76;&#x4E0D;&#x77E5;&#x9053;&#x9A71;&#x52A8;&#x8FD4;&#x56DE;&#x7ED9;&#x5B83;&#x7684;&#x5BF9;&#x8C61;&#x52A8;&#x8FC7;&#x624B;&#x811A;&#xFF0C;&#x6BD5;&#x7ADF;&#x4F2A;&#x88C5;&#x7684;&#x592A;&#x50CF;&#x4E86;&#xFF0C;&#x5982;&#x5047;&#x5305;&#x6362;&#x3002;Client&#x5F00;&#x5F00;&#x5FC3;&#x5FC3;&#x5730;&#x62FF;&#x7740;objectProxy&#x5BF9;&#x8C61;&#x7136;&#x540E;&#x8C03;&#x7528;add&#x65B9;&#x6CD5;&#xFF1B;&#x6211;&#x4EEC;&#x8BF4;&#x8FC7;&#xFF0C;&#x8FD9;&#x4E2A;add&#x4EC0;&#x4E48;&#x4E5F;&#x4E0D;&#x505A;&#xFF0C;&#x76F4;&#x63A5;&#x628A;&#x53C2;&#x6570;&#x505A;&#x4E00;&#x4E9B;&#x5305;&#x88C5;&#x7136;&#x540E;&#x76F4;&#x63A5;&#x8F6C;&#x53D1;&#x7ED9;Binder&#x9A71;&#x52A8;&#x3002;</p>
+<p>&#x9A71;&#x52A8;&#x6536;&#x5230;&#x8FD9;&#x4E2A;&#x6D88;&#x606F;&#xFF0C;&#x53D1;&#x73B0;&#x662F;&#x8FD9;&#x4E2A;objectProxy&#xFF1B;&#x4E00;&#x67E5;&#x8868;&#x5C31;&#x660E;&#x767D;&#x4E86;&#xFF1A;&#x6211;&#x4E4B;&#x524D;&#x7528;objectProxy&#x66FF;&#x6362;&#x4E86;object&#x53D1;&#x9001;&#x7ED9;Client&#x4E86;&#xFF0C;&#x5B83;&#x771F;&#x6B63;&#x5E94;&#x8BE5;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x662F;object&#x5BF9;&#x8C61;&#x7684;add&#x65B9;&#x6CD5;&#xFF1B;&#x4E8E;&#x662F;Binder&#x9A71;&#x52A8;&#x901A;&#x77E5;Server&#x8FDB;&#x7A0B;&#xFF0C;&#x8C03;&#x7528;&#x4F60;&#x7684;object&#x5BF9;&#x8C61;&#x7684;add&#x65B9;&#x6CD5;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x7ED3;&#x679C;&#x53D1;&#x7ED9;&#x6211;&#xFF0C;Sever&#x8FDB;&#x7A0B;&#x6536;&#x5230;&#x8FD9;&#x4E2A;&#x6D88;&#x606F;&#xFF0C;&#x7167;&#x505A;&#x4E4B;&#x540E;&#x5C06;&#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x9A71;&#x52A8;&#xFF0C;&#x9A71;&#x52A8;&#x7136;&#x540E;&#x628A;&#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x7ED9;Client&#x8FDB;&#x7A0B;&#xFF1B;&#x4E8E;&#x662F;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x9A71;&#x52A8;&#x8FD4;&#x56DE;&#x7684;objectProxy&#x4E0E;Server&#x8FDB;&#x7A0B;&#x91CC;&#x9762;&#x539F;&#x59CB;&#x7684;object&#x662F;&#x5982;&#x6B64;&#x76F8;&#x4F3C;&#xFF0C;&#x7ED9;&#x4EBA;&#x611F;&#x89C9;&#x597D;&#x50CF;&#x662F;&#x76F4;&#x63A5;&#x628A;Server&#x8FDB;&#x7A0B;&#x91CC;&#x9762;&#x7684;&#x5BF9;&#x8C61;object&#x4F20;&#x9012;&#x5230;&#x4E86;Client&#x8FDB;&#x7A0B;&#xFF1B;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BF4;Binder&#x5BF9;&#x8C61;&#x662F;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x8DE8;&#x8FDB;&#x7A0B;&#x4F20;&#x9012;&#x7684;&#x5BF9;&#x8C61;</p>
+<p>&#x4F46;&#x4E8B;&#x5B9E;&#x4E0A;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;Binder&#x8DE8;&#x8FDB;&#x7A0B;&#x4F20;&#x8F93;&#x5E76;&#x4E0D;&#x662F;&#x771F;&#x7684;&#x628A;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4F20;&#x8F93;&#x5230;&#x4E86;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF1B;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;&#x597D;&#x50CF;&#x662F;Binder&#x8DE8;&#x8FDB;&#x7A0B;&#x7A7F;&#x8D8A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5B83;&#x5728;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7559;&#x4E0B;&#x4E86;&#x4E00;&#x4E2A;&#x771F;&#x8EAB;&#xFF0C;&#x5728;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x5E7B;&#x5316;&#x51FA;&#x4E00;&#x4E2A;&#x5F71;&#x5B50;&#xFF08;&#x8FD9;&#x4E2A;&#x5F71;&#x5B50;&#x53EF;&#x4EE5;&#x5F88;&#x591A;&#x4E2A;&#xFF09;&#xFF1B;Client&#x8FDB;&#x7A0B;&#x7684;&#x64CD;&#x4F5C;&#x5176;&#x5B9E;&#x662F;&#x5BF9;&#x4E8E;&#x5F71;&#x5B50;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5F71;&#x5B50;&#x5229;&#x7528;Binder&#x9A71;&#x52A8;&#x6700;&#x7EC8;&#x8BA9;&#x771F;&#x8EAB;&#x5B8C;&#x6210;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x7406;&#x89E3;&#x8FD9;&#x4E00;&#x70B9;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF1B;&#x52A1;&#x5FC5;&#x4ED4;&#x7EC6;&#x4F53;&#x4F1A;&#x3002;&#x53E6;&#x5916;&#xFF0C;Android&#x7CFB;&#x7EDF;&#x5B9E;&#x73B0;&#x8FD9;&#x79CD;&#x673A;&#x5236;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;, &#x5BF9;&#x4E8E;Binder&#x7684;&#x8BBF;&#x95EE;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF08;&#x4E0D;&#x9700;&#x8981;&#x8DE8;&#x8FDB;&#x7A0B;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x539F;&#x59CB;&#x7684;Binder&#x5B9E;&#x4F53;&#xFF1B;&#x5982;&#x679C;&#x5728;&#x4E0D;&#x540C;&#x8FDB;&#x7A0B;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x7ED9;&#x4ED6;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#xFF08;&#x5F71;&#x5B50;&#xFF09;&#xFF1B;&#x6211;&#x4EEC;&#x5728;&#x7CFB;&#x7EDF;&#x6E90;&#x7801;&#x4EE5;&#x53CA;AIDL&#x7684;&#x751F;&#x6210;&#x4EE3;&#x7801;&#x91CC;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5F88;&#x591A;&#x8FD9;&#x79CD;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x53E6;&#x5916;&#x6211;&#x4EEC;&#x4E3A;&#x4E86;&#x7B80;&#x5316;&#x6574;&#x4E2A;&#x6D41;&#x7A0B;&#xFF0C;&#x9690;&#x85CF;&#x4E86;SM&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x9A71;&#x52A8;&#x8FDB;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#xFF1B;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x7531;&#x4E8E;SM&#x4E0E;Server&#x901A;&#x5E38;&#x4E0D;&#x5728;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;Server&#x8FDB;&#x7A0B;&#x5411;SM&#x6CE8;&#x518C;&#x7684;&#x8FC7;&#x7A0B;&#x4E5F;&#x662F;&#x8DE8;&#x8FDB;&#x7A0B;&#x901A;&#x4FE1;&#xFF0C;&#x9A71;&#x52A8;&#x4E5F;&#x4F1A;&#x5BF9;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x8FDB;&#x884C;&#x6697;&#x7BB1;&#x64CD;&#x4F5C;&#xFF1A;SM&#x4E2D;&#x5B58;&#x5728;&#x7684;Server&#x7AEF;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x9645;&#x4E0A;&#x4E5F;&#x662F;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#xFF0C;&#x540E;&#x9762;Client&#x5411;SM&#x67E5;&#x8BE2;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9A71;&#x52A8;&#x4F1A;&#x7ED9;Client&#x8FD4;&#x56DE;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x3002;Sever&#x8FDB;&#x7A0B;&#x7684;&#x672C;&#x5730;&#x5BF9;&#x8C61;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#xFF0C;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x6240;&#x62E5;&#x6709;&#x7684;&#x5168;&#x90E8;&#x90FD;&#x662F;&#x5B83;&#x7684;&#x4EE3;&#x7406;&#x3002;</p>
+<p>&#x4E00;&#x53E5;&#x8BDD;&#x603B;&#x7ED3;&#x5C31;&#x662F;&#xFF1A;Client&#x8FDB;&#x7A0B;&#x53EA;&#x4E0D;&#x8FC7;&#x662F;&#x6301;&#x6709;&#x4E86;Server&#x7AEF;&#x7684;&#x4EE3;&#x7406;&#xFF1B;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x534F;&#x52A9;&#x9A71;&#x52A8;&#x5B8C;&#x6210;&#x4E86;&#x8DE8;&#x8FDB;&#x7A0B;&#x901A;&#x4FE1;&#x3002;</p>
+<h2 id="AIDL"><a href="#AIDL" class="headerlink" title="AIDL"></a>AIDL</h2><p><strong>&#x201C;&#x53EA;&#x6709;&#x5F53;&#x4F60;&#x5141;&#x8BB8;&#x6765;&#x81EA;&#x4E0D;&#x540C;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x8BBF;&#x95EE;&#x4F60;&#x7684;&#x670D;&#x52A1;&#x5E76;&#x4E14;&#x9700;&#x8981;&#x5904;&#x7406;&#x591A;&#x7EBF;&#x7A0B;&#x95EE;&#x9898;&#x65F6;&#x4F60;&#x624D;&#x5FC5;&#x987B;&#x4F7F;&#x7528;AIDL&#x201D;</strong></p>
+<p><a href="http://www.2cto.com/kf/201406/312244.html" target="_blank" rel="noopener">http://www.2cto.com/kf/201406/312244.html</a></p>
+<p><a href="http://blog.csdn.net/double2hao/article/details/51626347" target="_blank" rel="noopener">http://blog.csdn.net/double2hao/article/details/51626347</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Binder/" rel="tag"># Binder</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/19/架构设计：分布式应用架构风格/" rel="next" title="架构设计：分布式应用架构风格">
+                <i class="fa fa-chevron-left"></i> 架构设计：分布式应用架构风格
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/29/Android 编码规范（详细版）/" rel="prev" title="Android 编码规范（详细版）">
+                Android 编码规范（详细版） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"xhrong"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/20/Android Binder机制解析/" data-title="Android Binder机制解析" data-url="http://xhrong.github.io/2017/08/20/Android Binder机制解析/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="xhrong">
+          <p class="site-author-name" itemprop="name">xhrong</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Binder原理"><span class="nav-number">1.</span> <span class="nav-text">Binder原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AIDL"><span class="nav-number">2.</span> <span class="nav-text">AIDL</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xhrong</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xhrong"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("u4DTaPHSLi7UfAEx97rmGGkO-gzGzoHsz", "qEYRUuSsKEaUPpt8BwlMXnbr");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

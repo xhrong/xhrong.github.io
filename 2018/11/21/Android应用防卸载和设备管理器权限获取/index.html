@@ -1,0 +1,993 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="防卸载,设备管理器,权限,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="森.林木" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="&amp;#x8BBE;&amp;#x5907;&amp;#x7BA1;&amp;#x7406;&amp;#x5668;&amp;#x6743;&amp;#x9650;&amp;#x8303;&amp;#x56F4;123456789101112&amp;lt;device-admin xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&amp;gt;  &amp;lt;uses-policies&amp;gt;">
+<meta name="keywords" content="防卸载,设备管理器,权限">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android应用防卸载和设备管理器权限获取">
+<meta property="og:url" content="http://xhrong.github.io/2018/11/21/Android应用防卸载和设备管理器权限获取/index.html">
+<meta property="og:site_name" content="森.林木">
+<meta property="og:description" content="&amp;#x8BBE;&amp;#x5907;&amp;#x7BA1;&amp;#x7406;&amp;#x5668;&amp;#x6743;&amp;#x9650;&amp;#x8303;&amp;#x56F4;123456789101112&amp;lt;device-admin xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&amp;gt;  &amp;lt;uses-policies&amp;gt;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://xhrong.github.io/2018/11/21/Android应用防卸载和设备管理器权限获取/1542799168143.jpg">
+<meta property="og:image" content="http://xhrong.github.io/2018/11/21/Android应用防卸载和设备管理器权限获取/1542799814414.jpg">
+<meta property="og:image" content="http://xhrong.github.io/2018/11/21/Android应用防卸载和设备管理器权限获取/1542799950085.jpg">
+<meta property="og:image" content="http://xhrong.github.io/2018/11/21/Android应用防卸载和设备管理器权限获取/1542799869851.jpg">
+<meta property="og:updated_time" content="2019-10-05T09:54:50.242Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android应用防卸载和设备管理器权限获取">
+<meta name="twitter:description" content="&amp;#x8BBE;&amp;#x5907;&amp;#x7BA1;&amp;#x7406;&amp;#x5668;&amp;#x6743;&amp;#x9650;&amp;#x8303;&amp;#x56F4;123456789101112&amp;lt;device-admin xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&amp;gt;  &amp;lt;uses-policies&amp;gt;">
+<meta name="twitter:image" content="http://xhrong.github.io/2018/11/21/Android应用防卸载和设备管理器权限获取/1542799168143.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xhrong.github.io/2018/11/21/Android应用防卸载和设备管理器权限获取/">
+
+
+
+
+
+  <title> Android应用防卸载和设备管理器权限获取 | 森.林木 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">森.林木</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xhrong.github.io/2018/11/21/Android应用防卸载和设备管理器权限获取/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="xhrong">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="森.林木">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="森.林木" src>
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android应用防卸载和设备管理器权限获取
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-21T00:00:00+08:00">
+                2018-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2018/11/21/Android应用防卸载和设备管理器权限获取/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/11/21/Android应用防卸载和设备管理器权限获取/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/11/21/Android应用防卸载和设备管理器权限获取/" class="leancloud_visitors" data-flag-title="Android应用防卸载和设备管理器权限获取">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x6743;&#x9650;&#x8303;&#x56F4;"><a href="#&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x6743;&#x9650;&#x8303;&#x56F4;" class="headerlink" title="&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x6743;&#x9650;&#x8303;&#x56F4;"></a>&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x6743;&#x9650;&#x8303;&#x56F4;</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">device-admin</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">uses-policies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">limit-password</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">watch-login</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">reset-password</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">force-lock</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">wipe-data</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">expire-password</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">encrypted-storage</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">disable-camera</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">uses-policies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">device-admin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#x7ACB;&#x5373;&#x9501;&#x5C4F; Lock device immediately<br>&#x9501;&#x5C4F;&#x524D;&#x7684;&#x4E0D;&#x6D3B;&#x52A8;&#x65F6;&#x95F4; Maximum inactivity time lock<br>&#x6307;&#x5B9A;&#x5B58;&#x50A8;&#x533A;&#x57DF;&#x52A0;&#x5BC6; Require storage encryption<br>&#x64E6;&#x62ED;&#x6570;&#x636E;(&#x6062;&#x590D;&#x51FA;&#x5382;) Wipe the device&#x2019;s data<br>&#x7981;&#x7528;&#x76F8;&#x673A; Disable camera</p>
+<p>&#x5F00;&#x542F;&#x624B;&#x673A;PIN&#x6216;&#x5BC6;&#x7801; Password enabled<br>&#x5BC6;&#x7801;&#x6700;&#x5C0F;&#x957F;&#x5EA6; Minimum password length<br>&#x5BC6;&#x7801;&#x662F;&#x5B57;&#x6BCD;&#x6570;&#x5B57; Alphanumeric password required<br>&#x5BC6;&#x7801;&#x5FC5;&#x987B;&#x662F;&#x5B57;&#x6BCD;&#x6570;&#x5B57;&#x7B26;&#x53F7;&#x6DF7;&#x5408; Complex password required<br>&#x5BC6;&#x7801;&#x6709;&#x6548;&#x671F; Password expiration timeout<br>&#x5BC6;&#x7801;&#x5931;&#x8D25;&#x6B21;&#x6570; Maximum failed password attempts </p>
+<p><img src="/2018/11/21/Android&#x5E94;&#x7528;&#x9632;&#x5378;&#x8F7D;&#x548C;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x6743;&#x9650;&#x83B7;&#x53D6;/1542799168143.jpg" alt="enter description here"></p>
+<h3 id="&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x6FC0;&#x6D3B;"><a href="#&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x6FC0;&#x6D3B;" class="headerlink" title="&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x6FC0;&#x6D3B;"></a>&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x6FC0;&#x6D3B;</h3><p>1&#x3001; &#x521B;&#x5EFA; MyReceiver &#x7C7B;,&#x5FC5;&#x987B;&#x7EE7;&#x627F;DeviceAdminReceiver&#x7C7B;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span> <span class="keyword">extends</span> <span class="title">DeviceAdminReceiver</span> </span>{       </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEnabled</span><span class="params">(Context context, Intent intent)</span> </span>{</span><br><span class="line">        <span class="comment">//&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x53EF;&#x7528;</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDisabled</span><span class="params">(Context context, Intent intent)</span> </span>{</span><br><span class="line">        <span class="comment">//&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x4E0D;&#x53EF;&#x7528;</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPasswordChanged</span><span class="params">(Context context, Intent intent)</span> </span>{     </span><br><span class="line">    }</span><br><span class="line">    ...</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>2&#x3001;&#x5728;AndroidManifest.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> </span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">&quot;.MyReceiver&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">&quot;&#x7528;&#x6237;&#x53EF;&#x770B;&#x7684;&#x6743;&#x9650;&#x6807;&#x9898;&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:description</span>=<span class="string">&quot;&#x7528;&#x6237;&#x53EF;&#x770B;&#x7684;&#x6743;&#x9650;&#x63CF;&#x8FF0;&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:permission</span>=<span class="string">&quot;android.permission.BIND_DEVICE_ADMIN&quot;</span>&gt;</span> </span><br><span class="line">        &#x5FC5;&#x987B;&#x62E5;&#x6709;&#x7684;&#x6743;&#x9650;,&#x786E;&#x4FDD;&#x53EA;&#x6709;&#x7CFB;&#x7EDF;&#x53EF;&#x4EE5;&#x4E0E;DeviceAdminReceiver&#x5B50;&#x7C7B;&#x4EA4;&#x4E92;</span><br><span class="line">    <span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">&quot;android.app.device_admin&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:resource</span>=<span class="string">&quot;@xml/device_xxx&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;android.app.action.DEVICE_ADMIN_ENABLED&quot;</span> /&gt;</span></span><br><span class="line">        &#x5F53;&#x7528;&#x6237;&#x542F;&#x7528;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5458;APP&#x65F6;,&#x5C06;DeviceAdminReceiver&#x5B50;&#x7C7B;&#x8BBE;&#x7F6E;&#x4E3A;&#x63A5;&#x6536;&#x5668;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span>        </span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>3&#x3001;&#x5728;res/xml/device_xxx.xml<br>&#x5728;xml&#x4E2D;&#x58F0;&#x660E;APP&#x9700;&#x8981;&#x7684;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x7B56;&#x7565;,&#x5982;&#x5BC6;&#x7801;,&#x9501;&#x5C4F;,&#x64E6;&#x9664;&#x6570;&#x636E;,&#x52A0;&#x5BC6;&#x7B49;&#x7B49;<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">device-admin</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">uses-policies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">limit-password</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">watch-login</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">reset-password</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">force-lock</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">wipe-data</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">expire-password</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">encrypted-storage</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">disable-camera</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">uses-policies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">device-admin</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>4&#x3001;&#x6FC0;&#x6D3B;APP&#x8BBE;&#x5907;&#x7BA1;&#x7406;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ComponentName myReceiverName = <span class="keyword">new</span> ComponentName(<span class="keyword">this</span>,MyReceiver<span class="class">.<span class="keyword">class</span>)</span>;    </span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);    </span><br><span class="line">intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, myReceiverName);</span><br><span class="line">intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,<span class="string">&quot;&#x7ED9;&#x7528;&#x6237;&#x4ECB;&#x7ECD;&#x6587;&#x5B57;&quot;</span>);</span><br></pre></td></tr></table></figure></p>
+<p>5&#x3001;&#x53D6;&#x6D88;APP&#x8BBE;&#x5907;&#x7BA1;&#x7406;,&#x5378;&#x8F7D;APP<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DevicePolicyManager dpm = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);</span><br><span class="line">ComponentName myReceiverName = <span class="keyword">new</span> ComponentName(<span class="keyword">this</span>,MyReceiver<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">// &#x53D6;&#x6D88;&#x8BBE;&#x5907;&#x7BA1;&#x7406;</span></span><br><span class="line">dpm.removeActiveAdmin(myReceiverName);</span><br><span class="line"><span class="comment">// &#x5378;&#x8F7D;</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">intent.setAction(<span class="string">&quot;android.intent.action.VIEW&quot;</span>);</span><br><span class="line">intent.addCategory(<span class="string">&quot;android.intent.category.DEFAULT&quot;</span>);</span><br><span class="line">intent.setData(Uri.parse(<span class="string">&quot;package:&quot;</span>+getPackageName()));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure></p>
+<h3 id="&#x9501;&#x5C4F;-&#x7981;&#x7528;&#x76F8;&#x673A;-&#x64E6;&#x9664;SD&#x5361;&#x6570;&#x636E;-&#x6062;&#x590D;&#x51FA;&#x5382;"><a href="#&#x9501;&#x5C4F;-&#x7981;&#x7528;&#x76F8;&#x673A;-&#x64E6;&#x9664;SD&#x5361;&#x6570;&#x636E;-&#x6062;&#x590D;&#x51FA;&#x5382;" class="headerlink" title="&#x9501;&#x5C4F;/&#x7981;&#x7528;&#x76F8;&#x673A;/&#x64E6;&#x9664;SD&#x5361;&#x6570;&#x636E;/&#x6062;&#x590D;&#x51FA;&#x5382;"></a>&#x9501;&#x5C4F;/&#x7981;&#x7528;&#x76F8;&#x673A;/&#x64E6;&#x9664;SD&#x5361;&#x6570;&#x636E;/&#x6062;&#x590D;&#x51FA;&#x5382;</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">DevicePolicyManager dpm = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);</span><br><span class="line">ComponentName myReceiverName = <span class="keyword">new</span> ComponentName(<span class="keyword">this</span>,MyReceiver<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">// 2.&#x9501;&#x5C4F;/&#x64E6;&#x9664;&#x6570;&#x636E;/   </span></span><br><span class="line"><span class="keyword">if</span>(dpm.isAdminActive(myReceiverName)){  <span class="comment">//&#x662F;&#x5426;&#x6FC0;&#x6D3B;APP&#x8BBE;&#x5907;&#x7BA1;&#x7406;</span></span><br><span class="line">    <span class="comment">// &#x7ACB;&#x523B;&#x9501;&#x5C4F;</span></span><br><span class="line">    dpm.lockNow();</span><br><span class="line">    <span class="comment">// &#x8BBE;&#x7F6E;&#x81EA;&#x52A8;&#x9501;&#x5C4F;,&#x4E0D;&#x6D3B;&#x52A8;&#x65F6;&#x95F4;</span></span><br><span class="line">    dpm.setMaximumTimeToLock(myReceiverName, timeMs);</span><br><span class="line">    <span class="comment">// &#x91CD;&#x7F6E;&#x9501;&#x5C4F;&#x5BC6;&#x7801;       </span></span><br><span class="line">    dpm.resetPassword(<span class="string">&quot;123456&quot;</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// &#x7981;&#x7528;&#x76F8;&#x673A;</span></span><br><span class="line">    dpm.setCameraDisabled(myReceiverName, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// &#x64E6;&#x9664;SD&#x5361;&#x6570;&#x636E;</span></span><br><span class="line">    <span class="comment">//dpm.wipeData(DevicePolicyManager.WIPE_EXTERNAL_STORAGE);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// &#x6062;&#x590D;&#x51FA;&#x5382;</span></span><br><span class="line">    <span class="comment">//dpm.wipeData(0);</span></span><br><span class="line">}<span class="keyword">else</span>{</span><br><span class="line">    Toast.makeText(<span class="keyword">this</span>, <span class="string">&quot;&#x8FD8;&#x6CA1;&#x6709;&#x6FC0;&#x6D3B;APP&#x8BBE;&#x5907;&#x7BA1;&#x7406;&quot;</span>, <span class="number">0</span>).show();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h3 id="&#x4F7F;&#x7528;dpm&#x6FC0;&#x6D3B;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x5E76;&#x9632;&#x5378;&#x8F7D;"><a href="#&#x4F7F;&#x7528;dpm&#x6FC0;&#x6D3B;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x5E76;&#x9632;&#x5378;&#x8F7D;" class="headerlink" title="&#x4F7F;&#x7528;dpm&#x6FC0;&#x6D3B;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x5E76;&#x9632;&#x5378;&#x8F7D;"></a>&#x4F7F;&#x7528;dpm&#x6FC0;&#x6D3B;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x5E76;&#x9632;&#x5378;&#x8F7D;</h3><p>Usage :<br>usage: dpm [subcommand] [options]<br>usage: dpm set-device-owner <component><br>usage: dpm set-profile-owner <component> &lt;USER_ID&gt;</component></component></p>
+<p>dpm set-device-owner: Sets the given component as active admin, and its package as device owner.<br>dpm set-profile-owner: Sets the given component as active admin and profile owner for an existing user.</p>
+<p>Example&#xFF1A;</p>
+<p><img src="/2018/11/21/Android&#x5E94;&#x7528;&#x9632;&#x5378;&#x8F7D;&#x548C;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x6743;&#x9650;&#x83B7;&#x53D6;/1542799814414.jpg" alt="enter description here"></p>
+<p>&#x6CE8;&#x610F;&#xFF1A;Also notice that this tool is working only if no account is set for the user (make sure no account is set in Settings &gt; Accounts) before its use.</p>
+<p><strong>&#x6267;&#x884C;&#x540E;&#xFF0C;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x6FC0;&#x6D3B;&#xFF0C;&#x5E76;&#x4E14;&#x65E0;&#x6CD5;&#x89E3;&#x9664;&#x6FC0;&#x6D3B;&#x3002;&#x56E0;&#x4E3A;&#x5378;&#x8F7D;&#x5E94;&#x7528;&#x5FC5;&#x987B;&#x5148;&#x89E3;&#x9664;&#x6FC0;&#x6D3B;&#xFF0C;&#x4ECE;&#x800C;&#x4FDD;&#x8BC1;&#x5E94;&#x7528;&#x4E0D;&#x4F1A;&#x88AB;&#x5378;&#x8F7D;&#x3002;</strong></p>
+<p><img src="/2018/11/21/Android&#x5E94;&#x7528;&#x9632;&#x5378;&#x8F7D;&#x548C;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x6743;&#x9650;&#x83B7;&#x53D6;/1542799950085.jpg" alt="enter description here"></p>
+<p>&#x53EF;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x89E3;&#x9664;&#x6FC0;&#x6D3B;&#xFF0C;&#x7136;&#x540E;&#x5378;&#x8F7D;&#x5E94;&#x7528;</p>
+<p><img src="/2018/11/21/Android&#x5E94;&#x7528;&#x9632;&#x5378;&#x8F7D;&#x548C;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x5668;&#x6743;&#x9650;&#x83B7;&#x53D6;/1542799869851.jpg" alt="enter description here"></p>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;"><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;" class="headerlink" title="&#x53C2;&#x8003;&#x8D44;&#x6599;"></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</h3><p>1.<a href="https://github.com/googlesamples/android-AppRestrictionEnforcer" target="_blank" rel="noopener">https://github.com/googlesamples/android-AppRestrictionEnforcer</a><br>2.<a href="http://florent-dupont.blogspot.com/2015/01/android-shell-command-dpm-device-policy.html" target="_blank" rel="noopener">http://florent-dupont.blogspot.com/2015/01/android-shell-command-dpm-device-policy.html</a><br>3.<a href="https://stackoverflow.com/questions/21183328/how-to-make-my-app-a-device-owner" target="_blank" rel="noopener">https://stackoverflow.com/questions/21183328/how-to-make-my-app-a-device-owner</a><br>4.<a href="https://blog.csdn.net/ice_eyes/article/details/52951343?locationNum=2&amp;fps=1" target="_blank" rel="noopener">https://blog.csdn.net/ice_eyes/article/details/52951343?locationNum=2&amp;fps=1</a><br>5.<a href="https://blog.csdn.net/qq_32115439/article/details/71270479" target="_blank" rel="noopener">https://blog.csdn.net/qq_32115439/article/details/71270479</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/防卸载/" rel="tag"># 防卸载</a>
+          
+            <a href="/tags/设备管理器/" rel="tag"># 设备管理器</a>
+          
+            <a href="/tags/权限/" rel="tag"># 权限</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/27/Flutter vs RN vs Weex vs NativeApp vs WebApp/" rel="next" title="Flutter vs RN vs Weex vs NativeApp vs WebApp">
+                <i class="fa fa-chevron-left"></i> Flutter vs RN vs Weex vs NativeApp vs WebApp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/02/《科学学习——斯坦福黄金学习法则》思维导图/" rel="prev" title="《科学学习——斯坦福黄金学习法则》思维导图">
+                《科学学习——斯坦福黄金学习法则》思维导图 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"xhrong"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/11/21/Android应用防卸载和设备管理器权限获取/" data-title="Android应用防卸载和设备管理器权限获取" data-url="http://xhrong.github.io/2018/11/21/Android应用防卸载和设备管理器权限获取/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="xhrong">
+          <p class="site-author-name" itemprop="name">xhrong</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#设备管理器权限范围"><span class="nav-number">1.</span> <span class="nav-text">设备管理器权限范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设备管理器激活"><span class="nav-number">2.</span> <span class="nav-text">设备管理器激活</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锁屏-禁用相机-擦除SD卡数据-恢复出厂"><span class="nav-number">3.</span> <span class="nav-text">锁屏/禁用相机/擦除SD卡数据/恢复出厂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用dpm激活设备管理器并防卸载"><span class="nav-number">4.</span> <span class="nav-text">使用dpm激活设备管理器并防卸载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xhrong</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xhrong"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("u4DTaPHSLi7UfAEx97rmGGkO-gzGzoHsz", "qEYRUuSsKEaUPpt8BwlMXnbr");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

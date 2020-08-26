@@ -1,0 +1,1068 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="JVM,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="森.林木" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="JVM&amp;#x6982;&amp;#x8FF0;@(&amp;#x6280;&amp;#x672F;&amp;#x5B66;&amp;#x4E60;)[JVM, Java&amp;#x5806;, Java&amp;#x6808;] [TOC] JVM&amp;#x7684;&amp;#x7EC4;&amp;#x6210;JVM&amp;#x5728;JDK&amp;#x4E2D;&amp;#x7684;&amp;#x4F4D;&amp;#x7F6E;      &amp;#x4ECE;&amp;#x6700;&amp;#x5E95;&amp;#x">
+<meta name="keywords" content="JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM概述">
+<meta property="og:url" content="http://xhrong.github.io/2016/11/24/JVM概况/index.html">
+<meta property="og:site_name" content="森.林木">
+<meta property="og:description" content="JVM&amp;#x6982;&amp;#x8FF0;@(&amp;#x6280;&amp;#x672F;&amp;#x5B66;&amp;#x4E60;)[JVM, Java&amp;#x5806;, Java&amp;#x6808;] [TOC] JVM&amp;#x7684;&amp;#x7EC4;&amp;#x6210;JVM&amp;#x5728;JDK&amp;#x4E2D;&amp;#x7684;&amp;#x4F4D;&amp;#x7F6E;      &amp;#x4ECE;&amp;#x6700;&amp;#x5E95;&amp;#x">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477555738109.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477555771171.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477556615204.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477556158473.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477559142217.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477556304394.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477556909018.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477557006989.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477557700474.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477558200207.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477560551227.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477615516864.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477615288982.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477615301316.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477615313879.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477615328010.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477615334358.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477615353531.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477615359322.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477615371170.png">
+<meta property="og:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477615452569.png">
+<meta property="og:updated_time" content="2019-10-05T09:54:50.613Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM概述">
+<meta name="twitter:description" content="JVM&amp;#x6982;&amp;#x8FF0;@(&amp;#x6280;&amp;#x672F;&amp;#x5B66;&amp;#x4E60;)[JVM, Java&amp;#x5806;, Java&amp;#x6808;] [TOC] JVM&amp;#x7684;&amp;#x7EC4;&amp;#x6210;JVM&amp;#x5728;JDK&amp;#x4E2D;&amp;#x7684;&amp;#x4F4D;&amp;#x7F6E;      &amp;#x4ECE;&amp;#x6700;&amp;#x5E95;&amp;#x">
+<meta name="twitter:image" content="http://xhrong.github.io/2016/11/24/JVM概况/1477555738109.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xhrong.github.io/2016/11/24/JVM概况/">
+
+
+
+
+
+  <title> JVM概述 | 森.林木 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">森.林木</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xhrong.github.io/2016/11/24/JVM概况/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="xhrong">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="森.林木">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="森.林木" src>
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JVM概述
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-24T18:28:48+08:00">
+                2016-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/11/24/JVM概况/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/24/JVM概况/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/24/JVM概况/" class="leancloud_visitors" data-flag-title="JVM概述">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="JVM&#x6982;&#x8FF0;"><a href="#JVM&#x6982;&#x8FF0;" class="headerlink" title="JVM&#x6982;&#x8FF0;"></a>JVM&#x6982;&#x8FF0;</h2><p>@(&#x6280;&#x672F;&#x5B66;&#x4E60;)[JVM, Java&#x5806;, Java&#x6808;]</p>
+<p>[TOC]</p>
+<h3 id="JVM&#x7684;&#x7EC4;&#x6210;"><a href="#JVM&#x7684;&#x7EC4;&#x6210;" class="headerlink" title="JVM&#x7684;&#x7EC4;&#x6210;"></a>JVM&#x7684;&#x7EC4;&#x6210;</h3><h4 id="JVM&#x5728;JDK&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;"><a href="#JVM&#x5728;JDK&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;" class="headerlink" title="JVM&#x5728;JDK&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;"></a>JVM&#x5728;JDK&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;</h4><p> <img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477555738109.png" alt="Alt text"><br>     &#x4ECE;&#x6700;&#x5E95;&#x5C42;&#x7684;&#x4F4D;&#x7F6E;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;JVM&#x6709;&#x591A;&#x91CD;&#x8981;&#xFF0C;&#x800C;&#x5B9E;&#x9645;&#x9879;&#x76EE;&#x4E2D;JAVA&#x5E94;&#x7528;&#x7684;&#x6027;&#x80FD;&#x4F18;&#x5316;&#xFF0C;OOM&#x7B49;&#x5F02;&#x5E38;&#x7684;&#x5904;&#x7406;&#x6700;&#x7EC8;&#x90FD;&#x5F97;&#x4ECE;JVM&#x8FD9;&#x513F;&#x6765;&#x89E3;&#x51B3;&#x3002; HotSpot&#x662F;Oracle&#x5173;&#x4E8E;JVM&#x7684;&#x5546;&#x6807;&#xFF0C;&#x533A;&#x522B;&#x4E8E;IBM&#xFF0C;HP&#x7B49;&#x5382;&#x5546;&#x5F00;&#x53D1;&#x7684;JVM&#x3002;Java HotSpot Client VM&#x548C;Java HotSpot Server VM&#x662F;JDK&#x5173;&#x4E8E;JVM&#x7684;&#x4E24;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x524D;&#x8005;&#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x548C;&#x5185;&#x5B58;&#x5360;&#x7528;&#xFF0C;&#x800C;&#x540E;&#x8005;&#x5219;&#x63D0;&#x4F9B;&#x66F4;&#x52A0;&#x4F18;&#x79C0;&#x7684;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x3002;&#x5728;&#x547D;&#x4EE4;&#x884C;&#xFF0C;&#x901A;&#x8FC7;java -version&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x5173;&#x4E8E;&#x5F53;&#x524D;&#x673A;&#x5668;JVM&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+<p><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477555771171.png" alt="Alt text"></p>
+<p> &#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6211;&#x88C5;&#x7684;&#x662F;build 20.13-b02&#x7248;&#x672C;&#xFF0C;HotSpot &#x7C7B;&#x578B;Server&#x6A21;&#x5F0F;&#x7684;JVM&#x3002;</p>
+<h4 id="JVM&#x7684;&#x7EC4;&#x6210;-1"><a href="#JVM&#x7684;&#x7EC4;&#x6210;-1" class="headerlink" title="JVM&#x7684;&#x7EC4;&#x6210;"></a>JVM&#x7684;&#x7EC4;&#x6210;</h4><p>JVM&#x7531;4&#x5927;&#x90E8;&#x5206;&#x7EC4;&#x6210;&#xFF1A;ClassLoader&#xFF0C;Runtime Data Area&#xFF0C;Execution Engine&#xFF0C;Native Interface&#x3002;<br><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477556615204.png" alt="Alt text"><br> <strong>ClassLoader:</strong> &#x662F;&#x8D1F;&#x8D23;&#x52A0;&#x8F7D;class&#x6587;&#x4EF6; &#xFF0C; class&#x6587;&#x4EF6;&#x5728;&#x6587;&#x4EF6;&#x5F00;&#x5934;&#x6709;&#x7279;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x6807;&#x793A; &#xFF0C; &#x5E76;&#x4E14;ClassLoader&#x53EA;&#x8D1F;&#x8D23;class&#x6587;&#x4EF6;&#x7684;&#x52A0;&#x8F7D; &#xFF0C; &#x81F3;&#x4E8E;&#x5B83;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#xFF0C;&#x5219;&#x7531;Execution Engine&#x51B3;&#x5B9A;&#x3002;</p>
+<p><strong>Native Interface&#xFF1A;</strong> &#x662F;&#x8D1F;&#x8D23;&#x8C03;&#x7528;&#x672C;&#x5730;&#x63A5;&#x53E3;&#x7684;&#x3002;&#x4ED6;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x8C03;&#x7528;&#x4E0D;&#x540C;&#x8BED;&#x8A00;&#x7684;&#x63A5;&#x53E3;&#x7ED9;JAVA&#x7528; &#xFF0C; &#x4ED6;&#x4F1A;&#x5728;Native Method Stack&#x4E2D;&#x8BB0;&#x5F55;&#x5BF9;&#x5E94;&#x7684;&#x672C;&#x5730;&#x65B9;&#x6CD5; &#xFF0C; &#x7136;&#x540E;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x65F6;&#x5C31;&#x901A;&#x8FC7;Execution Engine&#x52A0;&#x8F7D;&#x5BF9;&#x5E94;&#x7684;&#x672C;&#x5730;lib&#x3002;&#x539F;&#x672C;&#x591A;&#x4E8E;&#x7528;&#x4E00;&#x4E9B;&#x4E13;&#x4E1A;&#x9886;&#x57DF; &#xFF0C; &#x5982;JAVA&#x9A71;&#x52A8; &#xFF0C; &#x5730;&#x56FE;&#x5236;&#x4F5C;&#x5F15;&#x64CE;&#x7B49; &#xFF0C; &#x73B0;&#x5728;&#x5173;&#x4E8E;&#x8FD9;&#x79CD;&#x672C;&#x5730;&#x65B9;&#x6CD5;&#x63A5;&#x53E3;&#x7684;&#x8C03;&#x7528;&#x5DF2;&#x7ECF;&#x88AB;&#x7C7B;&#x4F3C;&#x4E8E;Socket&#x901A;&#x4FE1; &#xFF0C; WebService&#x7B49;&#x65B9;&#x5F0F;&#x53D6;&#x4EE3;&#x3002;</p>
+<p><strong>Execution Engine&#xFF1A;</strong> &#x662F;&#x6267;&#x884C;&#x5F15;&#x64CE; &#xFF0C; &#x4E5F;&#x53EB;Interpreter&#x3002;Class&#x6587;&#x4EF6;&#x88AB;&#x52A0;&#x8F7D;&#x540E; &#xFF0C; &#x4F1A;&#x628A;&#x6307;&#x4EE4;&#x548C;&#x6570;&#x636E;&#x4FE1;&#x606F;&#x653E;&#x5165;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;Execution Engine&#x5219;&#x8D1F;&#x8D23;&#x628A;&#x8FD9;&#x4E9B;&#x547D;&#x4EE4;&#x89E3;&#x91CA;&#x7ED9;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x3002;</p>
+<p><strong>Runtime Data Area&#xFF1A;</strong> &#x5219;&#x662F;&#x5B58;&#x653E;&#x6570;&#x636E;&#x7684;&#xFF0C; &#x5206;&#x4E3A;&#x4E94;&#x90E8;&#x5206;&#xFF1A;Stack&#xFF0C;Heap&#xFF0C;Method Area&#xFF0C;PC Register&#xFF0C;Native Method Stack&#x3002;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7684;&#x5173;&#x4E8E;java&#x5185;&#x5B58;&#x65B9;&#x9762;&#x7684;&#x95EE;&#x9898; &#xFF0C; &#x90FD;&#x662F;&#x96C6;&#x4E2D;&#x5728;&#x8FD9;&#x5757;&#x3002;</p>
+<h3 id="Runtime-Data-Area"><a href="#Runtime-Data-Area" class="headerlink" title="Runtime Data Area"></a>Runtime Data Area</h3><p>Runtime Data Area&#x5B58;&#x653E;&#x6570;&#x636E;&#x7684;&#xFF0C; &#x5206;&#x4E3A;&#x4E94;&#x90E8;&#x5206;&#xFF1A;Stack&#xFF0C;Heap&#xFF0C;Method Area&#xFF0C;PC Register&#xFF0C;Native Method Stack&#x3002;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7684;&#x5173;&#x4E8E;java&#x5185;&#x5B58;&#x65B9;&#x9762;&#x7684;&#x95EE;&#x9898; &#xFF0C; &#x90FD;&#x662F;&#x96C6;&#x4E2D;&#x5728;&#x8FD9;&#x5757;&#x3002;&#x4E0B;&#x56FE;&#x662F;javapapers.com&#x4E0A;&#x5173;&#x4E8E;Run-time Data Areas&#x7684;&#x63CF;&#x8FF0;&#xFF1A;<br><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477556158473.png" alt="Alt text"><br><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477559142217.png" alt="Alt text"></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x5B83;&#x628A;Method Area&#x5212;&#x4E3A;&#x4E86;Heap&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;javapapers.com&#x4E2D;&#x8BA4;&#x4E3A;Method Area&#x662F;Heap&#x7684;&#x903B;&#x8F91;&#x533A;&#x57DF;&#xFF0C;&#x4F46;&#x8FD9;&#x53D6;&#x51B3;&#x4E8E;JVM&#x7684;&#x5B9E;&#x73B0;&#x8005;&#xFF0C;&#x800C;HotSpot JVM&#x4E2D;&#x628A;Method Area&#x5212;&#x5206;&#x4E3A;&#x975E;&#x5806;&#x5185;&#x5B58;&#xFF0C;&#x663E;&#x7136;&#x662F;&#x4E0D;&#x5305;&#x542B;&#x5728;Heap&#x4E2D;&#x7684;&#x3002;&#x4E0B;&#x56FE;&#x662F;javacodegeeks.com&#x4E2D;&#xFF0C;2014&#x5E74;9&#x6708;&#x520A;&#x51FA;&#x7684;&#x4E00;&#x7247;&#x535A;&#x6587;&#x4E2D;&#x5173;&#x4E8E;Runtime Data Area&#x7684;&#x5212;&#x5206;&#xFF0C;&#x5176;&#x4E2D;&#x6307;&#x51FA;&#xFF0C;NonHeap&#x5305;&#x542B;PermGen&#x548C;Code Cache&#xFF0C;PermGen&#x5305;&#x542B;Method Area,&#x800C;&#x4E14;PermGen&#x5728;JAVA SE 8&#x4E2D;&#x5DF2;&#x7ECF;&#x4E0D;&#x518D;&#x7528;&#x4E86;&#x3002;&#x67E5;&#x9605;&#x8D44;&#x6599;&#xFF08; <a href="https://abhirockzz.wordpress.com/2014/03/18/java-se-8-is-knocking-are-you-there/" target="_blank" rel="noopener">https://abhirockzz.wordpress.com/2014/03/18/java-se-8-is-knocking-are-you-there/</a> &#xFF09;&#x5F97;&#x77E5;&#xFF0C;java8&#x4E2D;PermGen&#x5DF2;&#x7ECF;&#x4ECE;JVM&#x4E2D;&#x79FB;&#x9664;&#x5E76;&#x88AB;MetaSpace&#x53D6;&#x4EE3;&#xFF0C;java8&#x4E2D;&#x4E5F;&#x4E0D;&#x4F1A;&#x89C1;&#x5230;OOM:PermGen Space&#x7684;&#x5F02;&#x5E38;&#x3002;&#x76EE;&#x524D;Runtime Data Area&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x56FE;&#x63CF;&#x8FF0;&#x5B83;&#x7684;&#x7EC4;&#x6210;&#xFF1A;<br> <img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477556304394.png" alt="Alt text"></p>
+<h4 id="JVM-Stack"><a href="#JVM-Stack" class="headerlink" title="JVM Stack"></a>JVM Stack</h4><p>&#x865A;&#x62DF;&#x673A;&#x6808;&#x4E5F;&#x662F;&#x7EBF;&#x7A0B;&#x79C1;&#x6709;&#x7684;&#xFF0C;&#x6BCF;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x865A;&#x62DF;&#x673A;&#x5C31;&#x4F1A;&#x4E3A;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#x6808;&#xFF0C;&#x865A;&#x62DF;&#x673A;&#x6808;&#x8868;&#x793A;Java&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x7684;&#x5185;&#x5B58;&#x6A21;&#x578B;&#xFF0C;&#x6BCF;&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5C31;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x6808;&#x5E27;&#xFF08;Stack Frame&#xFF09;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x65B9;&#x6CD5;&#x7684;&#x672C;&#x5730;&#x53D8;&#x91CF;&#x8868;&#x3001;&#x64CD;&#x4F5C;&#x6808;&#x3001;&#x65B9;&#x6CD5;&#x51FA;&#x53E3;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x5F53;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x5B8C;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x5F39;&#x51FA;&#x76F8;&#x5E94;&#x7684;&#x6808;&#x5E27;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x7684;&#x6808;&#x7684;&#x6DF1;&#x5EA6;&#x8FC7;&#x5927;&#xFF0C;&#x865A;&#x62DF;&#x673A;&#x53EF;&#x80FD;&#x4F1A;&#x629B;&#x51FA;StackOverflowError&#x5F02;&#x5E38;&#xFF0C;&#x5982;&#x679C;&#x865A;&#x62DF;&#x673A;&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x5141;&#x8BB8;&#x865A;&#x62DF;&#x673A;&#x6808;&#x52A8;&#x6001;&#x6269;&#x5C55;&#xFF0C;&#x5F53;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x4EE5;&#x6269;&#x5C55;&#x6808;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x629B;&#x51FA;OutOfMemoryError&#x5F02;&#x5E38;&#x3002;</p>
+<p>Stack&#x662F;java&#x6808;&#x5185;&#x5B58;&#xFF0C;&#x5B83;&#x7B49;&#x4EF7;&#x4E8E;C&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x6808;&#xFF0C; &#x6808;&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;&#x662F;&#x4E0D;&#x8FDE;&#x7EED;&#x7684;&#xFF0C; &#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x90FD;&#x62E5;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x6808;&#x3002; &#x6808; &#x91CC;&#x9762;&#x5B58;&#x50A8;&#x7740;&#x7684;&#x662F;StackFrame&#xFF0C; &#x6808;&#x5E27;&#x5206;&#x4E3A;&#x4E09;&#x90E8;&#x5206;&#xFF1A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x533A;&#xFF08;Local Variables&#xFF09;&#x3001;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#xFF08;Operand Stack&#xFF09;&#x548C;&#x5E27;&#x6570;&#x636E;&#x533A;&#xFF08;Frame Data&#xFF09;&#x3002;</p>
+<p><strong>&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x533A;&#xFF08;Loca Variables&#xFF09;</strong><br>&#x7528;&#x6765;&#x5B58;&#x50A8;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x4E2D;&#x6240;&#x7528;&#x5230;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x3002;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x533A;&#x88AB;&#x7EC4;&#x7EC7;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x4ECE;0&#x5F00;&#x59CB;&#x7684;&#x5B57;&#x6570;&#x7EC4;&#xFF0C;byte&#x3001;short&#x3001;char&#x5728;&#x5B58;&#x50A8;&#x524D;&#x88AB;&#x8F6C;&#x6362;&#x4E3A;int&#xFF0C;boolean&#x4E5F;&#x88AB;&#x8F6C;&#x6362;&#x4E3A;int&#xFF0C;0&#x8868;&#x793A;false&#xFF0C;&#x975E;0&#x8868;&#x793A;true&#xFF0C;long&#x548C;double&#x5360;&#x636E;&#x4E24;&#x4E2A;&#x5B57;&#x957F;&#x3002;</p>
+<p><strong>&#x64CD;&#x4F5C;&#x6570;&#x6808;&#xFF08;Operand Stack&#xFF09;</strong><br>&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x8FD0;&#x7B97;&#x6240;&#x9700;&#x8981;&#x7684;&#x64CD;&#x4F5C;&#x6570;&#x548C;&#x7ED3;&#x679C;&#x3002;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x4E5F;&#x88AB;&#x7EC4;&#x7EC7;&#x4E3A;&#x4E00;&#x4E2A;&#x5B57;&#x6570;&#x7EC4;&#xFF0C;&#x4F46;&#x4E0D;&#x540C;&#x4E8E;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x533A;&#xFF0C;&#x5B83;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x6570;&#x7EC4;&#x4E0B;&#x6807;&#x8BBF;&#x95EE;&#x7684;&#xFF0C;&#x800C;&#x662F;&#x80FD;&#x8FC7;&#x6808;&#x7684;Push&#x548C;Pop&#x64CD;&#x4F5C;&#xFF0C;&#x524D;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;Push&#x8FDB;&#x7684;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x88AB;&#x4E0B;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;Pop&#x51FA;&#x6765;&#x4F7F;&#x7528;&#x3002;</p>
+<p><strong>&#x5E27;&#x6570;&#x636E;&#x533A;&#xFF08;Frame Data&#xFF09;</strong><br>&#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x89E3;&#x6790;&#x5668;&#x5BF9;&#x4E8E;java&#x5B57;&#x8282;&#x7801;&#x8FDB;&#x884C;&#x89E3;&#x91CA;&#x8FC7;&#x7A0B;&#x4E2D;&#x9700;&#x8981;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;&#xFF1A;&#x4E0A;&#x6B21;&#x8C03;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x3001;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x6307;&#x9488;&#x548C; &#x64CD;&#x4F5C;&#x6570;&#x6808;&#x7684;&#x6808;&#x9876;&#x548C;&#x6808;&#x5E95;&#x6307;&#x9488;&#x3002;&#x90E8;&#x5206;&#x7684;&#x4F5C;&#x7528;&#x4E3B;&#x8981;&#x6709;&#x4E09;&#x90E8;&#x5206;&#xFF1A;</p>
+<ul>
+<li>&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x6570;&#x636E;&#x7684;&#x89E3;&#x6790;</li>
+<li>&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x5B8C;&#x540E;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#xFF0C;&#x6062;&#x590D;&#x8C03;&#x7528;&#x65B9;&#x73B0;&#x573A;</li>
+<li>&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x65F6;&#x7684;&#x5F02;&#x5E38;&#x5904;&#x7406;&#xFF0C;&#x5B58;&#x50A8;&#x6709;&#x4E00;&#x4E2A;&#x5F02;&#x5E38;&#x8868;&#xFF0C;&#x5F53;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#x65F6;&#x865A;&#x62DF;&#x673A;&#x67E5;&#x627E;&#x76F8;&#x5E94;&#x7684;&#x5F02;&#x5E38;&#x8868;&#x770B;&#x662F;&#x5426;&#x6709;&#x5BF9;&#x5E94;&#x7684;Catch&#x8BED;&#x53E5;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5C31;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x7EC8;&#x6B62;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x8C03;&#x7528;</li>
+</ul>
+<p>StackFrame&#x5728;&#x65B9;&#x6CD5;&#x88AB;&#x8C03;&#x7528;&#x65F6;&#x521B;&#x5EFA;&#xFF0C;&#x5728;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D;&#xFF0C;&#x67D0;&#x4E2A;&#x65F6;&#x95F4;&#x70B9;&#x4E0A;&#xFF0C;&#x53EA;&#x6709;&#x4E00;&#x4E2A; &#x6846;&#x67B6;&#x662F;&#x6D3B;&#x8DC3;&#x7684;&#xFF0C;&#x8BE5;&#x6846;&#x67B6;&#x88AB;&#x79F0;&#x4E3A;Current Frame&#xFF0C;&#x800C;&#x6846;&#x67B6;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x88AB;&#x79F0;&#x4E3A;Current Method&#xFF0C;&#x5176;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x4E3A;Current Class&#x3002;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x548C;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x4E0A;&#x7684;&#x64CD;&#x4F5C;&#x603B;&#x662F;&#x5F15;&#x7528;&#x5F53;&#x524D;&#x6846;&#x67B6;&#x3002;&#x5F53;Stack Frame&#x4E2D;&#x65B9;&#x6CD5;&#x88AB;&#x6267;&#x884C;&#x5B8C;&#x4E4B;&#x540E;&#xFF0C;&#x6216;&#x8005;&#x8C03;&#x7528;&#x522B;&#x7684;StackFrame&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5219;&#x5F53;&#x524D;&#x6808;&#x53D8;&#x4E3A;&#x53E6;&#x5916;&#x4E00;&#x4E2A;StackFrame&#x3002;Stack&#x7684;&#x5927;&#x5C0F;&#x662F;&#x7531;&#x4E24;&#x79CD;&#x7C7B; &#x578B;&#xFF0C;&#x56FA;&#x5B9A;&#x548C;&#x52A8;&#x6001;&#x7684;&#xFF0C;&#x52A8;&#x6001;&#x7C7B;&#x578B;&#x7684;&#x6808;&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x7EBF;&#x7A0B;&#x7684;&#x9700;&#x8981;&#x5206;&#x914D;&#x3002; &#x4E0B;&#x9762;&#x4E24;&#x5F20;&#x56FE;&#x662F;&#x5173;&#x4E8E;&#x6808;&#x4E4B;&#x95F4;&#x5173;&#x7CFB;&#x4EE5;&#x53CA;&#x6808;&#x548C;&#x975E;&#x5806;&#x5185;&#x5B58;&#x7684;&#x5173;&#x7CFB;&#x57FA;&#x672C;&#x63CF;&#x8FF0;&#xFF08;&#x6765;&#x81EA; <a href="http://www.programering.com/a/MzM3QzNwATA.html" target="_blank" rel="noopener">http://www.programering.com/a/MzM3QzNwATA.html</a> &#xFF09;&#xFF1A;<br> <img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477556909018.png" alt="Alt text"></p>
+<p><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477557006989.png" alt="Alt text"></p>
+<h4 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h4><p>Heap&#x662F;&#x7528;&#x6765;&#x5B58;&#x653E;&#x5BF9;&#x8C61;&#x4FE1;&#x606F;&#x7684;&#xFF0C;&#x548C;Stack&#x4E0D;&#x540C;&#xFF0C;Stack&#x4EE3;&#x8868;&#x7740;&#x4E00;&#x79CD;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x72B6;&#x6001;&#x3002;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x6808;&#x662F;&#x8FD0;&#x884C;&#x65F6;&#x5355;&#x4F4D;&#xFF0C;&#x89E3;&#x51B3;&#x7A0B;&#x5E8F;&#x8BE5;&#x5982;&#x4F55;&#x6267;&#x884C;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x800C;&#x5806;&#x662F;&#x5B58;&#x50A8;&#x7684;&#x5355;&#x4F4D;&#xFF0C; &#x89E3;&#x51B3;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x7684;&#x95EE;&#x9898;&#x3002;Heap&#x662F;&#x4F34;&#x968F;&#x7740;JVM&#x7684;&#x542F;&#x52A8;&#x800C;&#x521B;&#x5EFA;&#xFF0C;&#x8D1F;&#x8D23;&#x5B58;&#x50A8;&#x6240;&#x6709;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x548C;&#x6570;&#x7EC4;&#x7684;&#x3002;&#x5806;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x548C;&#x6808;&#x4E00;&#x6837;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x8FDE;&#x7EED;&#x7684;&#xFF0C;&#x5B83;&#x5206;&#x4E3A;Young Generation&#x548C;Old Generation&#xFF08;&#x4E5F;&#x53EB; Tenured  Generation &#xFF09;&#x4E24;&#x5927;&#x90E8;&#x5206;&#x3002;Young Generation&#x5206;&#x4E3A;Eden&#x548C;Survivor&#xFF0C;Survivor&#x53C8;&#x5206;&#x4E3A;From Space&#x548C; ToSpace&#x3002;&#x6240;&#x6709;&#x901A;&#x8FC7;new&#x521B;&#x5EFA;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x5B58;&#x90FD;&#x5728;&#x5806;&#x4E2D;&#x5206;&#x914D;&#xFF0C;&#x5176;&#x5927;&#x5C0F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;-Xmx&#x548C;-Xms&#x6765;&#x63A7;&#x5236;&#x3002;&#x7ED3;&#x6784;&#x56FE;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477557700474.png" alt="Alt text"></p>
+<p><strong>&#x65B0;&#x751F;&#x4EE3;&#xFF1A;</strong>&#x65B0;&#x5EFA;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x662F;&#x7528;&#x65B0;&#x751F;&#x4EE3;&#x5206;&#x914D;&#x5185;&#x5B58;&#xFF0C;Eden&#x7A7A;&#x95F4;&#x4E0D;&#x8DB3;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x628A;&#x5B58;&#x6D3B;&#x7684;&#x5BF9;&#x8C61;&#x8F6C;&#x79FB;&#x5230;Survivor&#x4E2D;&#xFF0C;&#x65B0;&#x751F;&#x4EE3;&#x5927;&#x5C0F;&#x53EF;&#x4EE5;&#x7531;-Xmn&#x6765;&#x63A7;&#x5236;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;-XX:SurvivorRatio&#x6765;&#x63A7;&#x5236;Eden&#x548C;Survivor&#x7684;&#x6BD4;&#x4F8B;<br><strong>&#x65E7;&#x751F;&#x4EE3;&#xFF1A;</strong>&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x65B0;&#x751F;&#x4EE3;&#x4E2D;&#x7ECF;&#x8FC7;&#x591A;&#x6B21;&#x5783;&#x573E;&#x56DE;&#x6536;&#x4ECD;&#x7136;&#x5B58;&#x6D3B;&#x7684;&#x5BF9;&#x8C61;</p>
+<p><strong>PermanentSpace&#xFF1A;</strong>&#x548C;Heap&#x7ECF;&#x5E38;&#x4E00;&#x8D77;&#x63D0;&#x53CA;&#x7684;&#x6982;&#x5FF5;&#x662F;PermanentSpace&#xFF0C;&#x5B83;&#x662F;&#x7528;&#x6765;&#x52A0;&#x8F7D;&#x7C7B;&#x5BF9;&#x8C61;&#x7684;&#x4E13;&#x95E8;&#x7684;&#x5185;&#x5B58;&#x533A;&#xFF0C;&#x662F;&#x975E;&#x5806;&#x5185;&#x5B58;&#xFF0C;&#x548C;Heap&#x4E00;&#x8D77;&#x7EC4;&#x6210;JAVA&#x5185;&#x5B58;&#xFF0C; &#x5B83;&#x5305;&#x542B;MethodArea&#x533A;&#xFF08;&#x5728;&#x6CA1;&#x6709;CodeCache&#x7684;HotSpot JVM&#x5B9E;&#x73B0;&#x91CC;&#xFF0C;&#x5219;MethodArea&#x5C31;&#x76F8;&#x5F53;&#x4E8E;GenerationSpace&#xFF09; &#x3002; &#x5728;JVM&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x53C2;&#x6570;&#x6765;&#x5206;&#x522B;&#x6307;&#x5B9A;&#xFF0C;PermanentSpace&#x7684;&#x5927;&#x5C0F;&#x3001;&#x5806;&#x7684;&#x5927;&#x5C0F;&#x3001;&#x4EE5;&#x53CA;Young Generation&#x548C;Old Generation&#x7684;&#x6BD4;&#x503C;&#x3001;Eden&#x533A;&#x548C;From Space&#x7684;&#x6BD4;&#x503C;&#xFF0C;&#x4ECE;&#x800C;&#x6765;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x9002;&#x5E94;&#x4E0D;&#x540C;JAVA&#x5E94;&#x7528;&#x7684;&#x5185;&#x5B58;&#x9700;&#x6C42;&#x3002;</p>
+<h4 id="PC-Register"><a href="#PC-Register" class="headerlink" title="PC Register"></a>PC Register</h4><p>PC Register&#x662F;&#x7A0B;&#x5E8F;&#x8BA1;&#x6570;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x6BCF;&#x4E2A;JAVA&#x7EBF;&#x7A0B;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;PC Register&#xFF0C;&#x4ED6;&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#xFF0C;&#x7531;Execution Engine&#x8BFB;&#x53D6;&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x3002;&#x5982;&#x679C;&#x8BE5;&#x7EBF;&#x7A0B;&#x6B63;&#x5728;&#x6267;&#x884C;java&#x65B9;&#x6CD5;&#xFF0C;&#x5219;PC Register&#x5B58;&#x50A8;&#x7684;&#x662F; &#x6B63;&#x5728;&#x88AB;&#x6267;&#x884C;&#x7684;&#x6307;&#x4EE4;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x672C;&#x5730;&#x65B9;&#x6CD5;&#xFF0C;PC Register&#x7684;&#x503C;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x3002;PC&#x5BC4;&#x5B58;&#x5668;&#x975E;&#x5E38;&#x5C0F;&#xFF0C;&#x53EA;&#x5360;&#x7528;&#x4E00;&#x4E2A;&#x5B57;&#x5BBD;&#xFF0C;&#x53EF;&#x4EE5;&#x6301;&#x6709;&#x4E00;&#x4E2A;returnAdress&#x6216;&#x8005;&#x7279;&#x5B9A;&#x5E73;&#x53F0;&#x7684;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#x3002;</p>
+<h4 id="Method-Area"><a href="#Method-Area" class="headerlink" title="Method Area"></a>Method Area</h4><p>&#x5728;HotSpot JVM&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x5C5E;&#x4E8E;&#x975E;&#x5806;&#x533A;&#xFF0C;&#x975E;&#x5806;&#x533A;&#x5305;&#x62EC;&#x4E24;&#x90E8;&#x5206;&#xFF1A;Permanet Generation&#x548C;Code Cache&#xFF0C;&#x800C;Method Area&#x5C5E;&#x4E8E;Permanert Generation&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;Permanent Generation&#x7528;&#x6765;&#x5B58;&#x50A8;&#x7C7B;&#x4FE1;&#x606F;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#xFF1A; class definitions&#xFF0C;structures&#xFF0C;methods&#xFF0C; field&#xFF0C; method (data and code) &#x548C; constants&#x3002;Code Cache&#x7528;&#x6765;&#x5B58;&#x50A8;Compiled Code&#xFF0C;&#x5373;&#x7F16;&#x8BD1;&#x597D;&#x7684;&#x672C;&#x5730;&#x4EE3;&#x7801;&#xFF0C;&#x5728;HotSpot JVM&#x4E2D;&#x901A;&#x8FC7;JIT(Just In Time) Compiler&#x751F;&#x6210;&#xFF0C;JIT&#x662F;&#x5373;&#x65F6;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x4ED6;&#x662F;&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x6307;&#x4EE4;&#x7684;&#x6267;&#x884C;&#x6548;&#x7387;&#xFF0C;&#x628A;&#x5B57;&#x8282;&#x7801;&#x6587;&#x4EF6;&#x7F16;&#x8BD1;&#x6210;&#x672C;&#x5730;&#x673A;&#x5668;&#x4EE3;&#x7801;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477558200207.png" alt="Alt text"></p>
+<p>&#x5F15;&#x7528;&#x4E00;&#x4E2A;&#x7ECF;&#x5178;&#x7684;&#x6848;&#x4F8B;&#x6765;&#x7406;&#x89E3;Stack&#xFF0C;Heap&#x548C;Method Area&#x7684;&#x5212;&#x5206;&#xFF0C;&#x5C31;&#x662F;Sring a=&#x201D;xx&#x201D;&#xFF1B;Stirng b=&#x201D;xx&#x201D;&#xFF0C;&#x95EE;&#x662F;&#x5426;a==b? &#x9996;&#x5148;==&#x7B26;&#x53F7;&#x662F;&#x7528;&#x6765;&#x5224;&#x65AD;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x5730;&#x5740;&#x662F;&#x5426;&#x76F8;&#x540C;&#xFF0C;&#x800C;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x9898;&#x76EE;&#x4E2D;&#xFF0C;a&#x548C;b&#x6309;&#x7406;&#x6765;&#x8BF4;&#x7533;&#x8BF7;&#x7684;&#x662F;Stack&#x4E2D;&#x4E0D;&#x540C;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x4F46;&#x662F;&#x4ED6;&#x4EEC;&#x6307;&#x5411;Method Area&#x4E2D;Runtime Constant Pool&#x7684;&#x540C;&#x4E00;&#x4E2A;&#x5730;&#x5740;&#xFF0C;&#x6309;&#x7167;&#x7F51;&#x4E0A;&#x7684;&#x89E3;&#x91CA;&#xFF0C;&#x5728;a&#x8D4B;&#x503C;&#x4E3A;&#x201C;xx&#x201D;&#x65F6;&#xFF0C;&#x4F1A;&#x5728;Runtime Contant Pool&#x4E2D;&#x751F;&#x6210;&#x4E00;&#x4E2A;String Constant&#xFF0C;&#x5F53;b&#x4E5F;&#x8D4B;&#x503C;&#x4E3A;&#x201C;xx&#x201D;&#x65F6;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x5728;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x67E5;&#x770B;&#x662F;&#x5426;&#x5B58;&#x5728;&#x503C;&#x4E3A;&#x201C;xx&#x201D;&#x7684;&#x5E38;&#x91CF;&#xFF0C;&#x5B58;&#x5728;&#x7684;&#x8BDD;&#xFF0C;&#x5219;&#x628A;b&#x7684;&#x6307;&#x9488;&#x4E5F;&#x6307;&#x5411;&#x201C;xx&#x201D;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x65B0;&#x751F; &#x6210;&#x4E00;&#x4E2A; String Constant &#x3002;&#x6211;&#x67E5;&#x9605;&#x4E86;&#x7F51;&#x7EDC;&#x4E0A;&#x5927;&#x5BB6;&#x5173;&#x4E8E; String Constant &#x7684;&#x5B58;&#x50A8;&#x7684;&#x8BF4;&#x8BF4;&#x6CD5;&#xFF0C;&#x5B58;&#x5728;&#x7565;&#x5FAE;&#x5DEE;&#x522B;&#x7684;&#x662F;&#xFF0C;&#x5B83;&#x5B58;&#x50A8;&#x5728;&#x54EA;&#x91CC;&#xFF0C;&#x6709;&#x4EBA;&#x8BF4;Heap&#x4E2D;&#x4F1A;&#x5206;&#x914D;&#x51FA;&#x4E00;&#x4E2A;&#x5E38;&#x91CF;&#x6C60;&#xFF0C;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x5E38;&#x91CF;&#xFF0C;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;&#x5B83;&#x3002;&#x800C;&#x6709;&#x4EBA;&#x8BF4;&#x5E38;&#x91CF;&#x6C60;&#x662F;Method Area&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x800C;Method Area&#x5C5E;&#x4E8E;&#x975E;&#x5806;&#x5185;&#x5B58;&#xFF0C;&#x90A3;&#x600E;&#x4E48;&#x80FD;&#x8BF4;&#x5E38;&#x91CF;&#x6C60;&#x5B58;&#x5728;&#x4E8E;&#x5806;&#x4E2D;&#xFF1F;</p>
+<p>&#x5176;&#x5B9E;&#x4E24;&#x79CD;&#x7406;&#x89E3;&#x90FD;&#x6CA1;&#x9519;&#x3002;Method Area&#x7684;&#x786E;&#x4ECE;&#x903B;&#x8F91;&#x4E0A;&#x8BB2;&#x53EF;&#x4EE5;&#x662F;Heap&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x5728;&#x67D0;&#x4E9B;JVM&#x5B9E;&#x73B0;&#x91CC;&#x4ECE;&#x5806;&#x4E0A;&#x5F00;&#x8F9F;&#x4E00;&#x5757;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x6765;&#x8BB0;&#x5F55;&#x5E38;&#x91CF;&#x662F;&#x7B26;&#x5408;JVM&#x5E38;&#x91CF;&#x6C60;&#x8BBE;&#x8BA1;&#x76EE;&#x7684;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x524D;&#x4E00;&#x79CD;&#x8BF4;&#x6CD5;&#x6CA1;&#x95EE; &#x9898;&#x3002;&#x5BF9;&#x4E8E;&#x540E;&#x4E00;&#x79CD;&#x8BF4;&#x6CD5;&#xFF0C;HotSpot JVM&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x7684;&#x786E;&#x662F;&#x628A;&#x65B9;&#x6CD5;&#x533A;&#x5212;&#x5206;&#x4E3A;&#x4E86;&#x975E;&#x5806;&#x5185;&#x5B58;&#xFF0C;&#x610F;&#x601D;&#x5C31;&#x662F;&#x5B83;&#x4E0D;&#x5728;&#x5806;&#x4E0A;&#x3002; &#x6211;&#x5728;HotSpot JVM&#x505A;&#x4E86;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5B9E;&#x9A8C;&#xFF0C;&#x5B9A;&#x4E49;&#x591A;&#x4E2A;&#x5E38;&#x91CF;&#x4E4B;&#x540E;&#xFF0C;&#x7A0B;&#x5E8F;&#x629B;&#x51FA;OOM&#xFF1A;PermGen Space&#x5F02;&#x5E38;&#xFF0C;&#x5370;&#x8BC1;&#x4E86;JVM&#x5B9E;&#x73B0;&#x4E2D;&#x5E38;&#x91CF;&#x6C60;&#x662F;&#x5728;Permanent Space&#x4E2D;&#x7684;&#x8BF4;&#x6CD5;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x6211;&#x7684;JDK&#x7248;&#x672C;&#x662F;1.6&#x7684;&#x3002;&#x67E5;&#x9605;&#x8D44;&#x6599;&#xFF0C;JDK1.7&#x4E2D;InternedStrings&#x5DF2;&#x7ECF;&#x4E0D;&#x518D;&#x5B58;&#x50A8;&#x5728; PermanentSpace&#x4E2D;&#xFF0C;&#x800C;&#x662F;&#x653E;&#x5230;&#x4E86;Heap&#x4E2D;&#xFF1B;JDK8&#x4E2D;PermanentSpace&#x5DF2;&#x7ECF;&#x88AB;&#x5B8C;&#x5168;&#x79FB;&#x9664;&#xFF0C;InternedStrings&#x4E5F;&#x88AB;&#x653E; &#x5230;&#x4E86;MetaSpace&#x4E2D;&#xFF08;&#x5982;&#x679C;&#x51FA;&#x73B0;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#xFF0C;&#x4F1A;&#x62A5;OOM:MetaSpace&#xFF0C;&#x8FD9;&#x91CC;&#x6709;&#x4E2A;&#x5173;&#x4E8E;&#x4E24;&#x8005;&#x6027;&#x80FD;&#x5BF9;&#x6BD4;&#x7684;&#x6587;&#x7AE0;&#xFF1A; <a href="http://blog.csdn.net/zhyhang/article/details/17246223" target="_blank" rel="noopener">http://blog.csdn.net/zhyhang/article/details/17246223</a> &#xFF09;&#x3002; &#x6240; &#x4EE5;&#xFF0C;&#x4EC1;&#x8005;&#x89C1;&#x4EC1;&#xFF0C;&#x667A;&#x8005;&#x89C1;&#x667A;&#xFF0C;&#x4E00;&#x4E2A;&#x9992;&#x5934;&#x8DB3;&#x4EE5;&#x5F15;&#x53D1;&#x8840;&#x6848;&#xFF0C;&#x5C31;&#x7B97;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x5546;&#x5BB6;&#x7684;JVM&#xFF0C;&#x6BD5;&#x7ADF;JDK&#x7248;&#x672C;&#x5728;&#x66F4;&#x65B0;&#xFF0C;&#x6216;&#x8BB8;&#x6B63;&#x5982;StackOverFlow&#x4E0A;&#x5927;&#x795E;&#x4EEC;&#x6240;&#x8BF4;&#xFF0C;&#x5BF9; &#x4E8E;&#x7406;&#x89E3;JVM Runtime Data Area&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x7684;&#x5212;&#x5206;&#x903B;&#x8F91;&#xFF0C;&#x8FD8;&#x662F;&#x53BB;&#x770B;&#x5BF9;&#x5E94;&#x7248;&#x672C;&#x7684;JDK&#x6E90;&#x7801;&#x6BD4;&#x8F83;&#x9760;&#x8C31;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x53C2;&#x8003;&#x4E0D;&#x540C;&#x7684;&#x7248;&#x672C;JVM Specification&#xFF08; <a href="http://docs.oracle.com/javase/specs/" target="_blank" rel="noopener">http://docs.oracle.com/javase/specs/</a> &#xFF09;&#x3002;</p>
+<h4 id="Native-Method-Stack"><a href="#Native-Method-Stack" class="headerlink" title="Native Method Stack"></a>Native Method Stack</h4><p> Native Method Stack&#x662F;&#x4F9B;&#x672C;&#x5730;&#x65B9;&#x6CD5;&#xFF08;&#x975E;java&#xFF09;&#x4F7F;&#x7528;&#x7684;&#x6808;&#x3002;&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x6301;&#x6709;&#x4E00;&#x4E2A;Native Method Stack&#x3002;</p>
+<h3 id="JVM&#x7684;&#x8FD0;&#x884C;&#x539F;&#x7406;"><a href="#JVM&#x7684;&#x8FD0;&#x884C;&#x539F;&#x7406;" class="headerlink" title="JVM&#x7684;&#x8FD0;&#x884C;&#x539F;&#x7406;"></a>JVM&#x7684;&#x8FD0;&#x884C;&#x539F;&#x7406;</h3><p>JVM&#x662F;java&#x7684;&#x6838;&#x5FC3;&#x548C;&#x57FA;&#x7840;&#xFF0C;&#x5728;java&#x7F16;&#x8BD1;&#x5668;&#x548C;os&#x5E73;&#x53F0;&#x4E4B;&#x95F4;&#x7684;&#x865A;&#x62DF;&#x5904;&#x7406;&#x5668;&#x3002;&#x5B83;&#x662F;&#x4E00;&#x79CD;&#x57FA;&#x4E8E;&#x4E0B;&#x5C42;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x548C;&#x786C;&#x4EF6;&#x5E73;&#x53F0;&#x5E76;&#x5229;&#x7528;&#x8F6F;&#x4EF6;&#x65B9;&#x6CD5;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x62BD;&#x8C61;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E0A;&#x9762;&#x6267;&#x884C;java&#x7684;&#x5B57;&#x8282;&#x7801;&#x7A0B;&#x5E8F;&#x3002;<br>JVM&#x662F;Java&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x7684;&#x5BB9;&#x5668;,&#x4F46;&#x662F;&#x4ED6;&#x540C;&#x65F6;&#x4E5F;&#x662F;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;,&#x56E0;&#x6B64;&#x4ED6;&#x4E5F;&#x6709;&#x4ED6;&#x81EA;&#x5DF1;&#x7684;&#x8FD0;&#x884C;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;,&#x4E5F;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x4EE3;&#x7801;&#x548C;&#x6570;&#x636E;&#x7A7A;&#x95F4;&#x3002;JVM&#x5728;&#x6574;&#x4E2A;jdk&#x4E2D;&#x5904;&#x4E8E;&#x6700;&#x5E95;&#x5C42;,&#x8D1F;&#x8D23;&#x4E0E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x4EA4;&#x4E92;,&#x7528;&#x6765;&#x5C4F;&#x853D;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x73AF;&#x5883;,&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;Java&#x8FD0;&#x884C;&#x73AF;&#x5883;,&#x56E0;&#x6B64;&#x4E5F;&#x5C31;&#x865A;&#x62DF;&#x8BA1;&#x7B97;&#x673A;.&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x88C5;&#x5165;JVM&#x662F;&#x901A;&#x8FC7;jdk&#x4E2D;Java.exe&#x6765;&#x5B8C;&#x6210;,&#x901A;&#x8FC7;&#x4E0B;&#x9762;4&#x6B65;&#x6765;&#x5B8C;&#x6210;JVM&#x73AF;&#x5883;&#x3002;<br>1.&#x521B;&#x5EFA;JVM&#x88C5;&#x8F7D;&#x73AF;&#x5883;&#x548C;&#x914D;&#x7F6E;, &#x8C03;&#x7528;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;API&#x5224;&#x65AD;&#x7CFB;&#x7EDF;&#x7684;CPU&#x67B6;&#x6784;&#xFF0C;&#x6839;&#x636E;&#x5BF9;&#x5E94;CPU&#x7C7B;&#x578B;&#x5BFB;&#x627E;&#x4F4D;&#x4E8E;JRE&#x76EE;&#x5F55;&#x4E0B;&#x7684;/lib/jvm.cfg&#x6587;&#x4EF6;<br>2.&#x88C5;&#x8F7D;JVM.dll<br>3.&#x521D;&#x59CB;&#x5316;JVM.dll&#x5E76;&#x6302;&#x63A5;&#x5230;JNIENV(JNI&#x8C03;&#x7528;&#x63A5;&#x53E3;)&#x5B9E;&#x4F8B;<br>4.&#x8C03;&#x7528;JNIEnv&#x5B9E;&#x4F8B;&#x88C5;&#x8F7D;&#x5E76;&#x5904;&#x7406;class&#x7C7B;&#x3002;[2]<br><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477560551227.png" alt="Alt text"><br>java&#x7F16;&#x8BD1;&#x5668;&#x53EA;&#x9700;&#x9762;&#x5411;JVM&#xFF0C;&#x751F;&#x6210;JVM&#x80FD;&#x7406;&#x89E3;&#x7684;&#x4EE3;&#x7801;&#x6216;&#x5B57;&#x8282;&#x7801;&#x6587;&#x4EF6;&#x3002;Java&#x6E90;&#x6587;&#x4EF6;&#x7ECF;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x7F16;&#x8BD1;&#x6210;&#x5B57;&#x8282;&#x7801;&#x7A0B;&#x5E8F;&#xFF0C;&#x901A;&#x8FC7;JVM&#x5C06;&#x6BCF;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x7FFB;&#x8BD1;&#x6210;&#x4E0D;&#x540C;&#x5E73;&#x53F0;&#x673A;&#x5668;&#x7801;&#xFF0C;&#x901A;&#x8FC7;&#x7279;&#x5B9A;&#x5E73;&#x53F0;&#x8FD0;&#x884C;&#x3002;JVM&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x7684;&#x8FC7;&#x7A0B; &#xFF1A;<br>1.&#x52A0;&#x8F7D;.class&#x6587;&#x4EF6;<br>2.&#x7BA1;&#x7406;&#x5E76;&#x5206;&#x914D;&#x5185;&#x5B58;<br>3.&#x6267;&#x884C;&#x5783;&#x573E;&#x6536;&#x96C6;</p>
+<p>class&#x6587;&#x4EF6;&#x662F;&#x5B57;&#x8282;&#x7801;&#x6587;&#x4EF6;&#xFF0C;&#x5B83;&#x6309;&#x7167;JVM&#x7684;&#x89C4;&#x8303;&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x53D8;&#x91CF;&#xFF0C;&#x65B9;&#x6CD5;&#x7B49;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;JVM&#x7BA1;&#x7406;&#x5E76;&#x4E14;&#x5206;&#x914D;&#x5BF9;&#x5E94;&#x7684;&#x5185;&#x5B58;&#x6765;&#x6267; &#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x540C;&#x65F6;&#x7BA1;&#x7406;&#x5783;&#x573E;&#x56DE;&#x6536;&#x3002;&#x76F4;&#x5230;&#x7A0B;&#x5E8F;&#x7ED3;&#x675F;&#xFF0C;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x662F;JVM&#x7684;&#x6240;&#x6709;&#x975E;&#x5B88;&#x62A4;&#x7EBF;&#x7A0B;&#x505C;&#x6B62;&#xFF0C;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x662F;&#x7A0B;&#x5E8F;&#x8C03;&#x7528;System.exit()&#xFF0C;JVM&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E5F;&#x7ED3; &#x675F;&#x3002;</p>
+<h3 id="&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;Class-Loader&#xFF09;"><a href="#&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;Class-Loader&#xFF09;" class="headerlink" title="&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;Class Loader&#xFF09;"></a>&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;Class Loader&#xFF09;</h3><p>&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B50;&#x7CFB;&#x7EDF;&#x8D1F;&#x8D23;&#x52A0;&#x8F7D;&#x7F16;&#x8BD1;&#x597D;&#x7684;.class&#x5B57;&#x8282;&#x7801;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x88C5;&#x5165;&#x5185;&#x5B58;&#xFF0C;&#x4F7F;JVM&#x53EF;&#x4EE5;&#x5B9E;&#x4F8B;&#x5316;&#x6216;&#x4EE5;&#x5176;&#x5B83;&#x65B9;&#x5F0F;&#x4F7F;&#x7528;&#x52A0;&#x8F7D;&#x540E;&#x7684;&#x7C7B;&#x3002;JVM&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;&#x652F;&#x6301;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x52A8;&#x6001;&#x52A0;&#x8F7D;&#xFF0C;&#x52A8;&#x6001;&#x52A0;&#x8F7D;&#x7684;&#x4F18;&#x70B9;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x4F8B;&#x5982;&#x53EF;&#x4EE5;&#x8282;&#x7701;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x3001;&#x7075;&#x6D3B;&#x5730;&#x4ECE;&#x7F51;&#x7EDC;&#x4E0A;&#x52A0;&#x8F7D;&#x7C7B;&#xFF0C;&#x52A8;&#x6001;&#x52A0;&#x8F7D;&#x7684;&#x53E6;&#x4E00;&#x597D;&#x5904;&#x662F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x5206;&#x9694;&#x6765;&#x5B9E;&#x73B0;&#x7C7B;&#x7684;&#x9694;&#x79BB;&#xFF0C;&#x589E;&#x5F3A;&#x4E86;&#x6574;&#x4E2A;&#x7CFB;&#x7EDF;&#x7684;&#x5B89;&#x5168;&#x6027;&#x3002;</p>
+<h4 id="ClassLoader&#x7684;&#x5206;&#x7C7B;&#xFF1A;"><a href="#ClassLoader&#x7684;&#x5206;&#x7C7B;&#xFF1A;" class="headerlink" title="ClassLoader&#x7684;&#x5206;&#x7C7B;&#xFF1A;"></a>ClassLoader&#x7684;&#x5206;&#x7C7B;&#xFF1A;</h4><p>a.&#x542F;&#x52A8;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;BootStrap Class Loader&#xFF09;&#xFF1A;&#x8D1F;&#x8D23;&#x52A0;&#x8F7D;rt.jar&#x6587;&#x4EF6;&#x4E2D;&#x6240;&#x6709;&#x7684;Java&#x7C7B;&#xFF0C;&#x5373;Java&#x7684;&#x6838;&#x5FC3;&#x7C7B;&#x90FD;&#x662F;&#x7531;&#x8BE5;ClassLoader&#x52A0;&#x8F7D;&#x3002;&#x5728;Sun JDK&#x4E2D;&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x662F;&#x7531;C++&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x5728;Java&#x8BED;&#x8A00;&#x4E2D;&#x65E0;&#x6CD5;&#x83B7;&#x5F97;&#x5B83;&#x7684;&#x5F15;&#x7528;&#x3002;</p>
+<p>b.&#x6269;&#x5C55;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;Extension Class Loader&#xFF09;&#xFF1A;&#x8D1F;&#x8D23;&#x52A0;&#x8F7D;&#x4E00;&#x4E9B;&#x6269;&#x5C55;&#x529F;&#x80FD;&#x7684;jar&#x5305;&#x3002;</p>
+<p>c.&#x7CFB;&#x7EDF;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;System Class Loader&#xFF09;&#xFF1A;&#x8D1F;&#x8D23;&#x52A0;&#x8F7D;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x4E2D;&#x6307;&#x5B9A;&#x7684;Classpath&#x4E2D;&#x7684;jar&#x5305;&#x53CA;&#x76EE;&#x5F55;&#xFF0C;&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x5199;&#x7684;Java&#x7C7B;&#x4E5F;&#x662F;&#x7531;&#x8BE5;ClassLoader&#x52A0;&#x8F7D;&#x3002;&#x5728;Sun JDK&#x4E2D;&#xFF0C;&#x7CFB;&#x7EDF;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x7684;&#x540D;&#x5B57;&#x53EB;AppClassLoader&#x3002;</p>
+<p>d.&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;User Defined Class Loader&#xFF09;&#xFF1A;&#x7531;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x7684;&#x52A0;&#x8F7D;&#x89C4;&#x5219;&#xFF0C;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x63A7;&#x5236;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x6B65;&#x9AA4;&#x3002;</p>
+<h4 id="ClassLoader&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;"><a href="#ClassLoader&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;" class="headerlink" title="ClassLoader&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;"></a>ClassLoader&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h4><p>&#x7C7B;&#x52A0;&#x8F7D;&#x5206;&#x4E3A;&#x88C5;&#x8F7D;&#x3001;&#x94FE;&#x63A5;&#x3001;&#x521D;&#x59CB;&#x5316;&#x4E09;&#x6B65;&#x3002;<br>1&#x3001;&#x88C5;&#x8F7D;</p>
+<p>&#x901A;&#x8FC7;&#x7C7B;&#x7684;&#x5168;&#x9650;&#x5B9A;&#x540D;&#x548C;ClassLoader&#x52A0;&#x8F7D;&#x7C7B;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x5C06;&#x6307;&#x5B9A;&#x7684;.class&#x6587;&#x4EF6;&#x52A0;&#x8F7D;&#x81F3;JVM&#x3002;&#x5F53;&#x7C7B;&#x88AB;&#x52A0;&#x8F7D;&#x4EE5;&#x540E;&#xFF0C;&#x5728;JVM&#x5185;&#x90E8;&#x5C31;&#x4EE5;&#x201C;&#x7C7B;&#x7684;&#x5168;&#x9650;&#x5B9A;&#x540D;+ClassLoader&#x5B9E;&#x4F8B;ID&#x201D;&#x6765;&#x6807;&#x660E;&#x7C7B;&#x3002;</p>
+<p>&#x5728;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;ClassLoader&#x5B9E;&#x4F8B;&#x548C;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x90FD;&#x4F4D;&#x4E8E;&#x5806;&#x4E2D;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x7C7B;&#x4FE1;&#x606F;&#x90FD;&#x4F4D;&#x4E8E;&#x65B9;&#x6CD5;&#x533A;&#x3002;</p>
+<p>&#x88C5;&#x8F7D;&#x8FC7;&#x7A0B;&#x91C7;&#x7528;&#x4E86;&#x4E00;&#x79CD;&#x88AB;&#x79F0;&#x4E3A;&#x201C;&#x53CC;&#x4EB2;&#x59D4;&#x6D3E;&#x6A21;&#x578B;&#xFF08;Parent Delegation Model&#xFF09;&#x201D;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;ClassLoader&#x8981;&#x52A0;&#x8F7D;&#x7C7B;&#x65F6;&#xFF0C;&#x5B83;&#x4F1A;&#x5148;&#x8BF7;&#x6C42;&#x5B83;&#x7684;&#x53CC;&#x4EB2;ClassLoader&#xFF08;&#x5176;&#x5B9E;&#x8FD9;&#x91CC;&#x53EA;&#x6709;&#x4E24;&#x4E2A;ClassLoader&#xFF0C;&#x6240;&#x4EE5;&#x79F0;&#x4E3A;&#x7236;ClassLoader&#x53EF;&#x80FD;&#x66F4;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#xFF09;&#x52A0;&#x8F7D;&#x7C7B;&#xFF0C;&#x800C;&#x5B83;&#x7684;&#x53CC;&#x4EB2;ClassLoader&#x4F1A;&#x7EE7;&#x7EED;&#x628A;&#x52A0;&#x8F7D;&#x8BF7;&#x6C42;&#x63D0;&#x4EA4;&#x518D;&#x4E0A;&#x4E00;&#x7EA7;&#x7684;ClassLoader&#xFF0C;&#x76F4;&#x5230;&#x542F;&#x52A8;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x3002;&#x53EA;&#x6709;&#x5176;&#x53CC;&#x4EB2;ClassLoader&#x65E0;&#x6CD5;&#x52A0;&#x8F7D;&#x6307;&#x5B9A;&#x7684;&#x7C7B;&#x65F6;&#xFF0C;&#x5B83;&#x624D;&#x4F1A;&#x81EA;&#x5DF1;&#x52A0;&#x8F7D;&#x7C7B;&#x3002;</p>
+<p>&#x53CC;&#x4EB2;&#x59D4;&#x6D3E;&#x6A21;&#x578B;&#x662F;JVM&#x7684;&#x7B2C;&#x4E00;&#x9053;&#x5B89;&#x5168;&#x9632;&#x7EBF;&#xFF0C;&#x5B83;&#x4FDD;&#x8BC1;&#x4E86;&#x7C7B;&#x7684;&#x5B89;&#x5168;&#x52A0;&#x8F7D;&#xFF0C;&#x8FD9;&#x91CC;&#x540C;&#x65F6;&#x4F9D;&#x8D56;&#x4E86;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x9694;&#x79BB;&#x7684;&#x539F;&#x7406;&#xFF1A;&#x4E0D;&#x540C;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x52A0;&#x8F7D;&#x7684;&#x7C7B;&#x4E4B;&#x95F4;&#x662F;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x4EA4;&#x4E92;&#x7684;&#xFF0C;&#x5373;&#x4F7F;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x88AB;&#x4E0D;&#x540C;&#x7684;ClassLoader&#x52A0;&#x8F7D;&#xFF0C;&#x5B83;&#x4EEC;&#x4E5F;&#x65E0;&#x6CD5;&#x611F;&#x77E5;&#x5230;&#x5F7C;&#x6B64;&#x7684;&#x5B58;&#x5728;&#x3002;&#x8FD9;&#x6837;&#x5373;&#x4F7F;&#x6709;&#x6076;&#x610F;&#x7684;&#x7C7B;&#x5192;&#x5145;&#x81EA;&#x5DF1;&#x5728;&#x6838;&#x5FC3;&#x5305;&#xFF08;&#x4F8B;&#x5982;java.lang&#xFF09;&#x4E0B;&#xFF0C;&#x7531;&#x4E8E;&#x5B83;&#x65E0;&#x6CD5;&#x88AB;&#x542F;&#x52A8;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x52A0;&#x8F7D;&#xFF0C;&#x4E5F;&#x9020;&#x6210;&#x4E0D;&#x4E86;&#x5371;&#x5BB3;&#x3002;</p>
+<p>&#x7531;&#x6B64;&#x4E5F;&#x53EF;&#x89C1;&#xFF0C;&#x5982;&#x679C;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x4E86;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;&#x90A3;&#x5C31;&#x5FC5;&#x987B;&#x81EA;&#x5DF1;&#x4FDD;&#x969C;&#x7C7B;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x5B89;&#x5168;&#x3002;</p>
+<p>2&#x3001;&#x94FE;&#x63A5;</p>
+<p>&#x94FE;&#x63A5;&#x7684;&#x4EFB;&#x52A1;&#x662F;&#x628A;&#x4E8C;&#x8FDB;&#x5236;&#x7684;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#x5408;&#x5E76;&#x5230;JVM&#x8FD0;&#x884C;&#x65F6;&#x72B6;&#x6001;&#x4E2D;&#x53BB;&#x3002;</p>
+<p>&#x94FE;&#x63A5;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;&#x4E09;&#x6B65;&#xFF1A;</p>
+<p>a.&#x9A8C;&#x8BC1;&#xFF1A;&#x6821;&#x9A8C;.class&#x6587;&#x4EF6;&#x7684;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x786E;&#x4FDD;&#x8BE5;&#x6587;&#x4EF6;&#x662F;&#x7B26;&#x5408;&#x89C4;&#x8303;&#x5B9A;&#x4E49;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x9002;&#x5408;&#x5F53;&#x524D;JVM&#x4F7F;&#x7528;&#x3002;</p>
+<p>b.&#x51C6;&#x5907;&#xFF1A;&#x4E3A;&#x7C7B;&#x5206;&#x914D;&#x5185;&#x5B58;&#xFF0C;&#x540C;&#x65F6;&#x521D;&#x59CB;&#x5316;&#x7C7B;&#x4E2D;&#x7684;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#x4E3A;&#x9ED8;&#x8BA4;&#x503C;&#x3002;</p>
+<p>c.&#x89E3;&#x6790;&#xFF08;&#x53EF;&#x9009;&#xFF09;&#xFF1A;&#x4E3B;&#x8981;&#x662F;&#x628A;&#x7C7B;&#x7684;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x7684;&#x7B26;&#x53F7;&#x5F15;&#x7528;&#x89E3;&#x6790;&#x4E3A;&#x76F4;&#x63A5;&#x5F15;&#x7528;&#xFF0C;&#x8FD9;&#x4E00;&#x6B65;&#x53EF;&#x4EE5;&#x5728;&#x7528;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x5F15;&#x7528;&#x65F6;&#x518D;&#x89E3;&#x6790;&#x3002;</p>
+<p>3&#x3001;&#x521D;&#x59CB;&#x5316;</p>
+<p>&#x521D;&#x59CB;&#x5316;&#x7C7B;&#x4E2D;&#x7684;&#x9759;&#x6001;&#x53D8;&#x91CF;&#xFF0C;&#x5E76;&#x6267;&#x884C;&#x7C7B;&#x4E2D;&#x7684;static&#x4EE3;&#x7801;&#x3001;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;</p>
+<p>JVM&#x89C4;&#x8303;&#x4E25;&#x683C;&#x5B9A;&#x4E49;&#x4E86;&#x4F55;&#x65F6;&#x9700;&#x8981;&#x5BF9;&#x7C7B;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#xFF1A;</p>
+<p>a&#x3001;&#x901A;&#x8FC7;new&#x5173;&#x952E;&#x5B57;&#x3001;&#x53CD;&#x5C04;&#x3001;clone&#x3001;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x673A;&#x5236;&#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;&#x65F6;&#x3002;</p>
+<p>b&#x3001;&#x8C03;&#x7528;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x65F6;&#x3002;</p>
+<p>c&#x3001;&#x4F7F;&#x7528;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x5B57;&#x6BB5;&#x6216;&#x5BF9;&#x5176;&#x8D4B;&#x503C;&#x65F6;&#x3002;</p>
+<p>d&#x3001;&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#x8C03;&#x7528;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x65F6;&#x3002;</p>
+<p>e&#x3001;&#x521D;&#x59CB;&#x5316;&#x8BE5;&#x7C7B;&#x7684;&#x5B50;&#x7C7B;&#x65F6;&#xFF08;&#x521D;&#x59CB;&#x5316;&#x5B50;&#x7C7B;&#x524D;&#x5176;&#x7236;&#x7C7B;&#x5FC5;&#x987B;&#x5DF2;&#x7ECF;&#x88AB;&#x521D;&#x59CB;&#x5316;&#xFF09;&#x3002;</p>
+<p>f&#x3001;JVM&#x542F;&#x52A8;&#x65F6;&#x88AB;&#x6807;&#x8BB0;&#x4E3A;&#x542F;&#x52A8;&#x7C7B;&#x7684;&#x7C7B;&#xFF08;&#x7B80;&#x5355;&#x7406;&#x89E3;&#x4E3A;&#x5177;&#x6709;main&#x65B9;&#x6CD5;&#x7684;&#x7C7B;&#xFF09;&#x3002;</p>
+<h3 id="JVM&#x5185;&#x5B58;&#x7BA1;&#x7406;"><a href="#JVM&#x5185;&#x5B58;&#x7BA1;&#x7406;" class="headerlink" title="JVM&#x5185;&#x5B58;&#x7BA1;&#x7406;"></a>JVM&#x5185;&#x5B58;&#x7BA1;&#x7406;</h3><p><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477615516864.png" alt="Alt text"></p>
+<h4 id="&#x5783;&#x573E;&#x6536;&#x96C6;&#x7B97;&#x6CD5;"><a href="#&#x5783;&#x573E;&#x6536;&#x96C6;&#x7B97;&#x6CD5;" class="headerlink" title="&#x5783;&#x573E;&#x6536;&#x96C6;&#x7B97;&#x6CD5;"></a>&#x5783;&#x573E;&#x6536;&#x96C6;&#x7B97;&#x6CD5;</h4><h5 id="&#x8DDF;&#x8E2A;&#x6536;&#x96C6;&#x5668;"><a href="#&#x8DDF;&#x8E2A;&#x6536;&#x96C6;&#x5668;" class="headerlink" title="&#x8DDF;&#x8E2A;&#x6536;&#x96C6;&#x5668;"></a>&#x8DDF;&#x8E2A;&#x6536;&#x96C6;&#x5668;</h5><p>&#x8DDF;&#x8E2A;&#x6536;&#x96C6;&#x5668;&#x91C7;&#x7528;&#x7684;&#x4E3A;&#x96C6;&#x4E2D;&#x5F0F;&#x7684;&#x7BA1;&#x7406;&#x65B9;&#x5F0F;&#xFF0C;&#x5168;&#x5C40;&#x8BB0;&#x5F55;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x7684;&#x5F15;&#x7528;&#x72B6;&#x6001;&#xFF0C;&#x6267;&#x884C;&#x65F6;&#x4ECE;&#x4E00;&#x4E9B;&#x5217;GC  Roots&#x7684;&#x5BF9;&#x8C61;&#x505A;&#x4E3A;&#x8D77;&#x70B9;&#xFF0C;&#x4ECE;&#x8FD9;&#x4E9B;&#x8282;&#x70B9;&#x5411;&#x4E0B;&#x5F00;&#x59CB;&#x8FDB;&#x884C;&#x641C;&#x7D22;&#x6240;&#x6709;&#x7684;&#x5F15;&#x7528;&#x94FE;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5230;GC  Roots &#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5F15;&#x7528;&#x94FE;&#x65F6;&#xFF0C;&#x5219;&#x8BC1;&#x660E;&#x6B64;&#x5BF9;&#x8C61;&#x662F;&#x4E0D;&#x53EF;&#x7528;&#x7684;&#x3002;<br>&#x4E0B;&#x56FE;&#x4E2D;&#xFF0C;&#x5BF9;&#x8C61;Object6&#x3001;Object7&#x3001;Object8&#x867D;&#x7136;&#x4E92;&#x76F8;&#x5F15;&#x7528;&#xFF0C;&#x4F46;&#x4ED6;&#x4EEC;&#x7684;GC Roots&#x662F;&#x4E0D;&#x53EF;&#x5230;&#x8FBE;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x4EEC;&#x5C06;&#x4F1A;&#x88AB;&#x5224;&#x5B9A;&#x4E3A;&#x662F;&#x53EF;&#x56DE;&#x6536;&#x7684;&#x5BF9;&#x8C61;&#x3002;<br><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477615288982.png" alt="Alt text"></p>
+<p>&#x53EF;&#x4F5C;&#x4E3A;GC Roots &#x7684;&#x5BF9;&#x8C61;&#x5305;&#x62EC;&#xFF1A;<br>&#x865A;&#x62DF;&#x673A;&#x6808;(&#x6808;&#x5E27;&#x4E2D;&#x7684;&#x672C;&#x5730;&#x53D8;&#x91CF;&#x8868;)&#x4E2D;&#x7684;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x3002;<br>&#x65B9;&#x6CD5;&#x533A;&#x4E2D;&#x7684;&#x7C7B;&#x9759;&#x6001;&#x5C5E;&#x6027;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;<br>&#x65B9;&#x6CD5;&#x533A;&#x4E2D;&#x7684;&#x5E38;&#x91CF;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;<br>&#x672C;&#x5730;&#x65B9;&#x6CD5;&#x6808;&#x4E2D;JNI&#x7684;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x4E3B;&#x8981;&#x6709;&#x590D;&#x5236;&#x3001;&#x6807;&#x8BB0;&#x6E05;&#x9664;&#x3001;&#x6807;&#x8BB0;&#x538B;&#x7F29;&#x4E09;&#x79CD;&#x5B9E;&#x73B0;&#x7B97;&#x6CD5;&#x3002; </p>
+<h6 id="1-&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x7B97;&#x6CD5;"><a href="#1-&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x7B97;&#x6CD5;" class="headerlink" title="1. &#x6807;&#x8BB0; - &#x6E05;&#x9664;&#x7B97;&#x6CD5;"></a><strong>1. &#x6807;&#x8BB0; - &#x6E05;&#x9664;&#x7B97;&#x6CD5;</strong></h6><p>&#x6807;&#x8BB0;&#x6E05;&#x9664;&#x7B97;&#x6CD5;&#x662F;&#x6700;&#x57FA;&#x7840;&#x7684;&#x6536;&#x96C6;&#x7B97;&#x6CD5;&#xFF0C;&#x5176;&#x4ED6;&#x6536;&#x96C6;&#x7B97;&#x6CD5;&#x90FD;&#x662F;&#x57FA;&#x4E8E;&#x8FD9;&#x79CD;&#x601D;&#x60F3;&#x3002;&#x6807;&#x8BB0;&#x6E05;&#x9664;&#x7B97;&#x6CD5;&#x5206;&#x4E3A;&#x201C;&#x6807;&#x8BB0;&#x201D;&#x548C;&#x201C;&#x6E05;&#x9664;&#x201D;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;&#xFF1A;&#x9996;&#x5148;&#x6807;&#x8BB0;&#x51FA;&#x9700;&#x8981;&#x56DE;&#x6536;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x6807;&#x8BB0;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x7EDF;&#x4E00;&#x6E05;&#x9664;&#x5BF9;&#x8C61;&#x3002;<br>&#x5B83;&#x7684;&#x4E3B;&#x8981;&#x7F3A;&#x70B9;&#xFF1A;<br>&#x2460;.&#x6807;&#x8BB0;&#x548C;&#x6E05;&#x9664;&#x8FC7;&#x7A0B;&#x6548;&#x7387;&#x4E0D;&#x9AD8;<br>&#x2461;.&#x6807;&#x8BB0;&#x6E05;&#x9664;&#x4E4B;&#x540E;&#x4F1A;&#x4EA7;&#x751F;&#x5927;&#x91CF;&#x4E0D;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#x788E;&#x7247;&#x3002;</p>
+<p><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477615301316.png" alt="Alt text"><br><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477615313879.png" alt="Alt text"></p>
+<h6 id="2-&#x590D;&#x5236;&#x7B97;&#x6CD5;"><a href="#2-&#x590D;&#x5236;&#x7B97;&#x6CD5;" class="headerlink" title="2. &#x590D;&#x5236;&#x7B97;&#x6CD5;"></a><strong>2. &#x590D;&#x5236;&#x7B97;&#x6CD5;</strong></h6><p>&#x5B83;&#x5C06;&#x53EF;&#x7528;&#x5185;&#x5B58;&#x5BB9;&#x91CF;&#x5212;&#x5206;&#x4E3A;&#x5927;&#x5C0F;&#x76F8;&#x7B49;&#x7684;&#x4E24;&#x5757;&#xFF0C;&#x6BCF;&#x6B21;&#x53EA;&#x4F7F;&#x7528;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x5757;&#x3002;&#x5F53;&#x8FD9;&#x4E00;&#x5757;&#x7528;&#x5B8C;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x5C06;&#x8FD8;&#x5B58;&#x6D3B;&#x7684;&#x5BF9;&#x8C61;&#x590D;&#x5236;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x5757;&#x4E0A;&#x9762;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x628A;&#x5DF2;&#x4F7F;&#x7528;&#x8FC7;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x4E00;&#x6B21;&#x6E05;&#x7406;&#x6389;&#x3002;&#x8FD9;&#x6837;&#x4F7F;&#x5F97;&#x6BCF;&#x6B21;&#x90FD;&#x662F;&#x5BF9;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x5757;&#x8FDB;&#x884C;&#x5185;&#x5B58;&#x56DE;&#x6536;&#xFF0C;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x788E;&#x7247;&#x7B49;&#x60C5;&#x51B5;&#xFF0C;&#x53EA;&#x8981;&#x79FB;&#x52A8;&#x5806;&#x8BA2;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x6309;&#x987A;&#x5E8F;&#x5206;&#x914D;&#x5185;&#x5B58;&#x5373;&#x53EF;&#xFF0C;&#x5B9E;&#x73B0;&#x7B80;&#x5355;&#xFF0C;&#x8FD0;&#x884C;&#x9AD8;&#x6548;&#x3002;<br>&#x4E3B;&#x8981;&#x7F3A;&#x70B9;&#xFF1A;<br>&#x5185;&#x5B58;&#x7F29;&#x5C0F;&#x4E3A;&#x539F;&#x6765;&#x7684;&#x4E00;&#x534A;&#x3002;</p>
+<p><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477615328010.png" alt="Alt text"><br><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477615334358.png" alt="Alt text"></p>
+<h6 id="3-&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x7B97;&#x6CD5;"><a href="#3-&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x7B97;&#x6CD5;" class="headerlink" title="3. &#x6807;&#x8BB0;  - &#x6574;&#x7406;&#x7B97;&#x6CD5;"></a><strong>3. &#x6807;&#x8BB0;  - &#x6574;&#x7406;&#x7B97;&#x6CD5;</strong></h6><p>&#x6807;&#x8BB0;&#x64CD;&#x4F5C;&#x548C;&#x201C;&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x201D;&#x7B97;&#x6CD5;&#x4E00;&#x81F4;&#xFF0C;&#x540E;&#x7EED;&#x64CD;&#x4F5C;&#x4E0D;&#x53EA;&#x662F;&#x76F4;&#x63A5;&#x6E05;&#x7406;&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x662F;&#x5728;&#x6E05;&#x7406;&#x65E0;&#x7528;&#x5BF9;&#x8C61;&#x5B8C;&#x6210;&#x540E;&#x8BA9;&#x6240;&#x6709;&#x5B58;&#x6D3B;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x5411;&#x4E00;&#x7AEF;&#x79FB;&#x52A8;&#xFF0C;&#x5E76;&#x66F4;&#x65B0;&#x5F15;&#x7528;&#x5176;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#x3002;<br>&#x4E3B;&#x8981;&#x7F3A;&#x70B9;&#xFF1A;<br>&#x5728;&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x8FD8;&#x9700;&#x8FDB;&#x884C;&#x5BF9;&#x8C61;&#x7684;&#x79FB;&#x52A8;&#xFF0C;&#x6210;&#x672C;&#x76F8;&#x5BF9;&#x8F83;&#x9AD8;&#xFF0C;&#x597D;&#x5904;&#x5219;&#x662F;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x5185;&#x5B58;&#x788E;&#x7247;&#x3002;</p>
+<p><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477615353531.png" alt="Alt text"><br><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477615359322.png" alt="Alt text"></p>
+<p>&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x6536;&#x96C6;&#x5668;<br>&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x6536;&#x96C6;&#x5668;&#x91C7;&#x7528;&#x7684;&#x662F;&#x5206;&#x6563;&#x5F0F;&#x7BA1;&#x7406;&#x65B9;&#x5F0F;&#xFF0C;&#x901A;&#x8FC7;&#x8BA1;&#x6570;&#x5668;&#x8BB0;&#x5F55;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x88AB;&#x5F15;&#x7528;&#x3002;&#x5F53;&#x8BA1;&#x6570;&#x5668;&#x4E3A;0&#x65F6;&#x8BF4;&#x660E;&#x6B64;&#x5BF9;&#x8C61;&#x4E0D;&#x5728;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;&#x56DE;&#x6536;&#x3002;<br>&#x4E3B;&#x8981;&#x7F3A;&#x70B9;&#xFF1A;<br>&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x7684;&#x573A;&#x666F;&#x4E0B;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x56DE;&#x6536;&#xFF0C;&#x4F8B;&#x5982;&#x4E0B;&#x9762;&#x7684;&#x56FE;&#x4E2D;&#xFF0C;ObjectC&#x548C;ObjectB&#x76F8;&#x4E92;&#x5F15;&#x7528;&#xFF0C;&#x90A3;&#x4E48;ObjectA&#x5373;&#x4FBF;&#x91CA;&#x653E;&#x4E86;&#x5BF9;ObjectC&#x3001;ObjectB&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x4E5F;&#x65E0;&#x6CD5;&#x56DE;&#x6536;&#x3002;sunJDK&#x5728;&#x5B9E;&#x73B0;GC&#x65F6;&#x672A;&#x91C7;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x3002;<br><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477615371170.png" alt="Alt text"></p>
+<h4 id="&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;"><a href="#&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;" class="headerlink" title="&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;"></a>&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;</h4><p>HotSpot JVM&#x6536;&#x96C6;&#x5668;<br><img src="/2016/11/24/JVM&#x6982;&#x51B5;/1477615452569.png" alt="Alt text"></p>
+<p> &#x4E0A;&#x9762;&#x6709;7&#x4E2D;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x5206;&#x4E3A;&#x4E24;&#x5757;&#xFF0C;&#x4E0A;&#x9762;&#x4E3A;&#x65B0;&#x751F;&#x4EE3;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x8001;&#x5E74;&#x4EE3;&#x6536;&#x96C6;&#x5668;&#x3002;&#x5982;&#x679C;&#x4E24;&#x4E2A;&#x6536;&#x96C6;&#x5668;&#x4E4B;&#x95F4;&#x5B58;&#x5728;&#x8FDE;&#x7EBF;&#xFF0C;&#x5C31;&#x8BF4;&#x660E;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x642D;&#x914D;&#x4F7F;&#x7528;&#x3002;</p>
+<h5 id="Serial-&#x4E32;&#x884C;GC-&#x6536;&#x96C6;&#x5668;"><a href="#Serial-&#x4E32;&#x884C;GC-&#x6536;&#x96C6;&#x5668;" class="headerlink" title="Serial(&#x4E32;&#x884C;GC)&#x6536;&#x96C6;&#x5668;"></a>Serial(&#x4E32;&#x884C;GC)&#x6536;&#x96C6;&#x5668;</h5><p>Serial&#x6536;&#x96C6;&#x5668;&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x751F;&#x4EE3;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x5355;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#xFF0C;&#x4F7F;&#x7528;&#x590D;&#x5236;&#x7B97;&#x6CD5;&#x3002;&#x5B83;&#x5728;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x6536;&#x96C6;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x6682;&#x505C;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x7684;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;(&#x7528;&#x6237;&#x7EBF;&#x7A0B;)&#x3002;&#x662F;Jvm client&#x6A21;&#x5F0F;&#x4E0B;&#x9ED8;&#x8BA4;&#x7684;&#x65B0;&#x751F;&#x4EE3;&#x6536;&#x96C6;&#x5668;&#x3002;&#x5BF9;&#x4E8E;&#x9650;&#x5B9A;&#x5355;&#x4E2A;CPU&#x7684;&#x73AF;&#x5883;&#x6765;&#x8BF4;&#xFF0C;Serial&#x6536;&#x96C6;&#x5668;&#x7531;&#x4E8E;&#x6CA1;&#x6709;&#x7EBF;&#x7A0B;&#x4EA4;&#x4E92;&#x7684;&#x5F00;&#x9500;&#xFF0C;&#x4E13;&#x5FC3;&#x505A;&#x5783;&#x573E;&#x6536;&#x96C6;&#x81EA;&#x7136;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x6700;&#x9AD8;&#x7684;&#x5355;&#x7EBF;&#x7A0B;&#x6536;&#x96C6;&#x6548;&#x7387;&#x3002;</p>
+<h5 id="ParNew-&#x5E76;&#x884C;GC-&#x6536;&#x96C6;&#x5668;"><a href="#ParNew-&#x5E76;&#x884C;GC-&#x6536;&#x96C6;&#x5668;" class="headerlink" title="ParNew(&#x5E76;&#x884C;GC)&#x6536;&#x96C6;&#x5668;"></a>ParNew(&#x5E76;&#x884C;GC)&#x6536;&#x96C6;&#x5668;</h5><p>ParNew&#x6536;&#x96C6;&#x5668;&#x5176;&#x5B9E;&#x5C31;&#x662F;serial&#x6536;&#x96C6;&#x5668;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#x7248;&#x672C;&#xFF0C;&#x9664;&#x4E86;&#x4F7F;&#x7528;&#x591A;&#x6761;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x6536;&#x96C6;&#x4E4B;&#x5916;&#xFF0C;&#x5176;&#x4F59;&#x884C;&#x4E3A;&#x4E0E;Serial&#x6536;&#x96C6;&#x5668;&#x4E00;&#x6837;&#x3002;</p>
+<h5 id="Parallel-Scavenge-&#x5E76;&#x884C;&#x56DE;&#x6536;GC-&#x6536;&#x96C6;&#x5668;"><a href="#Parallel-Scavenge-&#x5E76;&#x884C;&#x56DE;&#x6536;GC-&#x6536;&#x96C6;&#x5668;" class="headerlink" title="Parallel Scavenge(&#x5E76;&#x884C;&#x56DE;&#x6536;GC)&#x6536;&#x96C6;&#x5668;"></a>Parallel Scavenge(&#x5E76;&#x884C;&#x56DE;&#x6536;GC)&#x6536;&#x96C6;&#x5668;</h5><p>Parallel Scavenge&#x6536;&#x96C6;&#x5668;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x751F;&#x4EE3;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x5B83;&#x4E5F;&#x662F;&#x4F7F;&#x7528;&#x590D;&#x5236;&#x7B97;&#x6CD5;&#x7684;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x53C8;&#x662F;&#x5E76;&#x884C;&#x591A;&#x7EBF;&#x7A0B;&#x6536;&#x96C6;&#x5668;&#x3002;parallel Scavenge&#x6536;&#x96C6;&#x5668;&#x7684;&#x7279;&#x70B9;&#x662F;&#x5B83;&#x7684;&#x5173;&#x6CE8;&#x70B9;&#x4E0E;&#x5176;&#x4ED6;&#x6536;&#x96C6;&#x5668;&#x4E0D;&#x540C;&#xFF0C;CMS&#x7B49;&#x6536;&#x96C6;&#x5668;&#x7684;&#x5173;&#x6CE8;&#x70B9;&#x662F;&#x5C3D;&#x53EF;&#x80FD;&#x5730;&#x7F29;&#x77ED;&#x5783;&#x573E;&#x6536;&#x96C6;&#x65F6;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#x7684;&#x505C;&#x987F;&#x65F6;&#x95F4;&#xFF0C;&#x800C;parallel Scavenge&#x6536;&#x96C6;&#x5668;&#x7684;&#x76EE;&#x6807;&#x5219;&#x662F;&#x8FBE;&#x5230;&#x4E00;&#x4E2A;&#x53EF;&#x63A7;&#x5236;&#x7684;&#x541E;&#x5410;&#x91CF;&#x3002;&#x541E;&#x5410;&#x91CF;= &#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#x95F4;/(&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#x95F4; + &#x5783;&#x573E;&#x6536;&#x96C6;&#x65F6;&#x95F4;)&#xFF0C;&#x865A;&#x62DF;&#x673A;&#x603B;&#x5171;&#x8FD0;&#x884C;&#x4E86;100&#x5206;&#x949F;&#x3002;&#x5176;&#x4E2D;&#x5783;&#x573E;&#x6536;&#x96C6;&#x82B1;&#x6389;1&#x5206;&#x949F;&#xFF0C;&#x90A3;&#x541E;&#x5410;&#x91CF;&#x5C31;&#x662F;99%&#x3002;</p>
+<h5 id="Serial-Old-&#x4E32;&#x884C;GC-&#x6536;&#x96C6;&#x5668;"><a href="#Serial-Old-&#x4E32;&#x884C;GC-&#x6536;&#x96C6;&#x5668;" class="headerlink" title="Serial Old(&#x4E32;&#x884C;GC)&#x6536;&#x96C6;&#x5668;"></a>Serial Old(&#x4E32;&#x884C;GC)&#x6536;&#x96C6;&#x5668;</h5><p>Serial Old&#x662F;Serial&#x6536;&#x96C6;&#x5668;&#x7684;&#x8001;&#x5E74;&#x4EE3;&#x7248;&#x672C;&#xFF0C;&#x5B83;&#x540C;&#x6837;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x5355;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x6536;&#x96C6;&#xFF0C;&#x4F7F;&#x7528;&#x201C;&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x201D;&#x7B97;&#x6CD5;&#x3002;&#x4E3B;&#x8981;&#x4F7F;&#x7528;&#x5728;Client&#x6A21;&#x5F0F;&#x4E0B;&#x7684;&#x865A;&#x62DF;&#x673A;&#x3002;</p>
+<h5 id="Parallel-Old-&#x5E76;&#x884C;GC-&#x6536;&#x96C6;&#x5668;"><a href="#Parallel-Old-&#x5E76;&#x884C;GC-&#x6536;&#x96C6;&#x5668;" class="headerlink" title="Parallel Old(&#x5E76;&#x884C;GC)&#x6536;&#x96C6;&#x5668;"></a>Parallel Old(&#x5E76;&#x884C;GC)&#x6536;&#x96C6;&#x5668;</h5><p>Parallel Old&#x662F;Parallel Scavenge&#x6536;&#x96C6;&#x5668;&#x7684;&#x8001;&#x5E74;&#x4EE3;&#x7248;&#x672C;&#xFF0C;&#x4F7F;&#x7528;&#x591A;&#x7EBF;&#x7A0B;&#x548C;&#x201C;&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x201D;&#x7B97;&#x6CD5;&#x3002;</p>
+<h5 id="CMS-&#x5E76;&#x53D1;GC-&#x6536;&#x96C6;&#x5668;"><a href="#CMS-&#x5E76;&#x53D1;GC-&#x6536;&#x96C6;&#x5668;" class="headerlink" title="CMS(&#x5E76;&#x53D1;GC)&#x6536;&#x96C6;&#x5668;"></a>CMS(&#x5E76;&#x53D1;GC)&#x6536;&#x96C6;&#x5668;</h5><p>CMS(Concurrent Mark Sweep)&#x6536;&#x96C6;&#x5668;&#x662F;&#x4E00;&#x79CD;&#x4EE5;&#x83B7;&#x53D6;&#x6700;&#x77ED;&#x56DE;&#x6536;&#x505C;&#x987F;&#x65F6;&#x95F4;&#x4E3A;&#x76EE;&#x6807;&#x7684;&#x6536;&#x96C6;&#x5668;&#x3002;CMS&#x6536;&#x96C6;&#x5668;&#x662F;&#x57FA;&#x4E8E;&#x201C;&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x201D;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x6574;&#x4E2A;&#x6536;&#x96C6;&#x8FC7;&#x7A0B;&#x5927;&#x81F4;&#x5206;&#x4E3A;4&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;<br>&#x2460;.&#x521D;&#x59CB;&#x6807;&#x8BB0;(CMS initial mark)<br>&#x2461;.&#x5E76;&#x53D1;&#x6807;&#x8BB0;(CMS concurrenr mark)<br>&#x2462;.&#x91CD;&#x65B0;&#x6807;&#x8BB0;(CMS remark)<br>&#x2463;.&#x5E76;&#x53D1;&#x6E05;&#x9664;(CMS concurrent sweep)<br>     &#x5176;&#x4E2D;&#x521D;&#x59CB;&#x6807;&#x8BB0;&#x3001;&#x91CD;&#x65B0;&#x6807;&#x8BB0;&#x8FD9;&#x4E24;&#x4E2A;&#x6B65;&#x9AA4;&#x4EFB;&#x7136;&#x9700;&#x8981;&#x505C;&#x987F;&#x5176;&#x4ED6;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#x3002;&#x521D;&#x59CB;&#x6807;&#x8BB0;&#x4EC5;&#x4EC5;&#x53EA;&#x662F;&#x6807;&#x8BB0;&#x51FA;GC ROOTS&#x80FD;&#x76F4;&#x63A5;&#x5173;&#x8054;&#x5230;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x901F;&#x5EA6;&#x5F88;&#x5FEB;&#xFF0C;&#x5E76;&#x53D1;&#x6807;&#x8BB0;&#x9636;&#x6BB5;&#x662F;&#x8FDB;&#x884C;GC ROOTS &#x6839;&#x641C;&#x7D22;&#x7B97;&#x6CD5;&#x9636;&#x6BB5;&#xFF0C;&#x4F1A;&#x5224;&#x5B9A;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x5B58;&#x6D3B;&#x3002;&#x800C;&#x91CD;&#x65B0;&#x6807;&#x8BB0;&#x9636;&#x6BB5;&#x5219;&#x662F;&#x4E3A;&#x4E86;&#x4FEE;&#x6B63;&#x5E76;&#x53D1;&#x6807;&#x8BB0;&#x671F;&#x95F4;&#xFF0C;&#x56E0;&#x7528;&#x6237;&#x7A0B;&#x5E8F;&#x7EE7;&#x7EED;&#x8FD0;&#x884C;&#x800C;&#x5BFC;&#x81F4;&#x6807;&#x8BB0;&#x4EA7;&#x751F;&#x53D8;&#x52A8;&#x7684;&#x90A3;&#x4E00;&#x90E8;&#x5206;&#x5BF9;&#x8C61;&#x7684;&#x6807;&#x8BB0;&#x8BB0;&#x5F55;&#xFF0C;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x7684;&#x505C;&#x987F;&#x65F6;&#x95F4;&#x4F1A;&#x88AB;&#x521D;&#x59CB;&#x6807;&#x8BB0;&#x9636;&#x6BB5;&#x7A0D;&#x957F;&#xFF0C;&#x4F46;&#x6BD4;&#x5E76;&#x53D1;&#x6807;&#x8BB0;&#x9636;&#x6BB5;&#x8981;&#x77ED;&#x3002;<br>     &#x7531;&#x4E8E;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#x8017;&#x65F6;&#x6700;&#x957F;&#x7684;&#x5E76;&#x53D1;&#x6807;&#x8BB0;&#x548C;&#x5E76;&#x53D1;&#x6E05;&#x9664;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6536;&#x96C6;&#x5668;&#x7EBF;&#x7A0B;&#x90FD;&#x53EF;&#x4EE5;&#x4E0E;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#x4E00;&#x8D77;&#x5DE5;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x6574;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;CMS&#x6536;&#x96C6;&#x5668;&#x7684;&#x5185;&#x5B58;&#x56DE;&#x6536;&#x8FC7;&#x7A0B;&#x662F;&#x4E0E;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#x4E00;&#x8D77;&#x5E76;&#x53D1;&#x6267;&#x884C;&#x7684;&#x3002;<br>CMS&#x6536;&#x96C6;&#x5668;&#x7684;&#x4F18;&#x70B9;&#xFF1A;&#x5E76;&#x53D1;&#x6536;&#x96C6;&#x3001;&#x4F4E;&#x505C;&#x987F;&#xFF0C;&#x4F46;&#x662F;CMS&#x8FD8;&#x8FDC;&#x8FDC;&#x8FBE;&#x4E0D;&#x5230;&#x5B8C;&#x7F8E;&#xFF0C;&#x5668;&#x4E3B;&#x8981;&#x6709;&#x4E09;&#x4E2A;&#x663E;&#x8457;&#x7F3A;&#x70B9;&#xFF1A;<br>CMS&#x6536;&#x96C6;&#x5668;&#x5BF9;CPU&#x8D44;&#x6E90;&#x975E;&#x5E38;&#x654F;&#x611F;&#x3002;&#x5728;&#x5E76;&#x53D1;&#x9636;&#x6BB5;&#xFF0C;&#x867D;&#x7136;&#x4E0D;&#x4F1A;&#x5BFC;&#x81F4;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#x505C;&#x987F;&#xFF0C;&#x4F46;&#x662F;&#x4F1A;&#x5360;&#x7528;CPU&#x8D44;&#x6E90;&#x800C;&#x5BFC;&#x81F4;&#x5F15;&#x7528;&#x7A0B;&#x5E8F;&#x53D8;&#x6162;&#xFF0C;&#x603B;&#x541E;&#x5410;&#x91CF;&#x4E0B;&#x964D;&#x3002;CMS&#x9ED8;&#x8BA4;&#x542F;&#x52A8;&#x7684;&#x56DE;&#x6536;&#x7EBF;&#x7A0B;&#x6570;&#x662F;&#xFF1A;(CPU&#x6570;&#x91CF;+3) / 4&#x3002;<br>CMS&#x6536;&#x96C6;&#x5668;&#x65E0;&#x6CD5;&#x5904;&#x7406;&#x6D6E;&#x52A8;&#x5783;&#x573E;&#xFF0C;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x201C;Concurrent Mode Failure&#x201C;&#xFF0C;&#x5931;&#x8D25;&#x540E;&#x800C;&#x5BFC;&#x81F4;&#x53E6;&#x4E00;&#x6B21;Full  GC&#x7684;&#x4EA7;&#x751F;&#x3002;&#x7531;&#x4E8E;CMS&#x5E76;&#x53D1;&#x6E05;&#x7406;&#x9636;&#x6BB5;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#x8FD8;&#x5728;&#x8FD0;&#x884C;&#xFF0C;&#x4F34;&#x968F;&#x7A0B;&#x5E8F;&#x7684;&#x8FD0;&#x884C;&#x81EA;&#x70ED;&#x4F1A;&#x6709;&#x65B0;&#x7684;&#x5783;&#x573E;&#x4E0D;&#x65AD;&#x4EA7;&#x751F;&#xFF0C;&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x5783;&#x573E;&#x51FA;&#x73B0;&#x5728;&#x6807;&#x8BB0;&#x8FC7;&#x7A0B;&#x4E4B;&#x540E;&#xFF0C;CMS&#x65E0;&#x6CD5;&#x5728;&#x672C;&#x6B21;&#x6536;&#x96C6;&#x4E2D;&#x5904;&#x7406;&#x5B83;&#x4EEC;&#xFF0C;&#x53EA;&#x597D;&#x7559;&#x5F85;&#x4E0B;&#x4E00;&#x6B21;GC&#x65F6;&#x5C06;&#x5176;&#x6E05;&#x7406;&#x6389;&#x3002;&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x5783;&#x573E;&#x79F0;&#x4E3A;&#x201C;&#x6D6E;&#x52A8;&#x5783;&#x573E;&#x201D;&#x3002;&#x4E5F;&#x662F;&#x7531;&#x4E8E;&#x5728;&#x5783;&#x573E;&#x6536;&#x96C6;&#x9636;&#x6BB5;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#x8FD8;&#x9700;&#x8981;&#x8FD0;&#x884C;&#xFF0C;<br>&#x5373;&#x9700;&#x8981;&#x9884;&#x7559;&#x8DB3;&#x591F;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x7ED9;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;&#xFF0C;&#x56E0;&#x6B64;CMS&#x6536;&#x96C6;&#x5668;&#x4E0D;&#x80FD;&#x50CF;&#x5176;&#x4ED6;&#x6536;&#x96C6;&#x5668;&#x90A3;&#x6837;&#x7B49;&#x5230;&#x8001;&#x5E74;&#x4EE3;&#x51E0;&#x4E4E;&#x5B8C;&#x5168;&#x88AB;&#x586B;&#x6EE1;&#x4E86;&#x518D;&#x8FDB;&#x884C;&#x6536;&#x96C6;&#xFF0C;&#x9700;&#x8981;&#x9884;&#x7559;&#x4E00;&#x90E8;&#x5206;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x63D0;&#x4F9B;&#x5E76;&#x53D1;&#x6536;&#x96C6;&#x65F6;&#x7684;&#x7A0B;&#x5E8F;&#x8FD0;&#x4F5C;&#x4F7F;&#x7528;&#x3002;&#x5728;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#x4E0B;&#xFF0C;CMS&#x6536;&#x96C6;&#x5668;&#x5728;&#x8001;&#x5E74;&#x4EE3;&#x4F7F;&#x7528;&#x4E86;68%&#x7684;&#x7A7A;&#x95F4;&#x65F6;&#x5C31;&#x4F1A;&#x88AB;&#x6FC0;&#x6D3B;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x53C2;&#x6570;-XX:CMSInitiatingOccupancyFraction&#x7684;&#x503C;&#x6765;&#x63D0;&#x4F9B;&#x89E6;&#x53D1;&#x767E;&#x5206;&#x6BD4;&#xFF0C;&#x4EE5;&#x964D;&#x4F4E;&#x5185;&#x5B58;&#x56DE;&#x6536;&#x6B21;&#x6570;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#x3002;&#x8981;&#x662F;CMS&#x8FD0;&#x884C;&#x671F;&#x95F4;&#x9884;&#x7559;&#x7684;&#x5185;&#x5B58;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;&#x7A0B;&#x5E8F;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x9700;&#x8981;&#xFF0C;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x201C;Concurrent Mode Failure&#x201D;&#x5931;&#x8D25;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x865A;&#x62DF;&#x673A;&#x5C06;&#x542F;&#x52A8;&#x540E;&#x5907;&#x9884;&#x6848;&#xFF1A;&#x4E34;&#x65F6;&#x542F;&#x7528;Serial Old&#x6536;&#x96C6;&#x5668;&#x6765;&#x91CD;&#x65B0;&#x8FDB;&#x884C;&#x8001;&#x5E74;&#x4EE3;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#xFF0C;&#x8FD9;&#x6837;&#x505C;&#x987F;&#x65F6;&#x95F4;&#x5C31;&#x5F88;&#x957F;&#x4E86;&#x3002;&#x6240;&#x4EE5;&#x8BF4;&#x53C2;&#x6570;-XX:CMSInitiatingOccupancyFraction&#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x9AD8;&#x5C06;&#x4F1A;&#x5F88;&#x5BB9;&#x6613;&#x5BFC;&#x81F4;&#x201C;Concurrent Mode Failure&#x201D;&#x5931;&#x8D25;&#xFF0C;&#x6027;&#x80FD;&#x53CD;&#x800C;&#x964D;&#x4F4E;&#x3002;<br>&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x7F3A;&#x70B9;&#xFF0C;CMS&#x662F;&#x57FA;&#x4E8E;&#x201C;&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x201D;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x7684;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x4F7F;&#x7528;&#x201C;&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x201D;&#x7B97;&#x6CD5;&#x6536;&#x96C6;&#x540E;&#xFF0C;&#x4F1A;&#x4EA7;&#x751F;&#x5927;&#x91CF;&#x788E;&#x7247;&#x3002;&#x7A7A;&#x95F4;&#x788E;&#x7247;&#x592A;&#x591A;&#x65F6;&#xFF0C;&#x5C06;&#x4F1A;&#x7ED9;&#x5BF9;&#x8C61;&#x5206;&#x914D;&#x5E26;&#x6765;&#x5F88;&#x591A;&#x9EBB;&#x70E6;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x5927;&#x5BF9;&#x8C61;&#xFF0C;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x627E;&#x4E0D;&#x5230;&#x8FDE;&#x7EED;&#x7684;&#x7A7A;&#x95F4;&#x6765;&#x5206;&#x914D;&#x4E0D;&#x5F97;&#x4E0D;&#x63D0;&#x524D;&#x89E6;&#x53D1;&#x4E00;&#x6B21;Full  GC&#x3002;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;CMS&#x6536;&#x96C6;&#x5668;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;-XX:UseCMSCompactAtFullCollection&#x5F00;&#x5173;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x5728;Full  GC&#x4E4B;&#x540E;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x788E;&#x7247;&#x6574;&#x7406;&#x8FC7;&#x7A0B;&#xFF0C;&#x8FD8;&#x53EF;&#x901A;&#x8FC7;-XX:CMSFullGCBeforeCompaction&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x6267;&#x884C;&#x591A;&#x5C11;&#x6B21;&#x4E0D;&#x538B;&#x7F29;&#x7684;Full  GC&#x4E4B;&#x540E;&#xFF0C;&#x8DDF;&#x7740;&#x6765;&#x4E00;&#x6B21;&#x788E;&#x7247;&#x6574;&#x7406;&#x8FC7;&#x7A0B;&#x3002;</p>
+<h5 id="G1&#x6536;&#x96C6;&#x5668;"><a href="#G1&#x6536;&#x96C6;&#x5668;" class="headerlink" title="G1&#x6536;&#x96C6;&#x5668;"></a>G1&#x6536;&#x96C6;&#x5668;</h5><p>G1(Garbage First)&#x6536;&#x96C6;&#x5668;&#x662F;JDK1.7&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x4E2A;&#x65B0;&#x6536;&#x96C6;&#x5668;&#xFF0C;G1&#x6536;&#x96C6;&#x5668;&#x57FA;&#x4E8E;&#x201C;&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x201D;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x5185;&#x5B58;&#x788E;&#x7247;&#x3002;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x7279;&#x70B9;&#x4E4B;&#x524D;&#x7684;&#x6536;&#x96C6;&#x5668;&#x8FDB;&#x884C;&#x6536;&#x96C6;&#x7684;&#x8303;&#x56F4;&#x90FD;&#x662F;&#x6574;&#x4E2A;&#x65B0;&#x751F;&#x4EE3;&#x6216;&#x8001;&#x5E74;&#x4EE3;&#xFF0C;&#x800C;G1&#x5C06;&#x6574;&#x4E2A;Java&#x5806;(&#x5305;&#x62EC;&#x65B0;&#x751F;&#x4EE3;&#xFF0C;&#x8001;&#x5E74;&#x4EE3;)&#x3002;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/22/JAVA多线程的几种实现方式/" rel="next" title="JAVA多线程的几种实现方式">
+                <i class="fa fa-chevron-left"></i> JAVA多线程的几种实现方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/24/JMS和AMQP对比/" rel="prev" title="JMS和AMQP对比">
+                JMS和AMQP对比 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"xhrong"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/24/JVM概况/" data-title="JVM概述" data-url="http://xhrong.github.io/2016/11/24/JVM概况/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="xhrong">
+          <p class="site-author-name" itemprop="name">xhrong</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM概述"><span class="nav-number">1.</span> <span class="nav-text">JVM概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM的组成"><span class="nav-number">1.1.</span> <span class="nav-text">JVM的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM在JDK中的位置"><span class="nav-number">1.1.1.</span> <span class="nav-text">JVM在JDK中的位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM的组成-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">JVM的组成</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-Data-Area"><span class="nav-number">1.2.</span> <span class="nav-text">Runtime Data Area</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM-Stack"><span class="nav-number">1.2.1.</span> <span class="nav-text">JVM Stack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Heap"><span class="nav-number">1.2.2.</span> <span class="nav-text">Heap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PC-Register"><span class="nav-number">1.2.3.</span> <span class="nav-text">PC Register</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Method-Area"><span class="nav-number">1.2.4.</span> <span class="nav-text">Method Area</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Native-Method-Stack"><span class="nav-number">1.2.5.</span> <span class="nav-text">Native Method Stack</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM的运行原理"><span class="nav-number">1.3.</span> <span class="nav-text">JVM的运行原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载器子系统（Class-Loader）"><span class="nav-number">1.4.</span> <span class="nav-text">类加载器子系统（Class Loader）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ClassLoader的分类："><span class="nav-number">1.4.1.</span> <span class="nav-text">ClassLoader的分类：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ClassLoader的工作原理"><span class="nav-number">1.4.2.</span> <span class="nav-text">ClassLoader的工作原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM内存管理"><span class="nav-number">1.5.</span> <span class="nav-text">JVM内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#垃圾收集算法"><span class="nav-number">1.5.1.</span> <span class="nav-text">垃圾收集算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#跟踪收集器"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">跟踪收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-标记-清除算法"><span class="nav-number">1.5.1.1.1.</span> <span class="nav-text">1. 标记 - 清除算法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-复制算法"><span class="nav-number">1.5.1.1.2.</span> <span class="nav-text">2. 复制算法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-标记-整理算法"><span class="nav-number">1.5.1.1.3.</span> <span class="nav-text">3. 标记  - 整理算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#垃圾收集器"><span class="nav-number">1.5.2.</span> <span class="nav-text">垃圾收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Serial-串行GC-收集器"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">Serial(串行GC)收集器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ParNew-并行GC-收集器"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">ParNew(并行GC)收集器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Parallel-Scavenge-并行回收GC-收集器"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">Parallel Scavenge(并行回收GC)收集器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Serial-Old-串行GC-收集器"><span class="nav-number">1.5.2.4.</span> <span class="nav-text">Serial Old(串行GC)收集器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Parallel-Old-并行GC-收集器"><span class="nav-number">1.5.2.5.</span> <span class="nav-text">Parallel Old(并行GC)收集器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CMS-并发GC-收集器"><span class="nav-number">1.5.2.6.</span> <span class="nav-text">CMS(并发GC)收集器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#G1收集器"><span class="nav-number">1.5.2.7.</span> <span class="nav-text">G1收集器</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xhrong</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xhrong"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("u4DTaPHSLi7UfAEx97rmGGkO-gzGzoHsz", "qEYRUuSsKEaUPpt8BwlMXnbr");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
