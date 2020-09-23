@@ -88,7 +88,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="森.林木">
-<meta property="og:url" content="http://xhrong.github.io/categories/JAVA/index.html">
+<meta property="og:url" content="http://xhrong.github.io/categories/Java/index.html">
 <meta property="og:site_name" content="森.林木">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://xhrong.github.io/categories/JAVA/">
+  <link rel="canonical" href="http://xhrong.github.io/categories/Java/">
 
 
 
 
 
-  <title> 分类: JAVA | 森.林木 </title>
+  <title> 分类: Java | 森.林木 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -263,7 +263,7 @@
   <section id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2>
-        JAVA
+        Java
         <small>分类</small>
       </h2>
     </div>
@@ -276,17 +276,17 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/11/24/JMS和AMQP对比/" itemprop="url">
+            <a class="post-title-link" href="/2017/06/18/Java实现拼音格式转换/" itemprop="url">
               
-                <span itemprop="name">JMS和AMQP对比</span>
+                <span itemprop="name">Java实现拼音格式转换</span>
               
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-11-24T18:28:48+00:00" content="2016-11-24">
-          11-24
+        <time class="post-time" itemprop="dateCreated" datetime="2017-06-18T00:00:00+00:00" content="2017-06-18">
+          06-18
         </time>
       </div>
 
@@ -302,17 +302,17 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/11/24/JVM概况/" itemprop="url">
+            <a class="post-title-link" href="/2017/05/28/Java类加载机制/" itemprop="url">
               
-                <span itemprop="name">JVM概述</span>
+                <span itemprop="name">Java类加载机制</span>
               
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-11-24T18:28:48+00:00" content="2016-11-24">
-          11-24
+        <time class="post-time" itemprop="dateCreated" datetime="2017-05-28T00:00:00+00:00" content="2017-05-28">
+          05-28
         </time>
       </div>
 
@@ -328,17 +328,17 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/11/24/MQ及其应用场景/" itemprop="url">
+            <a class="post-title-link" href="/2017/04/08/汉字转拼音的几种方案（JAVA）/" itemprop="url">
               
-                <span itemprop="name">MQ及其应用场景</span>
+                <span itemprop="name">汉字转拼音的几种方案（JAVA）</span>
               
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-11-24T18:28:48+00:00" content="2016-11-24">
-          11-24
+        <time class="post-time" itemprop="dateCreated" datetime="2017-04-08T00:00:00+00:00" content="2017-04-08">
+          04-08
         </time>
       </div>
 
@@ -354,43 +354,17 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/11/24/ORM：Hibernate、Mybatis与Spring Data JPA的区别/" itemprop="url">
+            <a class="post-title-link" href="/2016/12/26/Java多线程同步/" itemprop="url">
               
-                <span itemprop="name">ORM：Hibernate、Mybatis与Spring Data JPA的区别</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-11-24T18:28:48+00:00" content="2016-11-24">
-          11-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/22/JAVA多线程的几种实现方式/" itemprop="url">
-              
-                <span itemprop="name">JAVA多线程的几种实现方式</span>
+                <span itemprop="name">Java多线程同步</span>
               
             </a>
         
       </h1>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-11-22T18:28:48+00:00" content="2016-11-22">
-          11-22
+        <time class="post-time" itemprop="dateCreated" datetime="2016-12-26T00:00:00+00:00" content="2016-12-26">
+          12-26
         </time>
       </div>
 
@@ -840,6 +814,39 @@
               success: function(newcounter) {
                 var $element = $(document.getElementById(url));
                 $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
+ncloud-visitors-count').text(newcounter.get('time'));
               },
               error: function(newcounter, error) {
                 console.log('Failed to create');
