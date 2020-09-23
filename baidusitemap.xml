@@ -77,15 +77,19 @@
     <lastmod>2020-09-23</lastmod>
   </url>
   <url>
-    <loc>http://xhrong.github.io/2019/03/01/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%866%E7%A7%8D%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2020-09-23</lastmod>
-  </url>
-  <url>
     <loc>http://xhrong.github.io/2019/02/16/%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%B9%E6%A1%88%E4%B8%8BSession%E5%AE%9E%E7%8E%B0%E4%B8%80%E8%87%B4%E6%80%A7%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2020-09-23</lastmod>
   </url>
   <url>
+    <loc>http://xhrong.github.io/2019/03/01/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%866%E7%A7%8D%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2020-09-23</lastmod>
+  </url>
+  <url>
     <loc>http://xhrong.github.io/2017/06/25/%E3%80%8A%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86%E6%B2%89%E6%80%9D%E5%BD%95%E3%80%8B%E5%86%85%E5%AE%B9%E6%91%98%E8%A6%81/</loc>
+    <lastmod>2020-09-23</lastmod>
+  </url>
+  <url>
+    <loc>http://xhrong.github.io/2018/08/21/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E4%B8%BAAndroid%E7%BC%96%E8%AF%91MuPDF1.13/</loc>
     <lastmod>2020-09-23</lastmod>
   </url>
   <url>
@@ -97,15 +101,19 @@
     <lastmod>2020-09-23</lastmod>
   </url>
   <url>
-    <loc>http://xhrong.github.io/2018/08/21/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E4%B8%BAAndroid%E7%BC%96%E8%AF%91MuPDF1.13/</loc>
-    <lastmod>2020-09-23</lastmod>
-  </url>
-  <url>
     <loc>http://xhrong.github.io/2019/11/02/PPT%20to%20Image%E6%96%B9%E6%A1%88/</loc>
     <lastmod>2020-09-23</lastmod>
   </url>
   <url>
     <loc>http://xhrong.github.io/2017/05/20/UML%E5%9B%BE%E4%BE%8B/</loc>
+    <lastmod>2020-09-23</lastmod>
+  </url>
+  <url>
+    <loc>http://xhrong.github.io/2019/07/24/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91LibCurl/</loc>
+    <lastmod>2020-09-23</lastmod>
+  </url>
+  <url>
+    <loc>http://xhrong.github.io/2016/11/24/MQ%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</loc>
     <lastmod>2020-09-23</lastmod>
   </url>
   <url>
@@ -122,14 +130,6 @@
   </url>
   <url>
     <loc>http://xhrong.github.io/2017/05/28/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</loc>
-    <lastmod>2020-09-23</lastmod>
-  </url>
-  <url>
-    <loc>http://xhrong.github.io/2019/07/24/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91LibCurl/</loc>
-    <lastmod>2020-09-23</lastmod>
-  </url>
-  <url>
-    <loc>http://xhrong.github.io/2016/11/24/MQ%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</loc>
     <lastmod>2020-09-23</lastmod>
   </url>
   <url>
@@ -161,14 +161,6 @@
     <lastmod>2020-09-23</lastmod>
   </url>
   <url>
-    <loc>http://xhrong.github.io/2017/01/08/AsycTask%E6%BA%90%E7%A0%81%E6%8E%A2%E7%A9%B6/</loc>
-    <lastmod>2020-09-23</lastmod>
-  </url>
-  <url>
-    <loc>http://xhrong.github.io/2017/05/19/CMMI%E4%B9%8B%E5%8A%9F%E8%83%BD%E7%82%B9%E4%BC%B0%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2020-09-23</lastmod>
-  </url>
-  <url>
     <loc>http://xhrong.github.io/2019/07/17/CMakeLists.txt%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E/</loc>
     <lastmod>2020-09-23</lastmod>
   </url>
@@ -182,6 +174,14 @@
   </url>
   <url>
     <loc>http://xhrong.github.io/2017/10/13/AspectJ%E5%9C%A8Android%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</loc>
+    <lastmod>2020-09-23</lastmod>
+  </url>
+  <url>
+    <loc>http://xhrong.github.io/2017/01/08/AsycTask%E6%BA%90%E7%A0%81%E6%8E%A2%E7%A9%B6/</loc>
+    <lastmod>2020-09-23</lastmod>
+  </url>
+  <url>
+    <loc>http://xhrong.github.io/2017/05/19/CMMI%E4%B9%8B%E5%8A%9F%E8%83%BD%E7%82%B9%E4%BC%B0%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2020-09-23</lastmod>
   </url>
   <url>
@@ -249,11 +249,11 @@
     <lastmod>2020-09-23</lastmod>
   </url>
   <url>
-    <loc>http://xhrong.github.io/2019/07/14/Android%E5%A4%9A%E7%BA%BF%E7%A8%8B&%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%BC%96%E7%A8%8B/</loc>
+    <loc>http://xhrong.github.io/2020/04/25/Android%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/</loc>
     <lastmod>2020-09-23</lastmod>
   </url>
   <url>
-    <loc>http://xhrong.github.io/2017/08/09/Android%20Broadcast%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</loc>
+    <loc>http://xhrong.github.io/2019/07/14/Android%E5%A4%9A%E7%BA%BF%E7%A8%8B&%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2020-09-23</lastmod>
   </url>
   <url>
@@ -262,6 +262,10 @@
   </url>
   <url>
     <loc>http://xhrong.github.io/2017/08/20/Android%20Binder%E6%9C%BA%E5%88%B6%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2020-09-23</lastmod>
+  </url>
+  <url>
+    <loc>http://xhrong.github.io/2017/08/09/Android%20Broadcast%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</loc>
     <lastmod>2020-09-23</lastmod>
   </url>
 </urlset> 
