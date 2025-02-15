@@ -4,9 +4,9 @@
   
     
     <entry>
-      <title></title>
+      <title><![CDATA[Advanced Guide to Python3 Programming(Second_Edition)笔记]]></title>
       <url>http://xhrong.github.io/2025/02/15/Advanced%20Guide%20to%20Python3%20Programming(Second_Edition)%E7%AC%94%E8%AE%B0/</url>
-      <content type="html"><![CDATA[<h3 id="Python-Type-Hints"><a href="#Python-Type-Hints" class="headerlink" title="Python Type Hints"></a>Python Type Hints</h3><p>Type Hint is additional type information that can be used with a function definition to indicate what types parameters should be and what type is returned.<br>This is illustrated below: </p>
+      <content type="html"><![CDATA[<h1 id="&#x300A;Advanced-Guide-to-Python3-Programming-Second-Edition-&#x300B;&#x7B14;&#x8BB0;"><a href="#&#x300A;Advanced-Guide-to-Python3-Programming-Second-Edition-&#x300B;&#x7B14;&#x8BB0;" class="headerlink" title="&#x300A;Advanced Guide to Python3 Programming(Second_Edition)&#x300B;&#x7B14;&#x8BB0;"></a>&#x300A;Advanced Guide to Python3 Programming(Second_Edition)&#x300B;&#x7B14;&#x8BB0;</h1><h3 id="Python-Type-Hints"><a href="#Python-Type-Hints" class="headerlink" title="Python Type Hints"></a>Python Type Hints</h3><p>Type Hint is additional type information that can be used with a function definition to indicate what types parameters should be and what type is returned.<br>This is illustrated below: </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def add(x: int, y: int) -&gt; int:</span><br><span class="line">    return x + y</span><br></pre></td></tr></table></figure>
 <p>But it is still possible to pass a string into the add() function as far as Python is concerned.<br>However, static analysis tools (such as <strong>MyPy</strong>) can be applied to the code to check for such misuse.</p>
 <h3 id="Class-Slots"><a href="#Class-Slots" class="headerlink" title="Class Slots"></a>Class Slots</h3><p>&#x95EE;&#x9898;&#xFF1A;python&#x53EF;&#x4EE5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x52A8;&#x6001;&#x5B9A;&#x4E49;&#x7C7B;&#x6210;&#x5458;&#xFF0C;&#x5BFC;&#x81F4;&#x65E0;&#x6CD5;&#x63D0;&#x524D;&#x9884;&#x77E5;&#x548C;&#x7BA1;&#x7406;&#x7C7B;&#x6210;&#x5458;</p>
@@ -73,6 +73,18 @@
 <p>&#x5982;&#x679C;&#x672A;&#x5B9A;&#x4E49; <strong>repr</strong>&#xFF0C;Python &#x4F1A;&#x4F7F;&#x7528;&#x57FA;&#x7C7B;&#xFF08;&#x5982; object&#xFF09;&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#xFF08;&#x901A;&#x5E38;&#x8FD4;&#x56DE; <classname object at 0x...>&#xFF09;&#x3002;</classname></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Person:</span><br><span class="line">    def __init__(self, name, age):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return f&quot;{self.name} ({self.age} years old)&quot;</span><br><span class="line"></span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return f&quot;Person(&apos;{self.name}&apos;, {self.age})&quot;</span><br><span class="line"></span><br><span class="line"># &#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;</span><br><span class="line">p = Person(&quot;Alice&quot;, 30)</span><br><span class="line"></span><br><span class="line"># &#x8C03;&#x7528; __str__</span><br><span class="line">print(p)           # &#x8F93;&#x51FA;: Alice (30 years old)</span><br><span class="line">print(str(p))      # &#x8F93;&#x51FA;: Alice (30 years old)</span><br><span class="line"></span><br><span class="line"># &#x8C03;&#x7528; __repr__</span><br><span class="line">print(repr(p))     # &#x8F93;&#x51FA;: Person(&apos;Alice&apos;, 30)</span><br><span class="line">p                  # &#x5728;&#x4EA4;&#x4E92;&#x5F0F;&#x73AF;&#x5883;&#x4E2D;&#x76F4;&#x63A5;&#x8F93;&#x5165; p &#x4F1A;&#x8F93;&#x51FA;: Person(&apos;Alice&apos;, 30)</span><br></pre></td></tr></table></figure>]]></content>
       
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
         
     </entry>
     
