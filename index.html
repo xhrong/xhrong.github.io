@@ -272,7 +272,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://xhrong.github.io/2025/02/15/Advanced Guide to Python3 Programming(Second_Edition)笔记/">
+  <link itemprop="mainEntityOfPage" href="http://xhrong.github.io/2025/02/20/《Design for How People Learn》总结/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="xhrong">
@@ -297,8 +297,8 @@
             
               
                 
-                <a class="post-title-link" href="/2025/02/15/Advanced Guide to Python3 Programming(Second_Edition)笔记/" itemprop="url">
-                  Advanced Guide to Python3 Programming(Second_Edition)笔记
+                <a class="post-title-link" href="/2025/02/20/《Design for How People Learn》总结/" itemprop="url">
+                  Design for How People Learn笔记
                 </a>
               
             
@@ -312,8 +312,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2025-02-15T00:00:00+00:00">
-                2025-02-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2025-02-20T00:00:00+00:00">
+                2025-02-20
               </time>
             
 
@@ -331,8 +331,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/教育/" itemprop="url" rel="index">
+                    <span itemprop="name">教育</span>
                   </a>
                 </span>
 
@@ -346,8 +346,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2025/02/15/Advanced Guide to Python3 Programming(Second_Edition)笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2025/02/15/Advanced Guide to Python3 Programming(Second_Edition)笔记/" itemprop="commentCount"></span>
+                <a href="/2025/02/20/《Design for How People Learn》总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2025/02/20/《Design for How People Learn》总结/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -357,7 +357,7 @@
 
           
           
-             <span id="/2025/02/15/Advanced Guide to Python3 Programming(Second_Edition)笔记/" class="leancloud_visitors" data-flag-title="Advanced Guide to Python3 Programming(Second_Edition)笔记">
+             <span id="/2025/02/20/《Design for How People Learn》总结/" class="leancloud_visitors" data-flag-title="Design for How People Learn笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -384,72 +384,114 @@
       
         
           
-            <h1 id="&#x300A;Advanced-Guide-to-Python3-Programming-Second-Edition-&#x300B;&#x7B14;&#x8BB0;"><a href="#&#x300A;Advanced-Guide-to-Python3-Programming-Second-Edition-&#x300B;&#x7B14;&#x8BB0;" class="headerlink" title="&#x300A;Advanced Guide to Python3 Programming(Second_Edition)&#x300B;&#x7B14;&#x8BB0;"></a>&#x300A;Advanced Guide to Python3 Programming(Second_Edition)&#x300B;&#x7B14;&#x8BB0;</h1><h3 id="Python-Type-Hints"><a href="#Python-Type-Hints" class="headerlink" title="Python Type Hints"></a>Python Type Hints</h3><p>Type Hint is additional type information that can be used with a function definition to indicate what types parameters should be and what type is returned.<br>This is illustrated below: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def add(x: int, y: int) -&gt; int:</span><br><span class="line">    return x + y</span><br></pre></td></tr></table></figure>
-<p>But it is still possible to pass a string into the add() function as far as Python is concerned.<br>However, static analysis tools (such as <strong>MyPy</strong>) can be applied to the code to check for such misuse.</p>
-<h3 id="Class-Slots"><a href="#Class-Slots" class="headerlink" title="Class Slots"></a>Class Slots</h3><p>&#x95EE;&#x9898;&#xFF1A;python&#x53EF;&#x4EE5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x52A8;&#x6001;&#x5B9A;&#x4E49;&#x7C7B;&#x6210;&#x5458;&#xFF0C;&#x5BFC;&#x81F4;&#x65E0;&#x6CD5;&#x63D0;&#x524D;&#x9884;&#x77E5;&#x548C;&#x7BA1;&#x7406;&#x7C7B;&#x6210;&#x5458;</p>
-<p>&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;&#x4F7F;&#x7528;<strong>slots</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Person: </span><br><span class="line">    __slots__ = [&apos;name&apos;, &apos;age&apos;] </span><br><span class="line">    def __init__(self, name, age): </span><br><span class="line">        self.name = name </span><br><span class="line">        self.age = age </span><br><span class="line">    def __repr__(self): </span><br><span class="line">        return f&apos;Person({self.name} is {self.age})&apos;</span><br></pre></td></tr></table></figure>
-<p>&#x8FD9;&#x6837;&#xFF0C;&#x5728;&#x52A8;&#x6001;&#x5B9A;&#x4E49;<strong>slots</strong>&#x4E4B;&#x5916;&#x7684;&#x7C7B;&#x6210;&#x5458;&#x65F6;&#xFF0C;&#x5C06;&#x4F1A;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x62A5;&#x5F02;&#x5E38;AttributeError</p>
-<p><strong>slots</strong>&#x4F1A;&#x51CF;&#x5C0F;&#x7C7B;&#x5B9E;&#x4F8B;&#x5927;&#x5C0F;&#xFF0C;&#x6709;&#x5229;&#x4E8E;&#x63D0;&#x5347;&#x6027;&#x80FD;</p>
-<h3 id="Weak-References"><a href="#Weak-References" class="headerlink" title="Weak References"></a>Weak References</h3><p>&#x5F31;&#x5F15;&#x7528;&#x76F8;&#x5173;&#x63A5;&#x53E3;&#xFF1A;</p>
+            <h2 id="&#x300A;Design-for-How-People-Learn&#x300B;&#x7B14;&#x8BB0;"><a href="#&#x300A;Design-for-How-People-Learn&#x300B;&#x7B14;&#x8BB0;" class="headerlink" title="&#x300A;Design for How People Learn&#x300B;&#x7B14;&#x8BB0;"></a>&#x300A;Design for How People Learn&#x300B;&#x7B14;&#x8BB0;</h2><h3 id="&#x4E3B;&#x8981;&#x5185;&#x5BB9;"><a href="#&#x4E3B;&#x8981;&#x5185;&#x5BB9;" class="headerlink" title="&#x4E3B;&#x8981;&#x5185;&#x5BB9;"></a>&#x4E3B;&#x8981;&#x5185;&#x5BB9;</h3><p>&#x300A;Design for How People Learn&#x300B;&#x7531;Julie Dirksen&#x6240;&#x8457;&#xFF0C;&#x662F;&#x4E00;&#x672C;&#x805A;&#x7126;&#x4E8E;&#x5982;&#x4F55;&#x8BBE;&#x8BA1;&#x6709;&#x6548;&#x5B66;&#x4E60;&#x4F53;&#x9A8C;&#x7684;&#x4E66;&#x7C4D;&#x3002;&#x672C;&#x4E66;&#x56F4;&#x7ED5;&#x5B66;&#x4E60;&#x8BBE;&#x8BA1;&#x7684;&#x591A;&#x4E2A;&#x5173;&#x952E;&#x65B9;&#x9762;&#x5C55;&#x5F00;&#x63A2;&#x8BA8;&#xFF0C;&#x65E8;&#x5728;&#x5E2E;&#x52A9;&#x8BFB;&#x8005;&#x7406;&#x89E3;&#x5B66;&#x4E60;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x5404;&#x79CD;&#x56E0;&#x7D20;&#xFF0C;&#x5E76;&#x638C;&#x63E1;&#x8BBE;&#x8BA1;&#x9AD8;&#x6548;&#x5B66;&#x4E60;&#x4F53;&#x9A8C;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5BF9;&#x6559;&#x80B2;&#x5DE5;&#x4F5C;&#x8005;&#x3001;&#x57F9;&#x8BAD;&#x5E08;&#x4EE5;&#x53CA;&#x5B66;&#x4E60;&#x8BBE;&#x8BA1;&#x5E08;&#x7B49;&#x5177;&#x6709;&#x91CD;&#x8981;&#x7684;&#x53C2;&#x8003;&#x4EF7;&#x503C;&#x3002;</p>
+<ol>
+<li><p><strong>&#x5B66;&#x4E60;&#x8BBE;&#x8BA1;&#x7684;&#x91CD;&#x8981;&#x6027;&#x4E0E;&#x76EE;&#x6807;</strong>&#xFF1A;&#x597D;&#x7684;&#x5B66;&#x4E60;&#x8BBE;&#x8BA1;&#x65E8;&#x5728;&#x8BA9;&#x5B66;&#x4E60;&#x8005;&#x83B7;&#x5F97;&#x65B0;&#x7684;&#x6216;&#x63D0;&#x5347;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x5E76;&#x5E94;&#x7528;&#x5230;&#x5B9E;&#x9645;&#x751F;&#x6D3B;&#x4E2D;&#x3002;&#x4F46;&#x4F20;&#x7EDF;&#x6559;&#x5B66;&#x65B9;&#x5F0F;&#x5F80;&#x5F80;&#x4F4E;&#x6548;&#xFF0C;&#x6CE8;&#x91CD;&#x5185;&#x5BB9;&#x4F20;&#x6388;&#x800C;&#x5FFD;&#x89C6;&#x5B66;&#x4E60;&#x4F53;&#x9A8C;&#xFF0C;&#x5BFC;&#x81F4;&#x5B66;&#x4E60;&#x6548;&#x679C;&#x4E0D;&#x4F73;&#x3002;&#x5B66;&#x4E60;&#x4F53;&#x9A8C;&#x5982;&#x540C;&#x65C5;&#x7A0B;&#xFF0C;&#x4ECE;&#x5B66;&#x4E60;&#x8005;&#x7684;&#x73B0;&#x72B6;&#x51FA;&#x53D1;&#xFF0C;&#x4EE5;&#x5176;&#x6210;&#x529F;&#x4E3A;&#x7EC8;&#x70B9;&#xFF0C;&#x800C;&#x6210;&#x529F;&#x4E0D;&#x4EC5;&#x610F;&#x5473;&#x7740;&#x77E5;&#x8BC6;&#x7684;&#x589E;&#x52A0;&#xFF0C;&#x66F4;&#x4F53;&#x73B0;&#x5728;&#x5B9E;&#x9645;&#x884C;&#x52A8;&#x4E0A;&#x3002;</p>
+</li>
+<li><p><strong>&#x5B66;&#x4E60;&#x8005;&#x7684;&#x5DEE;&#x8DDD;&#x5206;&#x6790;</strong></p>
 <ul>
-<li><strong>weakref.ref(object[, callback])</strong>&#x2014;This returns a weak reference to the object.</li>
-<li><strong>weakref.proxy(object[, callback])</strong>&#x2014;This returns a proxy to object which uses a weak reference.</li>
-<li><strong>weakref.getweakrefcount(object)</strong>&#x2014;Return the number of weak references and proxies which refer to object.</li>
-<li><strong>weakref.getweakrefs(object)</strong>&#x2014;Return a list of all weak reference and proxy objects which refer to object.</li>
-</ul>
-<p>1&#x3001;&#x5C06;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x5F3A;&#x5F15;&#x7528;&#x88AB;&#x91CA;&#x653E;&#x65F6;&#xFF0C;&#x5F31;&#x5F15;&#x7528;&#x81EA;&#x52A8;&#x5931;&#x6548;</p>
-<p>2&#x3001;weakref.proxy &#x83B7;&#x53D6;&#x7684;&#x5F31;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x662F;&#x539F;&#x5BF9;&#x8C61;&#x7684;&#x4EE3;&#x7406;&#xFF0C;&#x53EF;&#x76F4;&#x63A5;&#x50CF;&#x539F;&#x5BF9;&#x8C61;&#x4E00;&#x6837;&#x8C03;&#x7528;&#x5404;&#x6210;&#x5458;&#xFF1B;weakref.ref &#x83B7;&#x53D6;&#x7684;&#x5F31;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#xFF0C;&#x9700;&#x8981;&#x989D;&#x5916;&#x89E3;&#x4E00;&#x5C42;&#xFF0C;&#x5176;&#x5B83;&#x4E00;&#x81F4;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Data: </span><br><span class="line">    def __init__(self, value): </span><br><span class="line">        self.value = value </span><br><span class="line">    def __repr__(self): </span><br><span class="line">        return f&apos;Data({self.value})&apos; </span><br><span class="line">    def out(self):</span><br><span class="line">        return &quot;out msg&quot;</span><br><span class="line"></span><br><span class="line">data = Data(1) </span><br><span class="line">weakref_data = weakref.ref(data) </span><br><span class="line">print(weakref_data().out())</span><br><span class="line">proxy_object = weakref.proxy(data) </span><br><span class="line">print(proxy_object.out())</span><br></pre></td></tr></table></figure>
-<h3 id="Data-Classes"><a href="#Data-Classes" class="headerlink" title="Data Classes"></a>Data Classes</h3><p>&#x6570;&#x636E;&#x7C7B;&#x662F;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x5FEB;&#x6377;&#x5B9A;&#x4E49;&#x5B9E;&#x4F53;&#x7C7B;&#x7684;&#x8BED;&#x6CD5;&#x7CD6;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from dataclasses import dataclass </span><br><span class="line">@dataclass </span><br><span class="line">class Trade: </span><br><span class="line">    &quot;&quot;&quot;Class for representing Equity Trades&quot;&quot;&quot; </span><br><span class="line">    counter_party1: str </span><br><span class="line">    counter_party2: str </span><br><span class="line">    symbol: str </span><br><span class="line">    amount: int = 0</span><br></pre></td></tr></table></figure></p>
-<p>&#x8FD9;&#x79CD;&#x4FBF;&#x6377;&#x4E5F;&#x5E26;&#x6765;&#x4E86;&#x51E0;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
-<p>1&#x3001;&#x521D;&#x59CB;&#x5316;&#x95EE;&#x9898;:&#x53EF;&#x53D8;&#x7C7B;&#x578B;&#x6210;&#x5458;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x666E;&#x901A;&#x7684;&#x8BED;&#x6CD5;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x5BFC;&#x81F4;&#x6240;&#x6709;&#x5B9E;&#x4F8B;&#x7684;&#x8BE5;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF0C;&#x5B9E;&#x9645;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;&#xFF08;&#x56E0;&#x4E3A;&#x6210;&#x5458;&#x662F;&#x5728;&#x7C7B;&#x52A0;&#x8F7D;&#x7684;&#x65F6;&#x5019;&#x521D;&#x59CB;&#x5316;&#x7684;&#xFF0C;&#x800C;&#x9ED8;&#x8BA4;&#x7684;<strong>init</strong>&#x6CA1;&#x6709;&#x5BF9;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x518D;&#x6B21;&#x663E;&#x5F0F;&#x521D;&#x59CB;&#x5316;&#xFF09;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from dataclasses import dataclass, field</span><br><span class="line"></span><br><span class="line">@dataclass</span><br><span class="line">class Trade:</span><br><span class="line">    counter_party1: str</span><br><span class="line">    counter_party2: str</span><br><span class="line">    symbol: str</span><br><span class="line">    amount: int = 0  # &#x9ED8;&#x8BA4;&#x503C;&#x4E3A; 0</span><br><span class="line">    history: list = field(default_factory=list)  # &#x9ED8;&#x8BA4;&#x503C;&#x4E3A;&#x7A7A;&#x5217;&#x8868;</span><br></pre></td></tr></table></figure>
-<p>2&#x3001;&#x7EE7;&#x627F;&#x94FE;&#x4E2D;&#x53C2;&#x6570;&#x9ED8;&#x8BA4;&#x503C;&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x679C;&#x7236;&#x7C7B;&#x4F7F;&#x7528;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x6765;&#x521D;&#x59CB;&#x5316;&#x6210;&#x5458;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;&#x5B50;&#x7C7B;&#x7684;&#x6240;&#x6709;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x90FD;&#x8981;&#x63D0;&#x4F9B;&#x9ED8;&#x8BA4;&#x503C;&#x3002;&#xFF08;&#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x663E;&#x5F0F;&#x7684;<strong>init</strong>&#xFF0C;&#x5B50;&#x7C7B;&#x7684;&#x9ED8;&#x8BA4;<strong>init</strong>&#x8981;&#x60F3;&#x6B63;&#x786E;&#x521D;&#x59CB;&#x5316;&#x6240;&#x6709;&#x6210;&#x5458;&#xFF0C;&#x5C31;&#x8981;&#x6EE1;&#x8DB3;&#x6240;&#x6709;&#x6709;&#x9ED8;&#x8BA4;&#x503C;&#x7684;&#x53C2;&#x6570;&#x5C31;&#x653E;&#x5728;&#x53C2;&#x6570;&#x5217;&#x8868;&#x7684;&#x540E;&#x9762;&#xFF09;</p>
-<p>3&#x3001;&#x4E3A;&#x4E86;&#x5BF9;&#x6570;&#x636E;&#x7C7B;&#x589E;&#x52A0;&#x65E5;&#x5FD7;&#x76D1;&#x63A7;&#xFF0C;&#x540C;&#x65F6;&#x907F;&#x514D;&#x589E;&#x52A0;&#x65B9;&#x6CD5;&#x6210;&#x5458;&#x7834;&#x574F;&#x6570;&#x636E;&#x7C7B;&#x7684;&#x7B80;&#x6D01;&#xFF0C;&#x989D;&#x5916;&#x5F15;&#x5165;<strong>post_init</strong>&#x6210;&#x5458;&#xFF0C;&#x8BE5;&#x6210;&#x5458;&#x5728;<strong>init</strong>&#x4E4B;&#x540E;&#x6267;&#x884C;</p>
-<h3 id="&#x6742;&#x9879;"><a href="#&#x6742;&#x9879;" class="headerlink" title="&#x6742;&#x9879;"></a>&#x6742;&#x9879;</h3><h4 id="&#x7C7B;&#x7684;str-&#x4E0E;-repr&#x7684;&#x533A;&#x522B;"><a href="#&#x7C7B;&#x7684;str-&#x4E0E;-repr&#x7684;&#x533A;&#x522B;" class="headerlink" title="&#x7C7B;&#x7684;str &#x4E0E; repr&#x7684;&#x533A;&#x522B;"></a>&#x7C7B;&#x7684;<strong>str</strong> &#x4E0E; <strong>repr</strong>&#x7684;&#x533A;&#x522B;</h4><p>&#x5728; Python &#x4E2D;&#xFF0C;<strong>str</strong> &#x548C; <strong>repr</strong> &#x90FD;&#x7528;&#x4E8E;&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x8868;&#x793A;&#xFF0C;&#x4F46;&#x5B83;&#x4EEC;&#x7684;&#x7528;&#x9014;&#x548C;&#x8BBE;&#x8BA1;&#x76EE;&#x6807;&#x4E0D;&#x540C;&#x3002;&#x4EE5;&#x4E0B;&#x662F;&#x4E3B;&#x8981;&#x533A;&#x522B;&#xFF1A;</p>
-<ul>
-<li><ol>
-<li>&#x76EE;&#x6807;&#x7528;&#x6237;&#x4E0D;&#x540C;</li>
-</ol>
+<li><p><strong>&#x5DEE;&#x8DDD;&#x7C7B;&#x578B;</strong>&#xFF1A;&#x5B66;&#x4E60;&#x8005;&#x5B58;&#x5728;&#x77E5;&#x8BC6;&#x3001;&#x6280;&#x80FD;&#x3001;&#x52A8;&#x673A;&#x3001;&#x73AF;&#x5883;&#x548C;&#x6C9F;&#x901A;&#x7B49;&#x65B9;&#x9762;&#x7684;&#x5DEE;&#x8DDD;&#x3002;&#x77E5;&#x8BC6;&#x5DEE;&#x8DDD;&#x5E38;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x4FE1;&#x606F;&#x4E0D;&#x8DB3;&#xFF0C;&#x4F46;&#x4EC5;&#x6709;&#x4FE1;&#x606F;&#x4E0D;&#x8DB3;&#x4EE5;&#x4FDD;&#x8BC1;&#x5B66;&#x4E60;&#x8005;&#x80FD;&#x591F;&#x6709;&#x6548;&#x8FD0;&#x7528;&#xFF1B;&#x6280;&#x80FD;&#x5DEE;&#x8DDD;&#x9700;&#x901A;&#x8FC7;&#x5B9E;&#x8DF5;&#x6765;&#x5F25;&#x8865;&#xFF0C;&#x53EF;&#x901A;&#x8FC7; &#x201C;&#x662F;&#x5426;&#x80FD;&#x4E0D;&#x7ECF;&#x7EC3;&#x4E60;&#x5C31;&#x719F;&#x7EC3;&#x638C;&#x63E1;&#x201D; &#x5224;&#x65AD;&#xFF1B;&#x52A8;&#x673A;&#x5DEE;&#x8DDD;&#x539F;&#x56E0;&#x591A;&#x6837;&#xFF0C;&#x5982;&#x5BF9;&#x7ED3;&#x679C;&#x4E0D;&#x8BA4;&#x540C;&#x3001;&#x7126;&#x8651;&#x7B49;&#xFF1B;&#x73AF;&#x5883;&#x5DEE;&#x8DDD;&#x5305;&#x62EC;&#x7EC4;&#x7EC7;&#x5185;&#x6D41;&#x7A0B;&#x3001;&#x8D44;&#x6E90;&#x7B49;&#x65B9;&#x9762;&#x7684;&#x963B;&#x788D;&#xFF1B;&#x6C9F;&#x901A;&#x5DEE;&#x8DDD;&#x8868;&#x73B0;&#x4E3A;&#x6307;&#x4EE4;&#x4E0D;&#x6E05;&#x6670;&#x7B49;&#x3002;</p>
+</li>
+<li><p><strong>&#x5206;&#x6790;&#x65B9;&#x6CD5;</strong>&#xFF1A;&#x53EF;&#x901A;&#x8FC7;&#x8BE2;&#x95EE; &#x201C;&#x4ED6;&#x4EEC;&#x5B9E;&#x9645;&#x9700;&#x8981;&#x7528;&#x8FD9;&#x4E2A;&#x505A;&#x4EC0;&#x4E48;&#x201D;&#x201C;&#x8DDF;&#x968F;&#x65B0;&#x624B;&#x548C;&#x4E13;&#x5BB6;&#x89C2;&#x5BDF;&#x5DEE;&#x5F02;&#x201D; &#x7B49;&#x7B56;&#x7565;&#x6765;&#x8BC6;&#x522B;&#x5DEE;&#x8DDD;&#x3002;&#x660E;&#x786E;&#x5DEE;&#x8DDD;&#x5BF9;&#x8BBE;&#x8BA1;&#x5B66;&#x4E60;&#x4F53;&#x9A8C;&#x81F3;&#x5173;&#x91CD;&#x8981;&#xFF0C;&#x80FD;&#x907F;&#x514D;&#x89E3;&#x51B3;&#x9519;&#x8BEF;&#x95EE;&#x9898;&#xFF0C;&#x63D0;&#x9AD8;&#x5B66;&#x4E60;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x7684;&#x6709;&#x6548;&#x6027;&#x3002;</p>
 </li>
 </ul>
-<p><strong>str</strong>&#xFF1A;&#x9762;&#x5411;&#x7528;&#x6237;&#xFF0C;&#x63D0;&#x4F9B;&#x66F4;&#x53CB;&#x597D;&#x3001;&#x53EF;&#x8BFB;&#x6027;&#x5F3A;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x8868;&#x793A;&#x3002;</p>
-<p><strong>repr</strong>&#xFF1A;&#x9762;&#x5411;&#x5F00;&#x53D1;&#x8005;&#xFF0C;&#x63D0;&#x4F9B;&#x660E;&#x786E;&#x3001;&#x65E0;&#x6B67;&#x4E49;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x8868;&#x793A;&#xFF0C;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x8C03;&#x8BD5;&#x6216;&#x65E5;&#x5FD7;&#x3002;</p>
+</li>
+<li><p><strong>&#x4E86;&#x89E3;&#x5B66;&#x4E60;&#x8005;</strong></p>
 <ul>
-<li><ol start="2">
-<li>&#x8C03;&#x7528;&#x573A;&#x666F;&#x4E0D;&#x540C;</li>
-</ol>
+<li><p><strong>&#x5B66;&#x4E60;&#x8005;&#x7279;&#x70B9;</strong>&#xFF1A;&#x5305;&#x62EC;&#x57FA;&#x672C;&#x4EBA;&#x53E3;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x3001;&#x9605;&#x8BFB;&#x6C34;&#x5E73;&#x3001;&#x6280;&#x672F;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#x7B49;&#x3002;&#x4E86;&#x89E3;&#x5B66;&#x4E60;&#x8005;&#x7684;&#x52A8;&#x673A;&#x548C;&#x6001;&#x5EA6;&#x5341;&#x5206;&#x5173;&#x952E;&#xFF0C;&#x5982;&#x5185;&#x5728;&#x52A8;&#x673A;&#x548C;&#x5916;&#x5728;&#x52A8;&#x673A;&#x5BF9;&#x5B66;&#x4E60;&#x7684;&#x5F71;&#x54CD;&#x4E0D;&#x540C;&#xFF0C;&#x4E14;&#x5B66;&#x4E60;&#x8005;&#x5728;&#x4E0D;&#x540C;&#x60C5;&#x5883;&#x4E0B;&#x52A8;&#x673A;&#x7C7B;&#x578B;&#x4F1A;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x3002;</p>
+</li>
+<li><p><strong>&#x5B66;&#x4E60;&#x98CE;&#x683C;</strong>&#xFF1A;&#x5B66;&#x4E60;&#x98CE;&#x683C;&#x7406;&#x8BBA;&#x4F17;&#x591A;&#xFF0C;&#x4F46;&#x79D1;&#x5B66;&#x8BC1;&#x636E;&#x8868;&#x660E;&#x5176;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x6548;&#x679C;&#x4E0D;&#x4F73;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x6211;&#x4EEC;&#x4ECD;&#x53EF;&#x4ECE;&#x4E2D;&#x83B7;&#x53D6;&#x6709;&#x7528;&#x89C2;&#x70B9;&#xFF0C;&#x5982;&#x91C7;&#x7528;&#x591A;&#x79CD;&#x5B66;&#x4E60;&#x65B9;&#x5F0F;&#x3001;&#x8BA4;&#x8BC6;&#x5230;&#x5B58;&#x5728;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x667A;&#x529B;&#x7B49;&#x3002;</p>
+</li>
+<li><p><strong>&#x4E86;&#x89E3;&#x65B9;&#x6CD5;</strong>&#xFF1A;&#x4E0E;&#x5B66;&#x4E60;&#x8005;&#x4EA4;&#x8C08;&#xFF0C;&#x4E86;&#x89E3;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x548C;&#x9700;&#x6C42;&#xFF1B;&#x8DDF;&#x968F;&#x5B66;&#x4E60;&#x8005;&#x89C2;&#x5BDF;&#x5176;&#x884C;&#x4E3A;&#xFF1B;&#x5C1D;&#x8BD5;&#x5C06;&#x8BBE;&#x8BA1;&#x5185;&#x5BB9;&#x5728;&#x5B66;&#x4E60;&#x8005;&#x4E2D;&#x8BD5;&#x7528;&#xFF0C;&#x83B7;&#x53D6;&#x53CD;&#x9988;&#x5E76;&#x6539;&#x8FDB;&#x3002;</p>
 </li>
 </ul>
-<p><strong>str</strong> &#x4F1A;&#x5728;&#x4EE5;&#x4E0B;&#x60C5;&#x51B5;&#x88AB;&#x8C03;&#x7528;&#xFF1A;</p>
-<pre><code>&#x4F7F;&#x7528; print(obj) &#x6216; str(obj) &#x65F6;&#x3002;
+</li>
+<li><p><strong>&#x660E;&#x786E;&#x5B66;&#x4E60;&#x76EE;&#x6807;</strong></p>
+<ul>
+<li><p><strong>&#x786E;&#x5B9A;&#x95EE;&#x9898;&#x4E0E;&#x76EE;&#x6807;</strong>&#xFF1A;&#x8BBE;&#x8BA1;&#x5B66;&#x4E60;&#x4F53;&#x9A8C;&#x524D;&#x9700;&#x660E;&#x786E;&#x95EE;&#x9898;&#xFF0C;&#x901A;&#x8FC7;&#x8BE2;&#x95EE; &#x201C;&#x5982;&#x679C;&#x4E0D;&#x77E5;&#x9053;&#x4F1A;&#x600E;&#x6837;&#x201D;&#x201C;&#x4ED6;&#x4EEC;&#x5B9E;&#x9645;&#x7528;&#x6B64;&#x505A;&#x4EC0;&#x4E48;&#x201D; &#x7B49;&#x95EE;&#x9898;&#x6765;&#x786E;&#x5B9A;&#x3002;&#x76EE;&#x6807;&#x5E94;&#x5177;&#x4F53;&#x3001;&#x53EF;&#x8861;&#x91CF;&#xFF0C;&#x907F;&#x514D;&#x6A21;&#x7CCA;&#x4E0D;&#x6E05;&#x7684;&#x8868;&#x8FF0;&#xFF0C;&#x5982;&#x4F7F;&#x7528; &#x201C;&#x505A;&#x201D; &#x7684;&#x52A8;&#x8BCD;&#x6765;&#x5B9A;&#x4E49;&#x76EE;&#x6807;&#x3002;</p>
+</li>
+<li><p><strong>&#x76EE;&#x6807;&#x5C42;&#x6B21;&#x4E0E;&#x6C9F;&#x901A;</strong>&#xFF1A;&#x8003;&#x8651;&#x5B66;&#x4E60;&#x8005;&#x7684;&#x7406;&#x89E3;&#x6DF1;&#x5EA6;&#x548C;&#x719F;&#x7EC3;&#x7A0B;&#x5EA6;&#xFF0C;&#x5982;&#x5E03;&#x9C81;&#x59C6;&#x5206;&#x7C7B;&#x6CD5;&#x548C;&#x683C;&#x6D1B;&#x4E3D;&#x4E9A;&#xB7;&#x683C;&#x96F7;&#x7684;&#x91CF;&#x8868;&#x53EF;&#x4F5C;&#x53C2;&#x8003;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x8981;&#x4EE5;&#x5408;&#x9002;&#x65B9;&#x5F0F;&#x5411;&#x5B66;&#x4E60;&#x8005;&#x6C9F;&#x901A;&#x5B66;&#x4E60;&#x76EE;&#x6807;&#xFF0C;&#x907F;&#x514D;&#x4F7F;&#x7528;&#x672F;&#x8BED;&#xFF0C;&#x53EF;&#x91C7;&#x7528;&#x6311;&#x6218;&#x3001;&#x573A;&#x666F;&#x7B49;&#x5F62;&#x5F0F;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p><strong>&#x8BB0;&#x5FC6;&#x4E0E;&#x5B66;&#x4E60;</strong></p>
+<ul>
+<li><p><strong>&#x8BB0;&#x5FC6;&#x8FC7;&#x7A0B;</strong>&#xFF1A;&#x8BB0;&#x5FC6;&#x5305;&#x62EC;&#x7F16;&#x7801;&#x548C;&#x68C0;&#x7D22;&#xFF0C;&#x6D89;&#x53CA;&#x611F;&#x89C9;&#x8BB0;&#x5FC6;&#x3001;&#x77ED;&#x671F;&#x8BB0;&#x5FC6;&#x548C;&#x957F;&#x671F;&#x8BB0;&#x5FC6;&#x3002;&#x611F;&#x89C9;&#x8BB0;&#x5FC6;&#x662F;&#x4FE1;&#x606F;&#x7684;&#x521D;&#x6B65;&#x8FC7;&#x6EE4;&#xFF1B;&#x77ED;&#x671F;&#x8BB0;&#x5FC6;&#x5BB9;&#x91CF;&#x6709;&#x9650;&#xFF0C;&#x4FE1;&#x606F;&#x505C;&#x7559;&#x65F6;&#x95F4;&#x77ED;&#xFF1B;&#x957F;&#x671F;&#x8BB0;&#x5FC6;&#x662F;&#x4FE1;&#x606F;&#x7684;&#x5B58;&#x50A8;&#x4ED3;&#x5E93;&#xFF0C;&#x4FE1;&#x606F;&#x5728;&#x5176;&#x4E2D;&#x901A;&#x8FC7;&#x5173;&#x8054;&#x5B58;&#x50A8;&#xFF0C;&#x5173;&#x8054;&#x8D8A;&#x591A;&#x8D8A;&#x6613;&#x68C0;&#x7D22;&#x3002;</p>
+</li>
+<li><p><strong>&#x5F71;&#x54CD;&#x56E0;&#x7D20;</strong>&#xFF1A;&#x4FE1;&#x606F;&#x7684;&#x663E;&#x8457;&#x6027;&#x3001;&#x719F;&#x6089;&#x5EA6;&#x7B49;&#x5F71;&#x54CD;&#x8BB0;&#x5FC6;&#x6548;&#x679C;&#xFF0C;&#x91CD;&#x590D;&#x6709;&#x52A9;&#x4E8E;&#x8BB0;&#x5FC6;&#xFF0C;&#x4F46;&#x5355;&#x7EAF;&#x6B7B;&#x8BB0;&#x786C;&#x80CC;&#x5B58;&#x5728;&#x5C40;&#x9650;&#x6027;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x5B66;&#x4E60;&#x73AF;&#x5883;&#x4E0E;&#x5E94;&#x7528;&#x73AF;&#x5883;&#x76F8;&#x4F3C;&#x65F6;&#xFF0C;&#x8BB0;&#x5FC6;&#x6548;&#x679C;&#x66F4;&#x597D;&#xFF0C;&#x540C;&#x65F6;&#x5E94;&#x5339;&#x914D;&#x5B66;&#x4E60;&#x6D3B;&#x52A8;&#x4E0E;&#x4FE1;&#x606F;&#x7684;&#x4F7F;&#x7528;&#x548C;&#x8BC4;&#x4F30;&#x65B9;&#x5F0F;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p><strong>&#x5438;&#x5F15;&#x5B66;&#x4E60;&#x8005;&#x7684;&#x6CE8;&#x610F;&#x529B;</strong></p>
+<ul>
+<li><p><strong>&#x5927;&#x8111;&#x7684;&#x53CC;&#x91CD;&#x63A7;&#x5236;&#x6A21;&#x578B;</strong>&#xFF1A;&#x4E54;&#x7EB3;&#x68EE;&#xB7;&#x6D77;&#x7279;&#x5C06;&#x5927;&#x8111;&#x6BD4;&#x4F5C;&#x9A91;&#x624B;&#x548C;&#x5927;&#x8C61;&#xFF0C;&#x9A91;&#x624B;&#x4EE3;&#x8868;&#x7406;&#x6027;&#x601D;&#x7EF4;&#xFF0C;&#x5927;&#x8C61;&#x4EE3;&#x8868;&#x60C5;&#x611F;&#x548C;&#x76F4;&#x89C9;&#x7B49;&#x81EA;&#x52A8;&#x7CFB;&#x7EDF;&#x3002;&#x5728;&#x5B66;&#x4E60;&#x4E2D;&#xFF0C;&#x82E5;&#x5927;&#x8C61;&#x672A;&#x88AB;&#x5438;&#x5F15;&#xFF0C;&#x5B66;&#x4E60;&#x8005;&#x96BE;&#x4EE5;&#x96C6;&#x4E2D;&#x6CE8;&#x610F;&#x529B;&#xFF0C;&#x4E14;&#x5F3A;&#x5236;&#x96C6;&#x4E2D;&#x6CE8;&#x610F;&#x529B;&#x4F1A;&#x6D88;&#x8017;&#x8BA4;&#x77E5;&#x8D44;&#x6E90;&#x3002;</p>
+</li>
+<li><p><strong>&#x5438;&#x5F15;&#x5927;&#x8C61;&#x7684;&#x65B9;&#x6CD5;</strong>&#xFF1A;&#x53EF;&#x901A;&#x8FC7;&#x8BB2;&#x6545;&#x4E8B;&#x3001;&#x5236;&#x9020;&#x60CA;&#x559C;&#x3001;&#x5C55;&#x793A;&#x65B0;&#x5947;&#x4E8B;&#x7269;&#x3001;&#x5229;&#x7528;&#x793E;&#x4EA4;&#x4E92;&#x52A8;&#x548C;&#x63D0;&#x4F9B;&#x89C6;&#x89C9;&#x7EBF;&#x7D22;&#x7B49;&#x65B9;&#x5F0F;&#x5438;&#x5F15;&#x5927;&#x8C61;&#x3002;&#x4F46;&#x8981;&#x786E;&#x4FDD;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x4E0E;&#x5B66;&#x4E60;&#x5185;&#x5BB9;&#x76F8;&#x5173;&#xFF0C;&#x907F;&#x514D;&#x5206;&#x6563;&#x6CE8;&#x610F;&#x529B;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p><strong>&#x77E5;&#x8BC6;&#x5B66;&#x4E60;&#x7684;&#x8BBE;&#x8BA1;</strong></p>
+<ul>
+<li><p><strong>&#x589E;&#x5F3A;&#x8BB0;&#x5FC6;&#x7684;&#x7B56;&#x7565;</strong>&#xFF1A;&#x5E2E;&#x52A9;&#x5B66;&#x4E60;&#x8005;&#x5229;&#x7528;&#x5DF2;&#x6709;&#x77E5;&#x8BC6;&#xFF0C;&#x6784;&#x5EFA;&#x77E5;&#x8BC6;&#x6846;&#x67B6;&#xFF0C;&#x5982;&#x901A;&#x8FC7;&#x95EE;&#x9898;&#x5F15;&#x5BFC;&#x8BA9;&#x5B66;&#x4E60;&#x8005;&#x56DE;&#x5FC6;&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x589E;&#x52A0;&#x5B66;&#x4E60;&#x5185;&#x5BB9;&#x7684;&#x8DA3;&#x5473;&#x6027;&#x548C;&#x4E92;&#x52A8;&#x6027;&#xFF0C;&#x5982;&#x91C7;&#x7528; &#x201C;&#x5C55;&#x793A;&#x800C;&#x975E;&#x8BB2;&#x8FF0;&#x201D; &#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5F15;&#x53D1;&#x5B66;&#x4E60;&#x8005;&#x7684;&#x601D;&#x8003;&#x548C;&#x53C2;&#x4E0E;&#x3002;</p>
+</li>
+<li><p><strong>&#x5185;&#x5BB9;&#x4E0E;&#x6307;&#x5BFC;</strong>&#xFF1A;&#x63D0;&#x4F9B;&#x9002;&#x91CF;&#x4E14;&#x76F8;&#x5173;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x907F;&#x514D;&#x8FC7;&#x591A;&#x6216;&#x8FC7;&#x5C11;&#x3002;&#x786E;&#x5B9A;&#x7ED9;&#x4E88;&#x5B66;&#x4E60;&#x8005;&#x7684;&#x6307;&#x5BFC;&#x7A0B;&#x5EA6;&#xFF0C;&#x53EF;&#x91C7;&#x7528;&#x4E2D;&#x95F4;&#x8DEF;&#x7EBF;&#xFF0C;&#x7ED3;&#x5408;&#x793A;&#x4F8B;&#x548C;&#x6982;&#x5FF5;&#x6559;&#x5B66;&#xFF0C;&#x5E2E;&#x52A9;&#x5B66;&#x4E60;&#x8005;&#x638C;&#x63E1;&#x77E5;&#x8BC6;&#x5E76;&#x80FD;&#x5728;&#x591A;&#x79CD;&#x60C5;&#x5883;&#x4E2D;&#x5E94;&#x7528;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p><strong>&#x6280;&#x80FD;&#x5B66;&#x4E60;&#x7684;&#x8BBE;&#x8BA1;</strong></p>
+<ul>
+<li><p><strong>&#x6280;&#x80FD;&#x53D1;&#x5C55;&#x8981;&#x7D20;</strong>&#xFF1A;&#x6280;&#x80FD;&#x53D1;&#x5C55;&#x9700;&#x8981;&#x5B9E;&#x8DF5;&#x548C;&#x53CD;&#x9988;&#x3002;&#x5B9E;&#x8DF5;&#x5E94;&#x5408;&#x7406;&#x5B89;&#x6392;&#xFF0C;&#x907F;&#x514D;&#x5927;&#x91CF;&#x65B0;&#x4FE1;&#x606F;&#x96C6;&#x4E2D;&#x8F93;&#x5165;&#xFF0C;&#x53EF;&#x91C7;&#x7528;&#x7C7B;&#x4F3C;&#x6E38;&#x620F;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x8BA9;&#x5B66;&#x4E60;&#x8005;&#x5728;&#x5B9E;&#x8DF5;&#x4E2D;&#x9010;&#x6B65;&#x63D0;&#x9AD8;&#x3002;&#x53CD;&#x9988;&#x5E94;&#x53CA;&#x65F6;&#x3001;&#x591A;&#x6837;&#xFF0C;&#x57FA;&#x4E8E;&#x660E;&#x786E;&#x7684;&#x6807;&#x51C6;&#xFF0C;&#x4EE5;&#x4FC3;&#x8FDB;&#x6280;&#x80FD;&#x7684;&#x6709;&#x6548;&#x63D0;&#x5347;&#x3002;</p>
+</li>
+<li><p><strong>&#x57FA;&#x4E8E;&#x76EE;&#x6807;&#x7684;&#x5B66;&#x4E60;&#x8BBE;&#x8BA1;</strong>&#xFF1A;&#x53C2;&#x7167;&#x6E38;&#x620F;&#x7684;&#x76EE;&#x6807;&#x7ED3;&#x6784;&#xFF0C;&#x4E3A;&#x5B66;&#x4E60;&#x8005;&#x8BBE;&#x5B9A;&#x5373;&#x65F6;&#x3001;&#x77ED;&#x671F;&#x3001;&#x4E2D;&#x671F;&#x548C;&#x957F;&#x671F;&#x76EE;&#x6807;&#xFF0C;&#x4F7F;&#x5B66;&#x4E60;&#x8005;&#x5728;&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E0D;&#x65AD;&#x7EC3;&#x4E60;&#x548C;&#x5DE9;&#x56FA;&#x6280;&#x80FD;&#xFF0C;&#x63D0;&#x9AD8;&#x5B66;&#x4E60;&#x6548;&#x679C;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p><strong>&#x52A8;&#x673A;&#x6FC0;&#x53D1;&#x7684;&#x8BBE;&#x8BA1;</strong></p>
+<ul>
+<li><p><strong>&#x52A8;&#x673A;&#x7C7B;&#x578B;&#x4E0E;&#x95EE;&#x9898;</strong>&#xFF1A;&#x5B66;&#x4E60;&#x8BBE;&#x8BA1;&#x5E08;&#x5173;&#x6CE8;&#x5B66;&#x4E60;&#x52A8;&#x673A;&#x548C;&#x884C;&#x52A8;&#x52A8;&#x673A;&#x3002;&#x201C;&#x6211;&#x77E5;&#x9053;&#xFF0C;&#x4F46;&#x2026;&#x2026;&#x201D; &#x7684;&#x60C5;&#x51B5;&#x5E38;&#x8868;&#x660E;&#x9700;&#x8981;&#x8BBE;&#x8BA1;&#x52A8;&#x673A;&#xFF0C;&#x8FD9;&#x901A;&#x5E38;&#x6D89;&#x53CA;&#x5EF6;&#x8FDF;&#x5956;&#x52B1;&#x6216;&#x540E;&#x679C;&#xFF0C;&#x4E14;&#x6539;&#x53D8;&#x884C;&#x4E3A;&#x4E60;&#x60EF;&#x8F83;&#x4E3A;&#x56F0;&#x96BE;&#x3002;</p>
+</li>
+<li><p><strong>&#x5F71;&#x54CD;&#x884C;&#x4E3A;&#x7684;&#x6A21;&#x578B;</strong>&#xFF1A;&#x6280;&#x672F;&#x63A5;&#x53D7;&#x6A21;&#x578B;&#x548C;&#x521B;&#x65B0;&#x6269;&#x6563;&#x6A21;&#x578B;&#x53EF;&#x7528;&#x4E8E;&#x5206;&#x6790;&#x5F71;&#x54CD;&#x5B66;&#x4E60;&#x8005;&#x884C;&#x4E3A;&#x7684;&#x56E0;&#x7D20;&#xFF0C;&#x5982;&#x611F;&#x77E5;&#x6709;&#x7528;&#x6027;&#x3001;&#x6613;&#x7528;&#x6027;&#x3001;&#x76F8;&#x5BF9;&#x4F18;&#x52BF;&#x7B49;&#x3002;&#x63D0;&#x9AD8;&#x81EA;&#x6211;&#x6548;&#x80FD;&#x611F;&#x3001;&#x63D0;&#x4F9B;&#x699C;&#x6837;&#x793A;&#x8303;&#x3001;&#x5229;&#x7528;&#x793E;&#x4EA4;&#x8BC1;&#x660E;&#x7B49;&#x65B9;&#x6CD5;&#x53EF;&#x4FC3;&#x8FDB;&#x884C;&#x4E3A;&#x6539;&#x53D8;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p><strong>&#x5B66;&#x4E60;&#x73AF;&#x5883;&#x7684;&#x8BBE;&#x8BA1;</strong></p>
+<ul>
+<li><p><strong>&#x73AF;&#x5883;&#x5DEE;&#x8DDD;&#x4E0E;&#x77E5;&#x8BC6;&#x5206;&#x5E03;</strong>&#xFF1A;&#x73AF;&#x5883;&#x5DEE;&#x8DDD;&#x53EF;&#x80FD;&#x963B;&#x788D;&#x5B66;&#x4E60;&#xFF0C;&#x5E94;&#x5C06;&#x90E8;&#x5206;&#x77E5;&#x8BC6;&#x4ECE;&#x5B66;&#x4E60;&#x8005;&#x7684;&#x5934;&#x8111;&#x4E2D;&#x8F6C;&#x79FB;&#x5230;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x5982;&#x4F7F;&#x7528;&#x7089;&#x7076;&#x7684;&#x8BBE;&#x8BA1;&#x793A;&#x4F8B;&#xFF0C;&#x901A;&#x8FC7;&#x6539;&#x53D8;&#x73AF;&#x5883;&#x8BBE;&#x8BA1;&#x53EF;&#x964D;&#x4F4E;&#x5B66;&#x4E60;&#x96BE;&#x5EA6;&#x3002;</p>
+</li>
+<li><p><strong>&#x8D44;&#x6E90;&#x4E0E;&#x63D0;&#x793A;</strong>&#xFF1A;&#x63D0;&#x4F9B;&#x5DE5;&#x4F5C;&#x8F85;&#x52A9;&#x5DE5;&#x5177;&#x3001;&#x8D44;&#x6E90;&#x7F13;&#x5B58;&#xFF0C;&#x8BBE;&#x7F6E;&#x63D0;&#x793A;&#x548C;&#x89E6;&#x53D1;&#x5668;&#xFF0C;&#x5C06;&#x884C;&#x4E3A;&#x5D4C;&#x5165;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x90FD;&#x6709;&#x52A9;&#x4E8E;&#x63D0;&#x9AD8;&#x5B66;&#x4E60;&#x6548;&#x679C;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x7B80;&#x5316;&#x6D41;&#x7A0B;&#x3001;&#x6E05;&#x9664;&#x969C;&#x788D;&#xFF0C;&#x4E3A;&#x5B66;&#x4E60;&#x8005;&#x521B;&#x9020;&#x826F;&#x597D;&#x7684;&#x5B66;&#x4E60;&#x73AF;&#x5883;&#x3002;</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="&#x6709;&#x8DA3;&#x7684;&#x6BD4;&#x55BB;"><a href="#&#x6709;&#x8DA3;&#x7684;&#x6BD4;&#x55BB;" class="headerlink" title="&#x6709;&#x8DA3;&#x7684;&#x6BD4;&#x55BB;"></a>&#x6709;&#x8DA3;&#x7684;&#x6BD4;&#x55BB;</h3><ol>
+<li><p><strong>&#x5927;&#x8111;&#x4E0E;&#x8863;&#x67DC;</strong>&#xFF1A;&#x5C06;&#x5927;&#x8111;&#x6BD4;&#x4F5C;&#x8863;&#x67DC;&#xFF0C;&#x77E5;&#x8BC6;&#x5728;&#x5927;&#x8111;&#x4E2D;&#x7684;&#x5B58;&#x50A8;&#x548C;&#x68C0;&#x7D22;&#x7C7B;&#x4F3C;&#x7269;&#x54C1;&#x5728;&#x8863;&#x67DC;&#x4E2D;&#x7684;&#x5B58;&#x653E;&#x548C;&#x5BFB;&#x627E;&#x3002;&#x65B0;&#x624B;&#x7684;&#x77E5;&#x8BC6;&#x7ED3;&#x6784;&#x50CF;&#x6742;&#x4E71;&#x7684;&#x8863;&#x67DC;&#xFF0C;&#x4FE1;&#x606F;&#x7F3A;&#x4E4F;&#x7EC4;&#x7EC7;&#xFF1B;&#x4E13;&#x5BB6;&#x5219;&#x6709;&#x66F4;&#x6709;&#x5E8F;&#x7684;&#x5206;&#x7C7B;&#x548C;&#x5B58;&#x50A8;&#x65B9;&#x5F0F;&#x3002;&#x8FD9;&#x4E2A;&#x6BD4;&#x55BB;&#x5E2E;&#x52A9;&#x8BFB;&#x8005;&#x7406;&#x89E3;&#x4E0D;&#x540C;&#x77E5;&#x8BC6;&#x6C34;&#x5E73;&#x7684;&#x4EBA;&#x5BF9;&#x4FE1;&#x606F;&#x7684;&#x5904;&#x7406;&#x5DEE;&#x5F02;&#x3002;</p>
+</li>
+<li><p><strong>&#x9A91;&#x624B;&#x4E0E;&#x5927;&#x8C61;</strong>&#xFF1A;&#x628A;&#x5927;&#x8111;&#x7684;&#x7406;&#x6027;&#x601D;&#x7EF4;&#x90E8;&#x5206;&#x6BD4;&#x4F5C;&#x9A91;&#x624B;&#xFF0C;&#x60C5;&#x611F;&#x548C;&#x76F4;&#x89C9;&#x7B49;&#x81EA;&#x52A8;&#x7CFB;&#x7EDF;&#x6BD4;&#x4F5C;&#x5927;&#x8C61;&#x3002;&#x5F62;&#x8C61;&#x5730;&#x8BF4;&#x660E;&#x4E86;&#x5728;&#x5B66;&#x4E60;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x7406;&#x6027;&#x4E0E;&#x60C5;&#x611F;&#x7684;&#x76F8;&#x4E92;&#x4F5C;&#x7528;&#xFF0C;&#x4EE5;&#x53CA;&#x4E3A;&#x4EC0;&#x4E48;&#x5438;&#x5F15;&#x60C5;&#x611F;&#x5C42;&#x9762;&#x7684; &#x201C;&#x5927;&#x8C61;&#x201D; &#x5BF9;&#x5B66;&#x4E60;&#x5F88;&#x91CD;&#x8981;&#x3002;</p>
+</li>
+<li><p><strong>&#x5B66;&#x4E60;&#x5982;&#x9A91;&#x81EA;&#x884C;&#x8F66;</strong>&#xFF1A;&#x5B66;&#x4E60;&#x65B0;&#x77E5;&#x8BC6;&#x5982;&#x540C;&#x9A91;&#x81EA;&#x884C;&#x8F66;&#x4E0A;&#x5761;&#xFF0C;&#x9700;&#x8981;&#x6D88;&#x8017;&#x5927;&#x91CF;&#x80FD;&#x91CF;&#xFF1B;&#x800C;&#x8FD0;&#x7528;&#x5DF2;&#x5B66;&#x77E5;&#x8BC6;&#x5219;&#x50CF;&#x4E0B;&#x5761;&#xFF0C;&#x8F83;&#x4E3A;&#x8F7B;&#x677E;&#x3002;&#x4EE5;&#x6B64;&#x6BD4;&#x55BB;&#x8BF4;&#x660E;&#x5B66;&#x4E60;&#x8FC7;&#x7A0B;&#x4E2D;&#x5E94;&#x5408;&#x7406;&#x5B89;&#x6392;&#x65B0;&#x4FE1;&#x606F;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x907F;&#x514D;&#x5B66;&#x4E60;&#x8005;&#x8FC7;&#x5EA6;&#x75B2;&#x52B3;&#x3002;</p>
+</li>
+<li><p><strong>&#x77E5;&#x8BC6;&#x7684;&#x7F13;&#x5B58;&#x4E0E;&#x4F9B;&#x5E94;</strong>&#xFF1A;&#x628A;&#x4E3A;&#x5B66;&#x4E60;&#x8005;&#x63D0;&#x4F9B;&#x4FE1;&#x606F;&#x6BD4;&#x55BB;&#x4E3A;&#x7F13;&#x5B58;&#x548C;&#x4F9B;&#x5E94;&#x7269;&#x8D44;&#xFF0C;&#x5F62;&#x8C61;&#x5730;&#x89E3;&#x91CA;&#x4E86;&#x6839;&#x636E;&#x5B66;&#x4E60;&#x8005;&#x9700;&#x6C42;&#x63D0;&#x4F9B;&#x5173;&#x952E;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x5728;&#x4ED6;&#x4EEC;&#x9700;&#x8981;&#x65F6;&#x63D0;&#x4F9B;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x7684;&#x91CD;&#x8981;&#x6027;&#x3002;</p>
+</li>
+<li><p><strong>&#x6559;&#x5B66;&#x4E2D;&#x7684;GPS&#x4E0E;&#x5730;&#x56FE;</strong>&#xFF1A;&#x7528;GPS&#x548C;&#x5730;&#x56FE;&#x6765;&#x6BD4;&#x55BB;&#x6559;&#x5B66;&#x4E2D;&#x7684;&#x8BE6;&#x7EC6;&#x6307;&#x5BFC;&#x548C;&#x6982;&#x5FF5;&#x6027;&#x5F15;&#x5BFC;&#x3002;GPS&#x5F0F;&#x7684;&#x7CBE;&#x786E;&#x6307;&#x5BFC;&#x80FD;&#x5E2E;&#x52A9;&#x5B66;&#x4E60;&#x8005;&#x5FEB;&#x901F;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#xFF0C;&#x4F46;&#x4E0D;&#x5229;&#x4E8E;&#x5B66;&#x4E60;&#xFF1B;&#x5730;&#x56FE;&#x5F0F;&#x7684;&#x5F15;&#x5BFC;&#x5219;&#x66F4;&#x6709;&#x52A9;&#x4E8E;&#x5B66;&#x4E60;&#x8005;&#x7406;&#x89E3;&#x6574;&#x4F53;&#x60C5;&#x51B5;&#xFF0C;&#x638C;&#x63E1;&#x77E5;&#x8BC6;&#x548C;&#x6280;&#x80FD;&#x3002;</p>
+</li>
+</ol>
+<h3 id="&#x6709;&#x54F2;&#x7406;&#x7684;&#x53E5;&#x5B50;"><a href="#&#x6709;&#x54F2;&#x7406;&#x7684;&#x53E5;&#x5B50;" class="headerlink" title="&#x6709;&#x54F2;&#x7406;&#x7684;&#x53E5;&#x5B50;"></a>&#x6709;&#x54F2;&#x7406;&#x7684;&#x53E5;&#x5B50;</h3><ol>
+<li><p><strong>&#x5B66;&#x4E60;&#x5982;&#x65C5;&#x7A0B;</strong>&#xFF1A;&#x201C;Learning experiences are like journeys. The journey starts where the learner is now, and ends when the learner is successful (however that is defined). The end of the journey isn&#x2019;t just knowing more, it&#x2019;s doing more.&#x201D;&#x2014;&#x2014;&#x5B66;&#x4E60;&#x4F53;&#x9A8C;&#x5C31;&#x50CF;&#x65C5;&#x7A0B;&#x3002;&#x65C5;&#x7A0B;&#x4ECE;&#x5B66;&#x4E60;&#x8005;&#x73B0;&#x5728;&#x6240;&#x5904;&#x7684;&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&#xFF0C;&#x5728;&#x5B66;&#x4E60;&#x8005;&#x53D6;&#x5F97;&#x6210;&#x529F;&#x65F6;&#xFF08;&#x65E0;&#x8BBA;&#x6210;&#x529F;&#x662F;&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x7684;&#xFF09;&#x7ED3;&#x675F;&#x3002;&#x65C5;&#x7A0B;&#x7684;&#x7EC8;&#x70B9;&#x4E0D;&#x53EA;&#x662F;&#x77E5;&#x9053;&#x5F97;&#x66F4;&#x591A;&#xFF0C;&#x800C;&#x662F;&#x80FD;&#x505A;&#x5F97;&#x66F4;&#x591A;&#x3002;</p>
+</li>
+<li><p><strong>&#x521B;&#x9020;&#x5B66;&#x4E60;&#x73AF;&#x5883;</strong>&#xFF1A;&#x201C;We can&#x2019;t make anybody learn, but we can make much better learning environments for them.&#x201D;&#x2014;&#x2014;&#x6211;&#x4EEC;&#x65E0;&#x6CD5;&#x5F3A;&#x8FEB;&#x4EFB;&#x4F55;&#x4EBA;&#x5B66;&#x4E60;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4E3A;&#x4ED6;&#x4EEC;&#x521B;&#x9020;&#x66F4;&#x597D;&#x7684;&#x5B66;&#x4E60;&#x73AF;&#x5883;&#x3002;3. <strong>&#x5B66;&#x4E60;&#x8005;&#x5373;&#x82F1;&#x96C4;</strong>&#xFF1A;&#x201C;Even incidental characters are the heroes of their own stories. We typically design for audiences of &#x2018;learners,&#x2019; but each individual learner is the hero of their own learning journey. We just need to ensure they have everything they need to move along the path.&#x201D;&#x2014;&#x2014;&#x5373;&#x4F7F;&#x662F;&#x6B21;&#x8981;&#x89D2;&#x8272;&#x4E5F;&#x662F;&#x4ED6;&#x4EEC;&#x81EA;&#x5DF1;&#x6545;&#x4E8B;&#x91CC;&#x7684;&#x82F1;&#x96C4;&#x3002;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x4E3A; &#x201C;&#x5B66;&#x4E60;&#x8005;&#x201D; &#x7FA4;&#x4F53;&#x8FDB;&#x884C;&#x8BBE;&#x8BA1;&#xFF0C;&#x4F46;&#x6BCF;&#x4E2A;&#x5B66;&#x4E60;&#x8005;&#x90FD;&#x662F;&#x81EA;&#x5DF1;&#x5B66;&#x4E60;&#x65C5;&#x7A0B;&#x4E2D;&#x7684;&#x82F1;&#x96C4;&#x3002;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x786E;&#x4FDD;&#x4ED6;&#x4EEC;&#x62E5;&#x6709;&#x5728;&#x5B66;&#x4E60;&#x9053;&#x8DEF;&#x4E0A;&#x524D;&#x8FDB;&#x6240;&#x9700;&#x7684;&#x4E00;&#x5207;&#x3002;</p>
+</li>
+<li><p><strong>&#x51FA;&#x8272;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#x7684;&#x4E50;&#x8DA3;</strong>&#xFF1A;&#x201C;Kicking ass is more fun regardless of the task. It&#x2019;s more fun to know more. It&#x2019;s more fun to be able to do more. It&#x2019;s more fun to be able to help others do more.&#x201D;&#x2014;&#x2014;&#x65E0;&#x8BBA;&#x505A;&#x4EC0;&#x4E48;&#x4EFB;&#x52A1;&#xFF0C;&#x51FA;&#x8272;&#x5730;&#x5B8C;&#x6210;&#x90FD;&#x66F4;&#x6709;&#x8DA3;&#x3002;&#x77E5;&#x9053;&#x5F97;&#x66F4;&#x591A;&#x66F4;&#x6709;&#x8DA3;&#x3002;&#x80FD;&#x591F;&#x505A;&#x5F97;&#x66F4;&#x591A;&#x66F4;&#x6709;&#x8DA3;&#x3002;&#x80FD;&#x591F;&#x5E2E;&#x52A9;&#x522B;&#x4EBA;&#x505A;&#x5F97;&#x66F4;&#x591A;&#x4E5F;&#x66F4;&#x6709;&#x8DA3;&#x3002; </p>
+</li>
+<li><p><strong>&#x6539;&#x53D8;&#x662F;&#x8FC7;&#x7A0B;</strong>&#xFF1A;&#x201C;Change is a process, not an event.&#x201D;&#x2014;&#x2014;&#x6539;&#x53D8;&#x662F;&#x4E00;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002; </p>
+</li>
+<li><p><strong>&#x7ECF;&#x9A8C;&#x5B66;&#x4E60;&#x7684;&#x4E24;&#x9762;&#x6027;</strong>&#xFF1A;&#x201C;We learn from experience, but it can be a problem if we learn the wrong thing from experience.&#x201D;&#x2014;&#x2014;&#x6211;&#x4EEC;&#x4ECE;&#x7ECF;&#x9A8C;&#x4E2D;&#x5B66;&#x4E60;&#xFF0C;&#x4F46;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4ECE;&#x7ECF;&#x9A8C;&#x4E2D;&#x5B66;&#x5230;&#x4E86;&#x9519;&#x8BEF;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x8FD9;&#x53EF;&#x80FD;&#x4F1A;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x3002; </p>
+</li>
+<li><p><strong>&#x4E60;&#x60EF;&#x7684;&#x529B;&#x91CF;</strong>&#xFF1A;&#x201C;The elephant is a creature of habit, which means that if the elephant is used to going left, it&#x2019;s going to require a fair bit of conscious effort to get it to go right instead.&#x201D;&#x2014;&#x2014;&#x5927;&#x8C61;&#x662F;&#x4E60;&#x60EF;&#x7684;&#x4EA7;&#x7269;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5982;&#x679C;&#x5927;&#x8C61;&#x4E60;&#x60EF;&#x5411;&#x5DE6;&#x8D70;&#xFF0C;&#x90A3;&#x4E48;&#x8981;&#x8BA9;&#x5B83;&#x5411;&#x53F3;&#x8D70;&#x5C31;&#x9700;&#x8981;&#x76F8;&#x5F53;&#x591A;&#x7684;&#x6709;&#x610F;&#x8BC6;&#x7684;&#x52AA;&#x529B;&#x3002; </p>
+</li>
+<li><p><strong>&#x6311;&#x6218;&#x4E0E;&#x80FD;&#x529B;&#x7684;&#x5E73;&#x8861;</strong>&#xFF1A;&#x201C;When the challenge far exceeds a learner&#x2019;s ability, it&#x2019;s probably too difficult for that learner, and quickly becomes frustrating. But when something is far too easy for a learner, it&#x2019;s boring.&#x201D;&#x2014;&#x2014;&#x5F53;&#x6311;&#x6218;&#x8FDC;&#x8FDC;&#x8D85;&#x8FC7;&#x5B66;&#x4E60;&#x8005;&#x7684;&#x80FD;&#x529B;&#x65F6;&#xFF0C;&#x8FD9;&#x5BF9;&#x5B66;&#x4E60;&#x8005;&#x6765;&#x8BF4;&#x53EF;&#x80FD;&#x592A;&#x96BE;&#x4E86;&#xFF0C;&#x5F88;&#x5FEB;&#x5C31;&#x4F1A;&#x8BA9;&#x4EBA;&#x611F;&#x5230;&#x6CAE;&#x4E27;&#x3002;&#x4F46;&#x5F53;&#x67D0;&#x4EF6;&#x4E8B;&#x5BF9;&#x5B66;&#x4E60;&#x8005;&#x6765;&#x8BF4;&#x592A;&#x5BB9;&#x6613;&#x65F6;&#xFF0C;&#x5B83;&#x5C31;&#x4F1A;&#x53D8;&#x5F97;&#x65E0;&#x804A;&#x3002;</p>
+</li>
+</ol>
 
-&#x5728;&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#xFF08;&#x5982; f&quot;{obj}&quot;&#xFF09;&#x4E2D;&#x3002;
-</code></pre><p><strong>repr</strong> &#x4F1A;&#x5728;&#x4EE5;&#x4E0B;&#x60C5;&#x51B5;&#x88AB;&#x8C03;&#x7528;&#xFF1A;</p>
-<pre><code>&#x76F4;&#x63A5;&#x5728;&#x4EA4;&#x4E92;&#x5F0F;&#x73AF;&#x5883;&#xFF08;&#x5982; Python Shell&#xFF09;&#x4E2D;&#x8F93;&#x5165;&#x5BF9;&#x8C61;&#x540D;&#x5E76;&#x6309;&#x56DE;&#x8F66;&#x65F6;&#x3002;
-
-&#x4F7F;&#x7528; repr(obj) &#x65F6;&#x3002;
-
-&#x5F53; __str__ &#x672A;&#x5B9A;&#x4E49;&#x65F6;&#xFF0C;&#x4F1A;&#x56DE;&#x9000;&#x5230; __repr__&#x3002;
-</code></pre><ul>
-<li><ol start="3">
-<li>&#x8FD4;&#x56DE;&#x503C;&#x8981;&#x6C42;&#x4E0D;&#x540C;</li>
-</ol>
-</li>
-</ul>
-<p><strong>str</strong>&#xFF1A;&#x8FD4;&#x56DE;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x53EF;&#x4EE5;&#x662F;&#x7B80;&#x5316;&#x7684;&#x3001;&#x66F4;&#x4EBA;&#x6027;&#x5316;&#x7684;&#x5F62;&#x5F0F;&#x3002;</p>
-<p><strong>repr</strong>&#xFF1A;&#x8FD4;&#x56DE;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5E94;&#x5C3D;&#x91CF;&#x660E;&#x786E;&#xFF0C;&#x7406;&#x60F3;&#x60C5;&#x51B5;&#x4E0B;&#x5E94;&#x662F;&#x4E00;&#x4E2A;&#x5408;&#x6CD5;&#x7684; Python &#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x80FD;&#x901A;&#x8FC7; eval(repr(obj)) &#x91CD;&#x65B0;&#x751F;&#x6210;&#x539F;&#x5BF9;&#x8C61;&#x3002;</p>
-<ul>
-<li><ol start="4">
-<li>&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#x4E0D;&#x540C;</li>
-</ol>
-</li>
-</ul>
-<p>&#x5982;&#x679C;&#x672A;&#x5B9A;&#x4E49; <strong>str</strong>&#xFF0C;Python &#x4F1A;&#x9ED8;&#x8BA4;&#x8C03;&#x7528; <strong>repr</strong>&#x3002;</p>
-<p>&#x5982;&#x679C;&#x672A;&#x5B9A;&#x4E49; <strong>repr</strong>&#xFF0C;Python &#x4F1A;&#x4F7F;&#x7528;&#x57FA;&#x7C7B;&#xFF08;&#x5982; object&#xFF09;&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#xFF08;&#x901A;&#x5E38;&#x8FD4;&#x56DE; <classname object at 0x...>&#xFF09;&#x3002;</classname></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Person:</span><br><span class="line">    def __init__(self, name, age):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return f&quot;{self.name} ({self.age} years old)&quot;</span><br><span class="line"></span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return f&quot;Person(&apos;{self.name}&apos;, {self.age})&quot;</span><br><span class="line"></span><br><span class="line"># &#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;</span><br><span class="line">p = Person(&quot;Alice&quot;, 30)</span><br><span class="line"></span><br><span class="line"># &#x8C03;&#x7528; __str__</span><br><span class="line">print(p)           # &#x8F93;&#x51FA;: Alice (30 years old)</span><br><span class="line">print(str(p))      # &#x8F93;&#x51FA;: Alice (30 years old)</span><br><span class="line"></span><br><span class="line"># &#x8C03;&#x7528; __repr__</span><br><span class="line">print(repr(p))     # &#x8F93;&#x51FA;: Person(&apos;Alice&apos;, 30)</span><br><span class="line">p                  # &#x5728;&#x4EA4;&#x4E92;&#x5F0F;&#x73AF;&#x5883;&#x4E2D;&#x76F4;&#x63A5;&#x8F93;&#x5165; p &#x4F1A;&#x8F93;&#x51FA;: Person(&apos;Alice&apos;, 30)</span><br></pre></td></tr></table></figure>
           
         
       
@@ -482,7 +524,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/73/">73</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -521,7 +563,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">72</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -538,7 +580,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">126</span>
+                <span class="site-state-item-count">127</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
