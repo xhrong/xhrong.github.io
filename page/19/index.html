@@ -272,7 +272,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://xhrong.github.io/2019/02/16/分布式方案下Session实现一致性的四种方法/">
+  <link itemprop="mainEntityOfPage" href="http://xhrong.github.io/2019/03/01/大数据处理6种技术架构模式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="xhrong">
@@ -297,8 +297,8 @@
             
               
                 
-                <a class="post-title-link" href="/2019/02/16/分布式方案下Session实现一致性的四种方法/" itemprop="url">
-                  分布式方案下Session实现一致性的四种方法
+                <a class="post-title-link" href="/2019/03/01/大数据处理6种技术架构模式/" itemprop="url">
+                  大数据处理6种技术架构模式
                 </a>
               
             
@@ -312,8 +312,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T00:00:00+00:00">
-                2019-02-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-01T00:00:00+00:00">
+                2019-03-01
               </time>
             
 
@@ -331,8 +331,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务端/" itemprop="url" rel="index">
-                    <span itemprop="name">服务端</span>
+                  <a href="/categories/架构/" itemprop="url" rel="index">
+                    <span itemprop="name">架构</span>
                   </a>
                 </span>
 
@@ -346,8 +346,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2019/02/16/分布式方案下Session实现一致性的四种方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/16/分布式方案下Session实现一致性的四种方法/" itemprop="commentCount"></span>
+                <a href="/2019/03/01/大数据处理6种技术架构模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/01/大数据处理6种技术架构模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -357,7 +357,7 @@
 
           
           
-             <span id="/2019/02/16/分布式方案下Session实现一致性的四种方法/" class="leancloud_visitors" data-flag-title="分布式方案下Session实现一致性的四种方法">
+             <span id="/2019/03/01/大数据处理6种技术架构模式/" class="leancloud_visitors" data-flag-title="大数据处理6种技术架构模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -384,86 +384,82 @@
       
         
           
-            <h3 id="&#x65B9;&#x6848;&#x4E00;&#xFF1A;session&#x590D;&#x5236;"><a href="#&#x65B9;&#x6848;&#x4E00;&#xFF1A;session&#x590D;&#x5236;" class="headerlink" title="&#x65B9;&#x6848;&#x4E00;&#xFF1A;session&#x590D;&#x5236;"></a>&#x65B9;&#x6848;&#x4E00;&#xFF1A;session&#x590D;&#x5236;</h3><p>&#x601D;&#x8DEF;&#xFF1A;&#x591A;&#x4E2A;web-server&#x4E4B;&#x95F4;&#x76F8;&#x4E92;&#x540C;&#x6B65;session&#xFF0C;&#x8FD9;&#x6837;&#x6BCF;&#x4E2A;web-server&#x4E4B;&#x95F4;&#x90FD;&#x5305;&#x542B;&#x5168;&#x90E8;&#x7684;session</p>
-<p><img src="/2019/02/16/&#x5206;&#x5E03;&#x5F0F;&#x65B9;&#x6848;&#x4E0B;Session&#x5B9E;&#x73B0;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x56DB;&#x79CD;&#x65B9;&#x6CD5;/1550325346670.png" alt="enter description here"></p>
-<p><strong>&#x4F18;&#x70B9;&#xFF1A;</strong></p>
+            <blockquote>
+<p>&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x5185;&#x5BB9;&#x548C;&#x56FE;&#x7247;&#x5747;&#x6765;&#x81EA;&#x7F51;&#x7EDC;&#xFF0C;&#x7B80;&#x5355;&#x52A0;&#x5DE5;&#x6574;&#x7406;&#x3002;</p>
+</blockquote>
+<h3 id="&#x6279;&#x5904;&#x7406;&#x67B6;&#x6784;"><a href="#&#x6279;&#x5904;&#x7406;&#x67B6;&#x6784;" class="headerlink" title="&#x6279;&#x5904;&#x7406;&#x67B6;&#x6784;"></a>&#x6279;&#x5904;&#x7406;&#x67B6;&#x6784;</h3><p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551444762095.png" alt="&#x6279;&#x5904;&#x7406;&#x67B6;&#x6784;"></p>
 <ul>
-<li>web-server(Tomcat&#xFF09;&#x652F;&#x6301;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E0D;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x4EE3;&#x7801;</li>
+<li><p>&#x5173;&#x952E;&#xFF1A;&#x5168;&#x91CF;&#x6570;&#x636E;&#x3001;ETL&#x3001;&#x6279;&#x5904;&#x7406;&#x3001;&#x975E;&#x5B9E;&#x65F6;</p>
+</li>
+<li><p>&#x4F18;&#x70B9;&#xFF1A;&#x7B80;&#x5355;</p>
+</li>
+<li><p>&#x7F3A;&#x70B9;&#xFF1A;&#x975E;&#x5B9E;&#x65F6;&#x3002;</p>
+</li>
+<li><p>&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x79BB;&#x7EBF;&#x6570;&#x636E;&#x5904;&#x7406;&#x3002;</p>
+</li>
 </ul>
-<p><strong>&#x4E0D;&#x8DB3;&#xFF1A;</strong></p>
+<h3 id="&#x6D41;&#x5904;&#x7406;&#x67B6;&#x6784;"><a href="#&#x6D41;&#x5904;&#x7406;&#x67B6;&#x6784;" class="headerlink" title="&#x6D41;&#x5904;&#x7406;&#x67B6;&#x6784;"></a>&#x6D41;&#x5904;&#x7406;&#x67B6;&#x6784;</h3><p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551444824606.png" alt="&#x6D41;&#x5904;&#x7406;&#x67B6;&#x6784;"></p>
 <ul>
-<li><p>session&#x7684;&#x540C;&#x6B65;&#x9700;&#x8981;&#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF0C;&#x5360;&#x5185;&#x7F51;&#x5E26;&#x5BBD;&#xFF0C;&#x6709;&#x65F6;&#x5EF6;</p>
+<li><p>&#x5173;&#x952E;&#xFF1A;&#x6D41;&#x5904;&#x7406;&#x3001;&#x5B9E;&#x65F6;&#x3001;&#x53EF;&#x4E0D;&#x5B58;&#x50A8;&#x5168;&#x91CF;&#x6570;&#x636E;</p>
 </li>
-<li><p>&#x6240;&#x6709;web-server&#x90FD;&#x5305;&#x542B;&#x6240;&#x6709;session&#x6570;&#x636E;&#xFF0C;&#x6570;&#x636E;&#x91CF;&#x53D7;&#x5185;&#x5B58;&#x9650;&#x5236;&#xFF0C;&#x65E0;&#x6CD5;&#x6C34;&#x5E73;&#x6269;&#x5C55;</p>
+<li><p>&#x4F18;&#x70B9;&#xFF1A;&#x5B9E;&#x65F6;</p>
+</li>
+<li><p>&#x7F3A;&#x70B9;&#xFF1A;&#x65E0;&#x6CD5;&#x505A;&#x79BB;&#x7EBF;&#x5206;&#x6790;</p>
+</li>
+<li><p>&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5B9E;&#x65F6;&#x6570;&#x636E;&#x5904;&#x7406;</p>
 </li>
 </ul>
-<p>&#x6709;&#x66F4;&#x591A;web-server&#x65F6;&#x8981;&#x6B47;&#x83DC;</p>
-<h3 id="&#x65B9;&#x6848;&#x4E8C;&#xFF1A;&#x5BA2;&#x6237;&#x7AEF;&#x5B58;&#x50A8;&#x6CD5;"><a href="#&#x65B9;&#x6848;&#x4E8C;&#xFF1A;&#x5BA2;&#x6237;&#x7AEF;&#x5B58;&#x50A8;&#x6CD5;" class="headerlink" title="&#x65B9;&#x6848;&#x4E8C;&#xFF1A;&#x5BA2;&#x6237;&#x7AEF;&#x5B58;&#x50A8;&#x6CD5;"></a>&#x65B9;&#x6848;&#x4E8C;&#xFF1A;&#x5BA2;&#x6237;&#x7AEF;&#x5B58;&#x50A8;&#x6CD5;</h3><p>&#x601D;&#x8DEF;&#xFF1A;&#x670D;&#x52A1;&#x7AEF;&#x5B58;&#x50A8;&#x6240;&#x6709;&#x7528;&#x6237;&#x7684;session&#xFF0C;&#x5185;&#x5B58;&#x5360;&#x7528;&#x8F83;&#x5927;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;session&#x5B58;&#x50A8;&#x5230;&#x6D4F;&#x89C8;&#x5668;cookie&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x7AEF;&#x53EA;&#x8981;&#x5B58;&#x50A8;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x7684;&#x6570;&#x636E;&#x4E86;</p>
-<p><img src="/2019/02/16/&#x5206;&#x5E03;&#x5F0F;&#x65B9;&#x6848;&#x4E0B;Session&#x5B9E;&#x73B0;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x56DB;&#x79CD;&#x65B9;&#x6CD5;/1550325392877.png" alt="enter description here"></p>
-<p><strong>&#x4F18;&#x70B9;&#xFF1A;</strong></p>
+<h3 id="Lambda&#x67B6;&#x6784;"><a href="#Lambda&#x67B6;&#x6784;" class="headerlink" title="Lambda&#x67B6;&#x6784;"></a>Lambda&#x67B6;&#x6784;</h3><p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445555691.png" alt="Lambda&#x67B6;&#x6784;"></p>
+<p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445057126.png" alt="Lambda&#x67B6;&#x6784;"></p>
+<p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445064580.png" alt="Lambda&#x67B6;&#x6784;"></p>
 <ul>
-<li>&#x670D;&#x52A1;&#x7AEF;&#x4E0D;&#x9700;&#x8981;&#x5B58;&#x50A8;</li>
+<li><p>&#x5173;&#x952E;&#xFF1A;&#x6279;&#x5904;&#x7406;+&#x6D41;&#x5904;&#x7406;&#xFF0C;&#x5168;&#x91CF;&#x6570;&#x636E;&#x5B58;&#x50A8;&#xFF0C;&#x5408;&#x5E76;&#x7ED3;&#x679C;</p>
+</li>
+<li><p>&#x4F18;&#x70B9;&#xFF1A;&#x5728;&#x7EBF;+&#x79BB;&#x7EBF;</p>
+</li>
+<li><p>&#x7F3A;&#x70B9;&#xFF1A;&#x65E0;&#x6CD5;&#x91CD;&#x653E;&#x6570;&#x636E;&#xFF0C;&#x53EA;&#x53EF;&#x4E00;&#x6B21;&#x6027;&#x6D41;&#x5904;&#x7406;</p>
+</li>
+<li><p>&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5728;&#x7EBF;&#x5904;&#x7406;+&#x79BB;&#x7EBF;&#x5904;&#x7406;</p>
+</li>
 </ul>
-<p><strong>&#x7F3A;&#x70B9;&#xFF1A;</strong></p>
+<h3 id="Kappa&#x67B6;&#x6784;"><a href="#Kappa&#x67B6;&#x6784;" class="headerlink" title="Kappa&#x67B6;&#x6784;"></a>Kappa&#x67B6;&#x6784;</h3><p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445570192.png" alt="Kappa&#x67B6;&#x6784;"></p>
+<p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445239670.png" alt="Kappa&#x67B6;&#x6784;"></p>
+<p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445277735.png" alt="Kappa&#x67B6;&#x6784;"></p>
 <ul>
-<li><p>&#x6BCF;&#x6B21;http&#x8BF7;&#x6C42;&#x90FD;&#x643A;&#x5E26;session&#xFF0C;&#x5360;&#x5916;&#x7F51;&#x5E26;&#x5BBD;</p>
+<li><p>&#x5173;&#x952E;&#xFF1A;Lambda+&#x6570;&#x636E;&#x91CD;&#x653E;</p>
 </li>
-<li><p>&#x6570;&#x636E;&#x5B58;&#x50A8;&#x5728;&#x7AEF;&#x4E0A;&#xFF0C;&#x5E76;&#x5728;&#x7F51;&#x7EDC;&#x4F20;&#x8F93;&#xFF0C;&#x5B58;&#x5728;&#x6CC4;&#x6F0F;&#x3001;&#x7BE1;&#x6539;&#x3001;&#x7A83;&#x53D6;&#x7B49;&#x5B89;&#x5168;&#x9690;&#x60A3;</p>
+<li><p>&#x4F18;&#x70B9;&#xFF1A;&#x652F;&#x6301;&#x591A;&#x6B21;&#x6D41;&#x5904;&#x7406;</p>
 </li>
-<li><p>session&#x5B58;&#x50A8;&#x7684;&#x6570;&#x636E;&#x5927;&#x5C0F;&#x53D7;cookie&#x9650;&#x5236;</p>
+<li><p>&#x7F3A;&#x70B9;&#xFF1A;&#x6570;&#x636E;&#x91CD;&#x653E;&#x590D;&#x6742;</p>
+</li>
+<li><p>&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5728;&#x7EBF;&#x5904;&#x7406;+&#x79BB;&#x7EBF;&#x5904;&#x7406;&#xFF0C;&#x591A;&#x6B21;&#x6D41;&#x5904;&#x7406;</p>
 </li>
 </ul>
-<h3 id="&#x65B9;&#x6848;&#x4E09;&#xFF1A;&#x53CD;&#x5411;&#x4EE3;&#x7406;hash&#x4E00;&#x81F4;&#x6027;"><a href="#&#x65B9;&#x6848;&#x4E09;&#xFF1A;&#x53CD;&#x5411;&#x4EE3;&#x7406;hash&#x4E00;&#x81F4;&#x6027;" class="headerlink" title="&#x65B9;&#x6848;&#x4E09;&#xFF1A;&#x53CD;&#x5411;&#x4EE3;&#x7406;hash&#x4E00;&#x81F4;&#x6027;"></a>&#x65B9;&#x6848;&#x4E09;&#xFF1A;&#x53CD;&#x5411;&#x4EE3;&#x7406;hash&#x4E00;&#x81F4;&#x6027;</h3><h4 id="ip-hash&#x65B9;&#x6848;"><a href="#ip-hash&#x65B9;&#x6848;" class="headerlink" title="ip hash&#x65B9;&#x6848;"></a>ip hash&#x65B9;&#x6848;</h4><p>&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x5C42;&#x4F7F;&#x7528;&#x7528;&#x6237;ip&#x6765;&#x505A;hash&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x540C;&#x4E00;&#x4E2A;ip&#x7684;&#x8BF7;&#x6C42;&#x843D;&#x5728;&#x540C;&#x4E00;&#x4E2A;web-server&#x4E0A;</p>
-<figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> sesiontest {</span><br><span class="line">    ip_hash;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">192.168.11.115:8080</span>;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">192.168.11.120:8080</span>; </span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<p> <strong>&#x4F18;&#x70B9;&#xFF1A;</strong></p>
+<h3 id="Unifield&#x67B6;&#x6784;"><a href="#Unifield&#x67B6;&#x6784;" class="headerlink" title="Unifield&#x67B6;&#x6784;"></a>Unifield&#x67B6;&#x6784;</h3><p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445514143.png" alt="Unifield&#x67B6;&#x6784;"></p>
 <ul>
-<li><p>&#x53EA;&#x9700;&#x8981;&#x6539;nginx&#x914D;&#x7F6E;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x5E94;&#x7528;&#x4EE3;&#x7801;</p>
+<li><p>&#x5173;&#x952E;&#xFF1A;Lambda/Kappa+&#x673A;&#x5668;&#x5B66;&#x4E60;</p>
 </li>
-<li><p>&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#xFF0C;&#x53EA;&#x8981;hash&#x5C5E;&#x6027;&#x662F;&#x5747;&#x5300;&#x7684;&#xFF0C;&#x591A;&#x53F0;web-server&#x7684;&#x8D1F;&#x8F7D;&#x662F;&#x5747;&#x8861;&#x7684;</p>
+<li><p>&#x4F18;&#x70B9;&#xFF1A;&#x652F;&#x6301;&#x673A;&#x5668;&#x5B66;&#x4E60;</p>
 </li>
-<li><p>&#x53EF;&#x4EE5;&#x652F;&#x6301;web-server&#x6C34;&#x5E73;&#x6269;&#x5C55;&#xFF08;session&#x540C;&#x6B65;&#x6CD5;&#x662F;&#x4E0D;&#x884C;&#x7684;&#xFF0C;&#x53D7;&#x5185;&#x5B58;&#x9650;&#x5236;&#xFF09;</p>
+<li><p>&#x7F3A;&#x70B9;&#xFF1A;&#x590D;&#x6742;&#x5EA6;&#x66F4;&#x9AD8;&#xFF0C;&#x5B9E;&#x65BD;&#x96BE;</p>
+</li>
+<li><p>&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5927;&#x6570;&#x636E;+&#x673A;&#x5668;&#x5B66;&#x4E60;</p>
 </li>
 </ul>
-<p><strong>&#x4E0D;&#x8DB3;&#xFF1A;</strong></p>
+<h3 id="IoTA&#x67B6;&#x6784;"><a href="#IoTA&#x67B6;&#x6784;" class="headerlink" title="IoTA&#x67B6;&#x6784;"></a>IoTA&#x67B6;&#x6784;</h3><p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445796337.png" alt="IoTA&#x67B6;&#x6784;"></p>
+<p>&#x901A;&#x8FC7;Common Data Model&#x7684;&#x8BBE;&#x8BA1;&#xFF0C;&#x4E13;&#x6CE8;&#x5728;&#x67D0;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x9886;&#x57DF;&#x7684;&#x6570;&#x636E;&#x6807;&#x51C6;&#x5316;&#x548C;&#x8BA1;&#x7B97;&#xFF0C;&#x4ECE;&#x800C;&#x53EF;&#x4EE5;&#x4ECE;SDK&#x7AEF;&#x5F00;&#x59CB;&#x8BA1;&#x7B97;&#xFF0C;&#x8FB9;&#x7F18;&#x8BA1;&#x7B97;&#xFF0C;&#x4E2D;&#x592E;&#x7AEF;&#x53EA;&#x505A;&#x91C7;&#x96C6;&#x3001;&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;&#x548C;&#x67E5;&#x8BE2;&#xFF0C;&#x63D0;&#x9AD8;&#x6574;&#x4F53;&#x6570;&#x636E;&#x5206;&#x6790;&#x7684;&#x6548;&#x7387;</p>
 <ul>
-<li>web-server&#x6C34;&#x5E73;&#x6269;&#x5C55;&#xFF0C;rehash&#x540E;session&#x91CD;&#x65B0;&#x5206;&#x5E03;&#xFF0C;&#x4E5F;&#x4F1A;&#x6709;&#x4E00;&#x90E8;&#x5206;&#x7528;&#x6237;&#x8DEF;&#x7531;&#x4E0D;&#x5230;&#x6B63;&#x786E;&#x7684;session</li>
-</ul>
-<h4 id="url-hash&#x65B9;&#x6848;"><a href="#url-hash&#x65B9;&#x6848;" class="headerlink" title="url hash&#x65B9;&#x6848;"></a>url hash&#x65B9;&#x6848;</h4><p>&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x4F7F;&#x7528;http&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x67D0;&#x4E9B;&#x4E1A;&#x52A1;&#x5C5E;&#x6027;&#x6765;&#x505A;hash&#xFF0C;&#x4F8B;&#x5982;sid&#xFF0C;city_id&#xFF0C;user_id&#x7B49;&#xFF0C;&#x80FD;&#x591F;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#x7684;&#x5B9E;&#x65BD;hash&#x7B56;&#x7565;&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x540C;&#x4E00;&#x4E2A;&#x6D4F;&#x89C8;&#x5668;&#x7528;&#x6237;&#x7684;&#x8BF7;&#x6C42;&#x843D;&#x5728;&#x540C;&#x4E00;&#x4E2A;web-server&#x4E0A;<br><figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> www_load {</span><br><span class="line">	    <span class="comment">#&#x6839;&#x636E;&#x53C2;&#x6570;&#x8FDB;&#x884C;Hash&#x5206;&#x914D;</span></span><br><span class="line">		<span class="attribute">hash</span> <span class="variable">$defurlkey</span>;</span><br><span class="line">		<span class="attribute">server</span> localhost:<span class="number">5000</span>;</span><br><span class="line">		<span class="attribute">server</span> localhost:<span class="number">5001</span>;</span><br><span class="line">		<span class="attribute">server</span> localhost:<span class="number">5002</span>;</span><br><span class="line">		}</span><br></pre></td></tr></table></figure></p>
-<p><strong>&#x4F18;&#x70B9;&#xFF1A;</strong></p>
-<ul>
-<li><p>&#x53EA;&#x9700;&#x8981;&#x6539;nginx&#x914D;&#x7F6E;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x5E94;&#x7528;&#x4EE3;&#x7801;</p>
+<li><p>&#x5173;&#x952E;&#xFF1A;&#x7279;&#x5B9A;&#x9886;&#x57DF;&#x3001;&#x53BB;ETL&#x5316;&#x3001;IoT&#x3001;&#x8FB9;&#x7F18;&#x8BA1;&#x7B97;&#x3001;Ad-hoc&#x67E5;&#x8BE2;&#x3001;&#x5B9E;&#x65F6;</p>
 </li>
-<li><p>&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#xFF0C;&#x53EA;&#x8981;hash&#x5C5E;&#x6027;&#x662F;&#x5747;&#x5300;&#x7684;&#xFF0C;&#x591A;&#x53F0;web-server&#x7684;&#x8D1F;&#x8F7D;&#x662F;&#x5747;&#x8861;&#x7684;</p>
+<li><p>&#x4F18;&#x70B9;&#xFF1A;&#x7B80;&#x5316;&#x6570;&#x636E;&#x5904;&#x7406;</p>
 </li>
-<li><p>&#x53EF;&#x4EE5;&#x652F;&#x6301;web-server&#x6C34;&#x5E73;&#x6269;&#x5C55;&#xFF08;session&#x540C;&#x6B65;&#x6CD5;&#x662F;&#x4E0D;&#x884C;&#x7684;&#xFF0C;&#x53D7;&#x5185;&#x5B58;&#x9650;&#x5236;&#xFF09;</p>
+<li><p>&#x7F3A;&#x70B9;&#xFF1A;&#x6570;&#x636E;&#x91C7;&#x96C6;&#x8981;&#x6C42;&#x6807;&#x51C6;&#x5316;&#xFF0C;&#x5B9E;&#x65BD;&#x56F0;&#x96BE;</p>
+</li>
+<li><p>&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;IoT</p>
 </li>
 </ul>
-<p><strong>&#x4E0D;&#x8DB3;&#xFF1A;</strong></p>
-<ul>
-<li>web-server&#x6C34;&#x5E73;&#x6269;&#x5C55;&#xFF0C;rehash&#x540E;session&#x91CD;&#x65B0;&#x5206;&#x5E03;&#xFF0C;&#x4E5F;&#x4F1A;&#x6709;&#x4E00;&#x90E8;&#x5206;&#x7528;&#x6237;&#x8DEF;&#x7531;&#x4E0D;&#x5230;&#x6B63;&#x786E;&#x7684;session</li>
-</ul>
-<h3 id="&#x65B9;&#x6848;&#x56DB;&#xFF1A;&#x540E;&#x7AEF;&#x7EDF;&#x4E00;&#x96C6;&#x4E2D;&#x5B58;&#x50A8;"><a href="#&#x65B9;&#x6848;&#x56DB;&#xFF1A;&#x540E;&#x7AEF;&#x7EDF;&#x4E00;&#x96C6;&#x4E2D;&#x5B58;&#x50A8;" class="headerlink" title="&#x65B9;&#x6848;&#x56DB;&#xFF1A;&#x540E;&#x7AEF;&#x7EDF;&#x4E00;&#x96C6;&#x4E2D;&#x5B58;&#x50A8;"></a>&#x65B9;&#x6848;&#x56DB;&#xFF1A;&#x540E;&#x7AEF;&#x7EDF;&#x4E00;&#x96C6;&#x4E2D;&#x5B58;&#x50A8;</h3><p>&#x601D;&#x8DEF;&#xFF1A;&#x5C06;session&#x5B58;&#x50A8;&#x5728;web-server&#x540E;&#x7AEF;&#x7684;&#x5B58;&#x50A8;&#x5C42;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x6216;&#x8005;&#x7F13;&#x5B58;</p>
-<p><img src="/2019/02/16/&#x5206;&#x5E03;&#x5F0F;&#x65B9;&#x6848;&#x4E0B;Session&#x5B9E;&#x73B0;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x56DB;&#x79CD;&#x65B9;&#x6CD5;/1550325803329.png" alt="enter description here"></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Spring-Session+Redis&#x5B9E;&#x73B0;session&#x5171;&#x4EAB;&#x4F9D;&#x8D56; start--&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.session<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-session-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.1.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.8.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- Spring-Session+Redis&#x5B9E;&#x73B0;session&#x5171;&#x4EAB;&#x4F9D;&#x8D56; end--&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>&#x4F18;&#x70B9;&#xFF1A;</strong></p>
-<ul>
-<li><p>&#x6CA1;&#x6709;&#x5B89;&#x5168;&#x9690;&#x60A3;</p>
-</li>
-<li><p>&#x53EF;&#x4EE5;&#x6C34;&#x5E73;&#x6269;&#x5C55;&#xFF0C;&#x6570;&#x636E;&#x5E93;/&#x7F13;&#x5B58;&#x6C34;&#x5E73;&#x5207;&#x5206;&#x5373;&#x53EF;</p>
-</li>
-<li><p>web-server&#x91CD;&#x542F;&#x6216;&#x8005;&#x6269;&#x5BB9;&#x90FD;&#x4E0D;&#x4F1A;&#x6709;session&#x4E22;&#x5931;</p>
-</li>
-</ul>
-<p><strong>&#x4E0D;&#x8DB3;&#xFF1A;</strong></p>
-<ul>
-<li>&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x6B21;&#x7F51;&#x7EDC;&#x8C03;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x5E94;&#x7528;&#x4EE3;&#x7801;</li>
-</ul>
-<h3 id="&#x7ED3;&#x8BBA;"><a href="#&#x7ED3;&#x8BBA;" class="headerlink" title="&#x7ED3;&#x8BBA;"></a>&#x7ED3;&#x8BBA;</h3><ul>
-<li>&#x4F18;&#x9009;&#x65B9;&#x6848;&#x4E09;</li>
-<li>&#x5176;&#x6B21;&#x65B9;&#x6848;&#x56DB;</li>
-<li>&#x4E0D;&#x7528;&#x65B9;&#x6848;&#x4E8C;</li>
-<li>&#x5C11;&#x7528;&#x65B9;&#x6848;&#x4E00;</li>
-</ul>
+<h3 id="&#x7ED3;&#x8BBA;"><a href="#&#x7ED3;&#x8BBA;" class="headerlink" title="&#x7ED3;&#x8BBA;"></a>&#x7ED3;&#x8BBA;</h3><p>Lambda &#x67B6;&#x6784;&#x662F;&#x517C;&#x5BB9;&#x4E86; batch layer, speed layer(real-time processing)&#x7684;&#x67B6;&#x6784;&#xFF0C;Kappa &#x67B6;&#x6784;&#x5219;&#x662F;&#x7528; speed layer(real-time processing) &#x5168;&#x7A0B;&#x5904;&#x7406;&#x5B9E;&#x65F6;&#x6570;&#x636E;&#x548C;&#x5386;&#x53F2;&#x6570;&#x636E;&#xFF0C;Unified &#x67B6;&#x6784;&#x8FDB;&#x4E00;&#x6B65;&#x5F15;&#x5165;&#x4E86;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x80FD;&#x529B;</p>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;"><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;" class="headerlink" title="&#x53C2;&#x8003;&#x8D44;&#x6599;"></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</h3><p>1&#x3001;<a href="https://insights.thoughtworks.cn/common-big-data-infrastructure/" target="_blank" rel="noopener">https://insights.thoughtworks.cn/common-big-data-infrastructure/</a><br>2&#x3001;<a href="https://blog.csdn.net/odailidong/article/details/80035658" target="_blank" rel="noopener">https://blog.csdn.net/odailidong/article/details/80035658</a><br>3&#x3001;<a href="https://blog.csdn.net/wujiandao/article/details/81323209" target="_blank" rel="noopener">https://blog.csdn.net/wujiandao/article/details/81323209</a><br>4&#x3001;<a href="https://blog.csdn.net/u010885548/article/details/79804657" target="_blank" rel="noopener">https://blog.csdn.net/u010885548/article/details/79804657</a></p>
 
           
         
@@ -497,7 +493,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/75/">75</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/76/">76</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -536,7 +532,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">75</span>
+              <span class="site-state-item-count">76</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -544,7 +540,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -553,7 +549,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">127</span>
+                <span class="site-state-item-count">129</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
