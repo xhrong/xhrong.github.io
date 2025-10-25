@@ -272,7 +272,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://xhrong.github.io/2017/05/19/CMMI之功能点估算法/">
+  <link itemprop="mainEntityOfPage" href="http://xhrong.github.io/2017/05/20/Android Hook技术与Xposed/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="xhrong">
@@ -297,8 +297,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/19/CMMI之功能点估算法/" itemprop="url">
-                  CMMI之功能点估算法
+                <a class="post-title-link" href="/2017/05/20/Android Hook技术与Xposed/" itemprop="url">
+                  Android Hook技术与Xposed
                 </a>
               
             
@@ -312,8 +312,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-19T00:00:00+00:00">
-                2017-05-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-20T00:00:00+00:00">
+                2017-05-20
               </time>
             
 
@@ -331,8 +331,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/项目管理/" itemprop="url" rel="index">
-                    <span itemprop="name">项目管理</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -346,8 +346,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/05/19/CMMI之功能点估算法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/19/CMMI之功能点估算法/" itemprop="commentCount"></span>
+                <a href="/2017/05/20/Android Hook技术与Xposed/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/20/Android Hook技术与Xposed/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -357,7 +357,7 @@
 
           
           
-             <span id="/2017/05/19/CMMI之功能点估算法/" class="leancloud_visitors" data-flag-title="CMMI之功能点估算法">
+             <span id="/2017/05/20/Android Hook技术与Xposed/" class="leancloud_visitors" data-flag-title="Android Hook技术与Xposed">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -384,32 +384,34 @@
       
         
           
-            <h2 id="FP&#x529F;&#x80FD;&#x70B9;&#x4F30;&#x7B97;&#x5206;&#x7C7B;"><a href="#FP&#x529F;&#x80FD;&#x70B9;&#x4F30;&#x7B97;&#x5206;&#x7C7B;" class="headerlink" title="FP&#x529F;&#x80FD;&#x70B9;&#x4F30;&#x7B97;&#x5206;&#x7C7B;"></a>FP&#x529F;&#x80FD;&#x70B9;&#x4F30;&#x7B97;&#x5206;&#x7C7B;</h2><p>FP&#x529F;&#x80FD;&#x70B9;&#x4F30;&#x7B97;&#x6CD5;&#x5C06;&#x529F;&#x80FD;&#x70B9;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;5&#x7C7B;&#xFF1A;</p>
-<ul>
-<li>ILF&#xFF1A;Internal Logical File&#x5185;&#x90E8;&#x903B;&#x8F91;&#x6587;&#x4EF6;</li>
-<li>EIF: External Interface File&#x5916;&#x90E8;&#x63A5;&#x53E3;&#x6587;&#x4EF6;</li>
-<li>EI: External Input&#x5916;&#x90E8;&#x8F93;&#x5165;</li>
-<li>EO: External Output&#x5916;&#x90E8;&#x8F93;&#x51FA;</li>
-<li>EQ: External Inquiry&#x5916;&#x90E8;&#x67E5;&#x8BE2;</li>
-</ul>
-<p>ILF&#x548C;EIF&#x5C5E;&#x4E8E;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x529F;&#x80FD;&#x70B9;&#xFF0C;EI&#x3001;EO&#x3001;EQ&#x5C5E;&#x4E8E;&#x4EBA;&#x673A;&#x4EA4;&#x4E92;&#x7C7B;&#x578B;&#x7684;&#x529F;&#x80FD;&#x70B9;&#x3002;</p>
-<p>&#x4EE5;&#x5916;&#x8D38;&#x8BA2;&#x5355;&#x7CFB;&#x7EDF;&#x9879;&#x76EE;&#x4E3A;&#x4F8B;&#xFF1A;</p>
-<p><img src="/2017/05/19/CMMI&#x4E4B;&#x529F;&#x80FD;&#x70B9;&#x4F30;&#x7B97;&#x6CD5;/1495176047706.jpg" alt="enter description here" title=" "></p>
-<p>&#x5F55;&#x5165;&#x8BA2;&#x5355;&#x3001;&#x4FEE;&#x6539;&#x8BA2;&#x5355;&#x3001;&#x5220;&#x9664;&#x8BA2;&#x5355;&#x662F;EI&#xFF1B;<br>&#x67E5;&#x8BE2;&#x8BA2;&#x5355;&#x662F;EO<br>&#x7EDF;&#x8BA1;&#x8BA2;&#x5355;&#x662F;EQ<br>&#x6C47;&#x7387;&#x67E5;&#x8BE2;&#x8F6C;&#x6362;&#x7CFB;&#x7EDF;&#x4E3A;EIF<br>&#x8BA2;&#x5355;&#x548C;&#x5BA2;&#x6237;&#x8D44;&#x6599;&#x662F;ILF</p>
-<h2 id="&#x4E2A;&#x4EBA;&#x7406;&#x89E3;"><a href="#&#x4E2A;&#x4EBA;&#x7406;&#x89E3;" class="headerlink" title="&#x4E2A;&#x4EBA;&#x7406;&#x89E3;"></a>&#x4E2A;&#x4EBA;&#x7406;&#x89E3;</h2><h3 id="EI&#x3001;EO&#x3001;EQ"><a href="#EI&#x3001;EO&#x3001;EQ" class="headerlink" title="EI&#x3001;EO&#x3001;EQ"></a>EI&#x3001;EO&#x3001;EQ</h3><p>&#x8FD9;&#x4E09;&#x7C7B;&#xFF0C;&#x662F;&#x9488;&#x5BF9;&#x529F;&#x80FD;&#x70B9;&#x7684;&#x5206;&#x7C7B;&#xFF1A;</p>
-<ul>
-<li>EI&#xFF1A;&#x6240;&#x6709;&#x4F1A;&#x5BFC;&#x81F4;&#x5185;&#x90E8;&#x6570;&#x636E;&#x53D8;&#x5316;&#x7684;&#x529F;&#x80FD;&#x70B9;&#x5747;&#x5C5E;&#x4E8E;&#x6B64;&#x7C7B;&#xFF0C;&#x5305;&#x62EC;&#x589E;&#x3001;&#x5220;&#x3001;&#x6539;</li>
-<li>EO&#xFF1A;&#x6240;&#x6709;&#x5C06;&#x5185;&#x90E8;&#x6570;&#x636E;&#x5BFC;&#x51FA;&#x4ECE;&#x800C;&#x4F7F;&#x6570;&#x636E;&#x8131;&#x79BB;&#x7CFB;&#x7EDF;&#x7684;&#x529F;&#x80FD;&#x70B9;&#x5747;&#x5C5E;&#x4E8E;&#x6B64;&#x7C7B;&#xFF0C;&#x5305;&#x62EC;&#x6570;&#x636E;&#x5BFC;&#x51FA;&#x3001;&#x751F;&#x6210;&#x5916;&#x90E8;&#x6587;&#x4EF6;&#x7B49;</li>
-<li>EQ&#xFF1A;&#x6240;&#x6709;&#x67E5;&#x8BE2;&#x7C7B;&#x7684;&#x529F;&#x80FD;&#x70B9;&#xFF0C;&#x5373;&#x5C55;&#x793A;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x6570;&#x636E;&#x5E76;&#x4E0D;&#x8131;&#x79BB;&#x7CFB;&#x7EDF;&#x7684;&#x529F;&#x80FD;&#x70B9;</li>
-</ul>
-<h3 id="EIF&#x3001;ILF"><a href="#EIF&#x3001;ILF" class="headerlink" title="EIF&#x3001;ILF"></a>EIF&#x3001;ILF</h3><p>&#x8FD9;&#x4E8C;&#x7C7B;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x9488;&#x5BF9;&#x5B9E;&#x4F53;&#x7684;&#x5206;&#x7C7B;&#xFF1A;</p>
-<ul>
-<li>EIF&#xFF1A;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x5916;&#x90E8;&#x534F;&#x4F5C;&#x5B9E;&#x4F53;&#xFF0C;&#x5982;&#x5916;&#x90E8;&#x7CFB;&#x7EDF;&#x3001;&#x72EC;&#x7ACB;&#x6587;&#x4EF6;&#x3001;&#x5916;&#x90E8;&#x6570;&#x636E;&#x7B49;</li>
-<li>ILF&#xFF1A;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x7CFB;&#x7EDF;&#x5185;&#x90E8;&#x7684;&#x5B9E;&#x4F53;&#xFF0C;&#x5982;&#x89D2;&#x8272;&#x3001;&#x6587;&#x4EF6;&#x3001;&#x6570;&#x636E;&#x7B49;</li>
-</ul>
-<h3 id="&#x5224;&#x65AD;&#x6A21;&#x578B;"><a href="#&#x5224;&#x65AD;&#x6A21;&#x578B;" class="headerlink" title="&#x5224;&#x65AD;&#x6A21;&#x578B;"></a>&#x5224;&#x65AD;&#x6A21;&#x578B;</h3><p><img src="/2017/05/19/CMMI&#x4E4B;&#x529F;&#x80FD;&#x70B9;&#x4F30;&#x7B97;&#x6CD5;/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6%20%281%29.png" alt="enter description here" title=" "></p>
-<p>&#x5907;&#x6CE8;&#xFF1A;&#x8FD9;&#x91CC;&#x6240;&#x8BF4;&#x7684;&#x6570;&#x636E;&#x662F;&#x5E7F;&#x4E49;&#x7684;&#xFF0C;&#x5305;&#x62EC;&#x7ED3;&#x6784;&#x5316;&#x6570;&#x636E;&#x3001;&#x975E;&#x7ED3;&#x6784;&#x5316;&#x6570;&#x636E;&#x3001;&#x6587;&#x4EF6;&#x7B49;</p>
-<h2 id="&#x53C2;&#x8003;&#x8D44;&#x6599;&#xFF1A;"><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;&#xFF1A;" class="headerlink" title="&#x53C2;&#x8003;&#x8D44;&#x6599;&#xFF1A;"></a>&#x53C2;&#x8003;&#x8D44;&#x6599;&#xFF1A;</h2><p>  <a href="http://blog.sina.com.cn/s/blog_6d723ede01015xe0.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_6d723ede01015xe0.html</a></p>
+            <h2 id="&#x539F;&#x7406;"><a href="#&#x539F;&#x7406;" class="headerlink" title="&#x539F;&#x7406;"></a>&#x539F;&#x7406;</h2><h3 id="&#x4EE3;&#x7406;"><a href="#&#x4EE3;&#x7406;" class="headerlink" title="&#x4EE3;&#x7406;"></a>&#x4EE3;&#x7406;</h3><p>&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x6301;&#x6709;&#x4E86;&#x88AB;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x5F53;&#x88AB;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5728;&#x6267;&#x884C;&#x7684;&#x524D;&#x540E;&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#x903B;&#x8F91;&#x6216;&#x662F;&#x4FEE;&#x6539;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x5982;&#x4E0B;&#x3002;&#x5148;&#x62BD;&#x8C61;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x72D7;&#x3002;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IDog</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">drink</span><span class="params">()</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x7684;&#x9ED1;&#x8272;&#x72D7;&#x72D7;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BlankDog</span> <span class="keyword">implements</span> <span class="title">IDog</span></span>{</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>{</span><br><span class="line">        Log.i(<span class="string">&quot;BlankDog&quot;</span>, <span class="string">&quot;----  eat  -----&quot;</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drink</span><span class="params">()</span> </span>{</span><br><span class="line">        Log.i(<span class="string">&quot;BlankDog&quot;</span>, <span class="string">&quot;----  drink  -----&quot;</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x6700;&#x91CD;&#x8981;&#x7684;&#x4EE3;&#x7406;&#x9ED1;&#x72D7;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DogProxy</span> <span class="keyword">implements</span> <span class="title">IDog</span></span>{</span><br><span class="line">    <span class="keyword">private</span> BlankDog mBlankDog;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DogProxy</span><span class="params">(BlankDog blankDog)</span></span>{</span><br><span class="line">        <span class="keyword">this</span>.mBlankDog = blankDog;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>{</span><br><span class="line">        Log.i(<span class="string">&quot;&quot;</span>,<span class="string">&quot;----  &#x5728;&#x5403;&#x4E4B;&#x524D;&#x5148;&#x6492;&#x4E2A;&#x6B22;  -----&quot;</span>);</span><br><span class="line">        mBlankDog.eat();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drink</span><span class="params">()</span> </span>{</span><br><span class="line">        mBlankDog.drink();</span><br><span class="line">        Log.i(<span class="string">&quot;&quot;</span>,<span class="string">&quot;----  &#x5728;&#x559D;&#x4E4B;&#x540E;&#x6492;&#x4E2A;&#x6B22;  -----&quot;</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x53D1;&#x73B0;&#x6240;&#x6709;&#x9ED1;&#x72D7;&#x4F1A;&#x7684;&#x6280;&#x80FD;&#xFF0C;&#x4EE3;&#x7406;&#x72D7;&#x90FD;&#x4F1A;&#xFF0C;&#x800C;&#x4E14;&#x8FD8;&#x505A;&#x7684;&#x4E00;&#x6837;&#x597D;&#xFF0C;&#x751A;&#x81F3;&#x5728;&#x5403;&#x559D;&#x4E4B;&#x524D;&#x8FD8;&#x6492;&#x4E2A;&#x6B22;&#xFF0C;&#x6709;&#x4E86;&#x81EA;&#x5DF1;&#x7684;&#x4E2A;&#x6027;&#x3002;</p>
+<p><strong>Hook&#x6280;&#x672F;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#x66FF;&#x6362;&#x539F;&#x6709;&#x5BF9;&#x8C61;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x5728;&#x539F;&#x6709;&#x6D41;&#x7A0B;&#x4E0A;&#x6DFB;&#x52A0;&#x989D;&#x5916;&#x7684;&#x4E1A;&#x52A1;&#x3002;<br>&#x800C;&#x8FD9;&#x4E2A;&#x201C;&#x66FF;&#x6362;&#x201D;&#x662F;&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x3002;</strong></p>
+<h3 id="&#x53CD;&#x5C04;"><a href="#&#x53CD;&#x5C04;" class="headerlink" title="&#x53CD;&#x5C04;"></a>&#x53CD;&#x5C04;</h3><p>&#x8FD9;&#x91CC;&#x9762;&#x6D89;&#x53CA;&#x5230;&#x51E0;&#x4E2A;&#x7684;&#x53CD;&#x5C04;&#x65B9;&#x6CD5;</p>
+<p>Class.forName()</p>
+<p>&#x901A;&#x8FC7;&#x7C7B;&#x540D;&#x83B7;&#x53D6;Class&#x5BF9;&#x8C61;&#x3002;</p>
+<p>setAccessible()</p>
+<p>&#x6539;&#x53D8;&#x8BBF;&#x95EE;&#x5BF9;&#x8C61;&#x7684;&#x53EF;&#x89C1;&#x6027;&#xFF0C;&#x5E38;&#x5E38;&#x7528;&#x6765;&#x8BBF;&#x95EE;private&#x5C5E;&#x6027;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>invoke(Object receiver, Object&#x2026; args)</p>
+<p>&#x901A;&#x8FC7;&#x5BF9;&#x8C61;&#x548C;&#x53C2;&#x6570;&#x5217;&#x8868;&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>get(Object object)</p>
+<p>&#x83B7;&#x53D6;Feild&#x7684;&#x503C;&#x3002;</p>
+<p><strong>Hook&#x6280;&#x672F;&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#x6765;&#x5B9E;&#x73B0;&#x539F;&#x6709;&#x5BF9;&#x8C61;&#x7684;&#x66FF;&#x6362;&#xFF0C;&#x4EE5;&#x589E;&#x52A0;&#x989D;&#x5916;&#x7684;&#x4E1A;&#x52A1;</strong></p>
+<h2 id="&#x8FC7;&#x7A0B;"><a href="#&#x8FC7;&#x7A0B;" class="headerlink" title="&#x8FC7;&#x7A0B;"></a>&#x8FC7;&#x7A0B;</h2><p>Hook&#x6280;&#x672F;&#x5B9E;&#x73B0;&#xFF0C;&#x6709;&#x4E09;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF0C;&#x5373;&#xFF1A;&#x7F16;&#x5199;&#x4EE3;&#x7406;&#x7C7B;&#xFF0C;&#x5B9E;&#x73B0;&#x4E1A;&#x52A1;&#x6269;&#x5C55;&#xFF1B;&#x5BFB;&#x627E;&#x4EE3;&#x7406;&#x70B9;&#xFF0C;&#x5B9E;&#x73B0;&#x539F;&#x5BF9;&#x8C61;&#x7684;&#x66FF;&#x6362;&#xFF1B;&#x786E;&#x5B9A;&#x4EE3;&#x7406;&#x65F6;&#x673A;&#xFF0C;&#x6267;&#x884C;&#x5BF9;&#x6362;&#x66FF;&#x6362;&#x3002;</p>
+<p>&#x5176;&#x4E2D;&#x7B2C;&#x4E8C;&#x6B65;&#x662F;&#x5173;&#x952E;&#x3002;</p>
+<h3 id="&#x7F16;&#x5199;&#x4EE3;&#x7406;&#x7C7B;"><a href="#&#x7F16;&#x5199;&#x4EE3;&#x7406;&#x7C7B;" class="headerlink" title="&#x7F16;&#x5199;&#x4EE3;&#x7406;&#x7C7B;"></a>&#x7F16;&#x5199;&#x4EE3;&#x7406;&#x7C7B;</h3><p>&#x8FD9;&#x4E00;&#x6B65;&#x8F83;&#x4E3A;&#x7B80;&#x5355;&#xFF0C;&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x7C7B;&#xFF0C;&#x6269;&#x5C55;&#x539F;&#x5BF9;&#x8C61;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x6DFB;&#x52A0;&#x65B0;&#x4E1A;&#x52A1;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OnClickListenerProxy</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span></span>{</span><br><span class="line">    <span class="keyword">private</span> View.OnClickListener object;</span><br><span class="line">    <span class="keyword">private</span> HookListenerContract.OnClickListener mlistener;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OnClickListenerProxy</span><span class="params">(View.OnClickListener object, HookListenerContract.OnClickListener listener)</span></span>{</span><br><span class="line">        <span class="keyword">this</span>.object = object;</span><br><span class="line">        <span class="keyword">this</span>.mlistener = listener;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span>(mlistener != <span class="keyword">null</span>) mlistener.doInListener(v);</span><br><span class="line">        <span class="keyword">if</span>(object != <span class="keyword">null</span>) object.onClick(v);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h3 id="&#x5BFB;&#x627E;&#x4EE3;&#x7406;&#x70B9;"><a href="#&#x5BFB;&#x627E;&#x4EE3;&#x7406;&#x70B9;" class="headerlink" title="&#x5BFB;&#x627E;&#x4EE3;&#x7406;&#x70B9;"></a>&#x5BFB;&#x627E;&#x4EE3;&#x7406;&#x70B9;</h3><p>&#x8FD9;&#x4E00;&#x6B65;&#x6700;&#x5173;&#x952E;&#xFF0C;&#x9700;&#x8981;&#x6DF1;&#x5165;&#x5206;&#x6790;&#x6E90;&#x7801;&#xFF0C;&#x627E;&#x5230;&#x5408;&#x9002;&#x7684;&#x88AB;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#x6280;&#x672F;&#x7528;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x66FF;&#x6362;&#x539F;&#x5BF9;&#x8C61;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> mClassView = Class.forName(<span class="string">&quot;android.view.View&quot;</span>);</span><br><span class="line"> Method method = mClassView.getDeclaredMethod(<span class="string">&quot;getListenerInfo&quot;</span>);</span><br><span class="line"> method.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"> Object listenerInfoObject = method.invoke(view);</span><br><span class="line"></span><br><span class="line"> Class mClassListenerInfo = Class.forName(<span class="string">&quot;android.view.View$ListenerInfo&quot;</span>);</span><br><span class="line"></span><br><span class="line"> Field feildOnClickListener = mClassListenerInfo.getDeclaredField(<span class="string">&quot;mOnClickListener&quot;</span>);</span><br><span class="line"> feildOnClickListener.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"> View.OnClickListener mOnClickListenerObject = (View.OnClickListener) feildOnClickListener.get(listenerInfoObject);</span><br><span class="line"></span><br><span class="line">View.OnClickListener onClickListenerProxy = <span class="keyword">new</span> OnClickListenerProxy(mOnClickListenerObject, mListenerManager.mOnClickListener);</span><br><span class="line"></span><br><span class="line">feildOnClickListener.set(listenerInfoObject, onClickListenerProxy);</span><br></pre></td></tr></table></figure>
+<h3 id="&#x786E;&#x5B9A;&#x4EE3;&#x7406;&#x65F6;&#x673A;"><a href="#&#x786E;&#x5B9A;&#x4EE3;&#x7406;&#x65F6;&#x673A;" class="headerlink" title="&#x786E;&#x5B9A;&#x4EE3;&#x7406;&#x65F6;&#x673A;"></a>&#x786E;&#x5B9A;&#x4EE3;&#x7406;&#x65F6;&#x673A;</h3><p>&#x8FD9;&#x4E00;&#x6B65;&#x4E5F;&#x5F88;&#x5173;&#x952E;&#xFF0C;&#x5408;&#x9002;&#x7684;&#x65F6;&#x673A;&#x80FD;&#x591F;&#x4FDD;&#x8BC1;&#x4EE3;&#x7406;&#x7684;&#x6B63;&#x786E;&#x6267;&#x884C;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>{</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onWindowFocusChanged</span><span class="params">(<span class="keyword">boolean</span> hasFocus)</span> </span>{</span><br><span class="line">        <span class="keyword">super</span>.onWindowFocusChanged(hasFocus);</span><br><span class="line"></span><br><span class="line">        ListenerManager.Builer builer = <span class="keyword">new</span> ListenerManager.Builer();</span><br><span class="line">        builer.buildOnClickListener(<span class="keyword">new</span> HookListenerContract.OnClickListener() {</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doInListener</span><span class="params">(View v)</span> </span>{</span><br><span class="line">                Toast.makeText(BaseActivity.<span class="keyword">this</span>, <span class="string">&quot;&#x5355;&#x51FB;&#x65F6;&#x6211;&#x6267;&#x884C;&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            }</span><br><span class="line">        }).buildOnLongClickListener(<span class="keyword">new</span> HookListenerContract.OnLongClickListener() {</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doInListener</span><span class="params">(View v)</span> </span>{</span><br><span class="line">                Toast.makeText(BaseActivity.<span class="keyword">this</span>, <span class="string">&quot;&#x957F;&#x6309;&#x65F6;&#x6211;&#x6267;&#x884C;&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            }</span><br><span class="line">        }).buildOnFocusChangeListener(<span class="keyword">new</span> HookListenerContract.OnFocusChangeListener() {</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doInListener</span><span class="params">(View v, <span class="keyword">boolean</span> hasFocus)</span> </span>{</span><br><span class="line">                Toast.makeText(BaseActivity.<span class="keyword">this</span>, <span class="string">&quot;&#x7126;&#x70B9;&#x53D8;&#x5316;&#x65F6;&#x6211;&#x6267;&#x884C;&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line">        HookCore.getInstance().startHook(<span class="keyword">this</span>, ListenerManager.create(builer));</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h2 id="Xposed"><a href="#Xposed" class="headerlink" title="Xposed"></a>Xposed</h2><p>  Xposed&#x662F;Android&#x5E73;&#x53F0;&#x4E0A;&#x8F83;&#x4E3A;&#x51FA;&#x540D;&#x7684;&#x4E00;&#x4E2A;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x6846;&#x67B6;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x52A0;&#x8F7D;&#x5F88;&#x591A;&#x63D2;&#x4EF6;App&#xFF0C;&#x8FD9;&#x4E9B;&#x63D2;&#x4EF6;App&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6216;&#x95F4;&#x63A5;&#x64CD;&#x7EB5;&#x666E;&#x901A;&#x5E94;&#x7528;&#x751A;&#x81F3;&#x7CFB;&#x7EDF;&#x4E0A;&#x7684;&#x4E1C;&#x897F;&#x3002;Xposed&#x539F;&#x7406;&#x4E0A;&#x662F;Hook Android &#x7CFB;&#x7EDF;&#x7684;&#x6838;&#x5FC3;&#x8FDB;&#x7A0B;Zygote&#x6765;&#x8FBE;&#x5230;&#x4FEE;&#x6539;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x548C;&#x7ED3;&#x679C;&#x3002;</p>
+<p>  <strong>Xposed&#x80FD;&#x591F;Hook&#x7B2C;&#x4E09;&#x65B9;&#x5E94;&#x7528;</strong></p>
+<p>  <strong>Xposed&#x9700;&#x8981;Root&#x6743;&#x9650;</strong></p>
+<h2 id="&#x53C2;&#x8003;&#x6587;&#x732E;"><a href="#&#x53C2;&#x8003;&#x6587;&#x732E;" class="headerlink" title="&#x53C2;&#x8003;&#x6587;&#x732E;"></a>&#x53C2;&#x8003;&#x6587;&#x732E;</h2><p><a href="http://www.open-open.com/lib/view/open1477296293290.html" target="_blank" rel="noopener">http://www.open-open.com/lib/view/open1477296293290.html</a><br><a href="http://blog.csdn.net/zhongwn/article/details/54381337" target="_blank" rel="noopener">http://blog.csdn.net/zhongwn/article/details/54381337</a><br><a href="http://blog.csdn.net/zhangmiaoping23/article/details/52315745" target="_blank" rel="noopener">http://blog.csdn.net/zhangmiaoping23/article/details/52315745</a><br><a href="http://blog.csdn.net/zhangmiaoping23/article/details/52315815" target="_blank" rel="noopener">http://blog.csdn.net/zhangmiaoping23/article/details/52315815</a></p>
 
           
         
@@ -443,7 +445,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/49/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><span class="page-number current">50</span><a class="page-number" href="/page/51/">51</a><span class="space">&hellip;</span><a class="page-number" href="/page/76/">76</a><a class="extend next" rel="next" href="/page/51/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/49/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><span class="page-number current">50</span><a class="page-number" href="/page/51/">51</a><span class="space">&hellip;</span><a class="page-number" href="/page/78/">78</a><a class="extend next" rel="next" href="/page/51/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -482,7 +484,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">76</span>
+              <span class="site-state-item-count">78</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -490,7 +492,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -499,7 +501,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-count">130</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

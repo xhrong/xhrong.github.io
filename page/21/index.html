@@ -272,7 +272,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://xhrong.github.io/2019/02/14/Nginx负载均衡Hash Url方案：根据某一URL参数进行分配/">
+  <link itemprop="mainEntityOfPage" href="http://xhrong.github.io/2019/03/01/大数据处理6种技术架构模式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="xhrong">
@@ -297,8 +297,8 @@
             
               
                 
-                <a class="post-title-link" href="/2019/02/14/Nginx负载均衡Hash Url方案：根据某一URL参数进行分配/" itemprop="url">
-                  Nginx负载均衡Hash Url方案：根据某一URL参数进行分配
+                <a class="post-title-link" href="/2019/03/01/大数据处理6种技术架构模式/" itemprop="url">
+                  大数据处理6种技术架构模式
                 </a>
               
             
@@ -312,8 +312,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-14T00:00:00+00:00">
-                2019-02-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-01T00:00:00+00:00">
+                2019-03-01
               </time>
             
 
@@ -346,8 +346,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2019/02/14/Nginx负载均衡Hash Url方案：根据某一URL参数进行分配/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/02/14/Nginx负载均衡Hash Url方案：根据某一URL参数进行分配/" itemprop="commentCount"></span>
+                <a href="/2019/03/01/大数据处理6种技术架构模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/01/大数据处理6种技术架构模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -357,7 +357,7 @@
 
           
           
-             <span id="/2019/02/14/Nginx负载均衡Hash Url方案：根据某一URL参数进行分配/" class="leancloud_visitors" data-flag-title="Nginx负载均衡Hash Url方案：根据某一URL参数进行分配">
+             <span id="/2019/03/01/大数据处理6种技术架构模式/" class="leancloud_visitors" data-flag-title="大数据处理6种技术架构模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -384,13 +384,82 @@
       
         
           
-            <h3 id="&#x539F;&#x7406;"><a href="#&#x539F;&#x7406;" class="headerlink" title="&#x539F;&#x7406;"></a>&#x539F;&#x7406;</h3><ul>
-<li>&#x4F7F;&#x7528;upstream&#x5B9E;&#x73B0;&#x8D1F;&#x8F7D;&#x5747;&#x8861;</li>
-<li>&#x4F7F;&#x7528;Url Hash&#x5B9E;&#x73B0;&#x6309;Url&#x5206;&#x914D;</li>
-<li>&#x901A;&#x8FC7;&#x81EA;&#x5B9A;&#x4E49;&#x53D8;&#x91CF;&#x63D0;&#x53D6;URL&#x53C2;&#x6570;&#xFF0C;&#x4F7F;&#x7528;&#x53D8;&#x91CF;Hash&#x5B9E;&#x73B0;&#x6309;&#x53D8;&#x91CF;&#x503C;&#x5206;&#x914D;</li>
+            <blockquote>
+<p>&#x8BF4;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x5185;&#x5BB9;&#x548C;&#x56FE;&#x7247;&#x5747;&#x6765;&#x81EA;&#x7F51;&#x7EDC;&#xFF0C;&#x7B80;&#x5355;&#x52A0;&#x5DE5;&#x6574;&#x7406;&#x3002;</p>
+</blockquote>
+<h3 id="&#x6279;&#x5904;&#x7406;&#x67B6;&#x6784;"><a href="#&#x6279;&#x5904;&#x7406;&#x67B6;&#x6784;" class="headerlink" title="&#x6279;&#x5904;&#x7406;&#x67B6;&#x6784;"></a>&#x6279;&#x5904;&#x7406;&#x67B6;&#x6784;</h3><p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551444762095.png" alt="&#x6279;&#x5904;&#x7406;&#x67B6;&#x6784;"></p>
+<ul>
+<li><p>&#x5173;&#x952E;&#xFF1A;&#x5168;&#x91CF;&#x6570;&#x636E;&#x3001;ETL&#x3001;&#x6279;&#x5904;&#x7406;&#x3001;&#x975E;&#x5B9E;&#x65F6;</p>
+</li>
+<li><p>&#x4F18;&#x70B9;&#xFF1A;&#x7B80;&#x5355;</p>
+</li>
+<li><p>&#x7F3A;&#x70B9;&#xFF1A;&#x975E;&#x5B9E;&#x65F6;&#x3002;</p>
+</li>
+<li><p>&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x79BB;&#x7EBF;&#x6570;&#x636E;&#x5904;&#x7406;&#x3002;</p>
+</li>
 </ul>
-<h3 id="&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><a href="#&#x914D;&#x7F6E;&#x6587;&#x4EF6;" class="headerlink" title="&#x914D;&#x7F6E;&#x6587;&#x4EF6;"></a>&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h3><figure class="highlight nginxconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># For more information on configuration, see:</span></span><br><span class="line"><span class="comment">#   * Official English Documentation: http://nginx.org/en/docs/</span></span><br><span class="line"><span class="comment">#   * Official Russian Documentation: http://nginx.org/ru/docs/</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">user</span> nginx;</span><br><span class="line"><span class="attribute">worker_processes</span> auto;</span><br><span class="line"><span class="attribute">error_log</span> /var/log/nginx/error.log;</span><br><span class="line"><span class="attribute">pid</span> /run/nginx.pid;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Load dynamic modules. See /usr/share/nginx/README.dynamic.</span></span><br><span class="line"><span class="attribute">include</span> /usr/share/nginx/modules/<span class="regexp">*.conf</span>;</span><br><span class="line"></span><br><span class="line"><span class="section">events</span> {</span><br><span class="line">    <span class="attribute">worker_connections</span> <span class="number">1024</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">http</span> {</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">log_format</span>  main  <span class="string">&apos;<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] &quot;<span class="variable">$request</span>&quot; &apos;</span></span><br><span class="line">                      <span class="string">&apos;<span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> &quot;<span class="variable">$http_referer</span>&quot; &apos;</span></span><br><span class="line">                      <span class="string">&apos;&quot;<span class="variable">$http_user_agent</span>&quot; &quot;<span class="variable">$http_x_forwarded_for</span>&quot;&apos;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">access_log</span>  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>            <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">tcp_nopush</span>          <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">tcp_nodelay</span>         <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">keepalive_timeout</span>   <span class="number">65</span>;</span><br><span class="line">    <span class="attribute">types_hash_max_size</span> <span class="number">2048</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">include</span>             /etc/nginx/mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>        application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Load modular configuration files from the /etc/nginx/conf.d directory.</span></span><br><span class="line">    <span class="comment"># See http://nginx.org/en/docs/ngx_core_module.html#include</span></span><br><span class="line">    <span class="comment"># for more information.</span></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/conf.d/<span class="regexp">*.conf</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="attribute">upstream</span> www_load {</span><br><span class="line">	    <span class="comment">#&#x6839;&#x636E;&#x53C2;&#x6570;&#x8FDB;&#x884C;Hash&#x5206;&#x914D;</span></span><br><span class="line">		<span class="attribute">hash</span> <span class="variable">$defurlkey</span>;</span><br><span class="line">		<span class="attribute">server</span> localhost:<span class="number">5000</span>;</span><br><span class="line">		<span class="attribute">server</span> localhost:<span class="number">5001</span>;</span><br><span class="line">		<span class="attribute">server</span> localhost:<span class="number">5002</span>;</span><br><span class="line">		}</span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> {</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span> default_server;</span><br><span class="line">        <span class="attribute">listen</span>       [::]:<span class="number">80</span> default_server;</span><br><span class="line">        <span class="attribute">server_name</span>  _;</span><br><span class="line">        <span class="attribute">root</span>         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Load configuration files for the default server block.</span></span><br><span class="line">        <span class="attribute">include</span> /etc/nginx/default.d/<span class="regexp">*.conf</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment"># &#x6839;&#x636E;user_id&#x548C;&amp;&#x5728;&#x63D0;&#x53D6;&#x53C2;&#x6570;</span></span><br><span class="line">        <span class="attribute">if</span> ( <span class="variable">$request_uri</span> <span class="regexp">~* &quot;^\/.*user_id=(.*)&amp;.*&quot;</span> ){</span><br><span class="line">           <span class="attribute">set</span> <span class="variable">$defurlkey</span> <span class="variable">$1</span>;</span><br><span class="line">        }</span><br><span class="line">          </span><br><span class="line">        <span class="attribute">location</span> / {</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        <span class="attribute">location</span> /load{</span><br><span class="line">           <span class="attribute">root</span> /usr/share/nginx/html;</span><br><span class="line">           <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">           <span class="attribute">proxy_pass</span> http://www_load/;</span><br><span class="line">           <span class="attribute">index</span> index.html index.htm;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> /test{</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://127.0.0.1:8084/testxj;</span><br><span class="line">        }</span><br><span class="line">        <span class="attribute">location</span> /ocr{</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://webapi.xfyun.cn/v1/service/v1;</span><br><span class="line">        }</span><br><span class="line">        <span class="attribute">error_page</span> <span class="number">404</span> /<span class="number">404</span>.html;</span><br><span class="line">            <span class="attribute">location</span> = /40x.html {</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="attribute">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html;</span><br><span class="line">            <span class="attribute">location</span> = /50x.html {</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">	<span class="section">server</span> {</span><br><span class="line">	    <span class="attribute">listen</span>       <span class="number">5000</span>;</span><br><span class="line">		<span class="attribute">server_name</span>  _;</span><br><span class="line"></span><br><span class="line">		<span class="attribute">location</span> / {</span><br><span class="line">            <span class="attribute">root</span>   /usr/share/nginx/html/h0;</span><br><span class="line">			<span class="comment">#random_index on;</span></span><br><span class="line">			<span class="attribute">index</span> index.html index.htm;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="section">server</span> {</span><br><span class="line">	    <span class="attribute">listen</span>       <span class="number">5001</span>;</span><br><span class="line">		<span class="attribute">server_name</span>  _;</span><br><span class="line">		</span><br><span class="line">		<span class="attribute">location</span> / {</span><br><span class="line">		    <span class="attribute">root</span>   /usr/share/nginx/html/h1;</span><br><span class="line">			<span class="attribute">index</span> index.html index.htm;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="section">server</span> {</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">5002</span>;</span><br><span class="line">		<span class="attribute">server_name</span>  _;</span><br><span class="line">		<span class="attribute">location</span> / {</span><br><span class="line">            <span class="attribute">root</span>   /usr/share/nginx/html/h2;</span><br><span class="line">			<span class="attribute">index</span> index.html index.htm;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;"><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;" class="headerlink" title="&#x53C2;&#x8003;&#x8D44;&#x6599;"></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</h3><p>1&#x3001;<a href="https://www.imooc.com/article/19980" target="_blank" rel="noopener">https://www.imooc.com/article/19980</a><br>2&#x3001;<a href="https://blog.csdn.net/my_bai/article/details/77977975" target="_blank" rel="noopener">https://blog.csdn.net/my_bai/article/details/77977975</a></p>
+<h3 id="&#x6D41;&#x5904;&#x7406;&#x67B6;&#x6784;"><a href="#&#x6D41;&#x5904;&#x7406;&#x67B6;&#x6784;" class="headerlink" title="&#x6D41;&#x5904;&#x7406;&#x67B6;&#x6784;"></a>&#x6D41;&#x5904;&#x7406;&#x67B6;&#x6784;</h3><p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551444824606.png" alt="&#x6D41;&#x5904;&#x7406;&#x67B6;&#x6784;"></p>
+<ul>
+<li><p>&#x5173;&#x952E;&#xFF1A;&#x6D41;&#x5904;&#x7406;&#x3001;&#x5B9E;&#x65F6;&#x3001;&#x53EF;&#x4E0D;&#x5B58;&#x50A8;&#x5168;&#x91CF;&#x6570;&#x636E;</p>
+</li>
+<li><p>&#x4F18;&#x70B9;&#xFF1A;&#x5B9E;&#x65F6;</p>
+</li>
+<li><p>&#x7F3A;&#x70B9;&#xFF1A;&#x65E0;&#x6CD5;&#x505A;&#x79BB;&#x7EBF;&#x5206;&#x6790;</p>
+</li>
+<li><p>&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5B9E;&#x65F6;&#x6570;&#x636E;&#x5904;&#x7406;</p>
+</li>
+</ul>
+<h3 id="Lambda&#x67B6;&#x6784;"><a href="#Lambda&#x67B6;&#x6784;" class="headerlink" title="Lambda&#x67B6;&#x6784;"></a>Lambda&#x67B6;&#x6784;</h3><p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445555691.png" alt="Lambda&#x67B6;&#x6784;"></p>
+<p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445057126.png" alt="Lambda&#x67B6;&#x6784;"></p>
+<p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445064580.png" alt="Lambda&#x67B6;&#x6784;"></p>
+<ul>
+<li><p>&#x5173;&#x952E;&#xFF1A;&#x6279;&#x5904;&#x7406;+&#x6D41;&#x5904;&#x7406;&#xFF0C;&#x5168;&#x91CF;&#x6570;&#x636E;&#x5B58;&#x50A8;&#xFF0C;&#x5408;&#x5E76;&#x7ED3;&#x679C;</p>
+</li>
+<li><p>&#x4F18;&#x70B9;&#xFF1A;&#x5728;&#x7EBF;+&#x79BB;&#x7EBF;</p>
+</li>
+<li><p>&#x7F3A;&#x70B9;&#xFF1A;&#x65E0;&#x6CD5;&#x91CD;&#x653E;&#x6570;&#x636E;&#xFF0C;&#x53EA;&#x53EF;&#x4E00;&#x6B21;&#x6027;&#x6D41;&#x5904;&#x7406;</p>
+</li>
+<li><p>&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5728;&#x7EBF;&#x5904;&#x7406;+&#x79BB;&#x7EBF;&#x5904;&#x7406;</p>
+</li>
+</ul>
+<h3 id="Kappa&#x67B6;&#x6784;"><a href="#Kappa&#x67B6;&#x6784;" class="headerlink" title="Kappa&#x67B6;&#x6784;"></a>Kappa&#x67B6;&#x6784;</h3><p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445570192.png" alt="Kappa&#x67B6;&#x6784;"></p>
+<p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445239670.png" alt="Kappa&#x67B6;&#x6784;"></p>
+<p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445277735.png" alt="Kappa&#x67B6;&#x6784;"></p>
+<ul>
+<li><p>&#x5173;&#x952E;&#xFF1A;Lambda+&#x6570;&#x636E;&#x91CD;&#x653E;</p>
+</li>
+<li><p>&#x4F18;&#x70B9;&#xFF1A;&#x652F;&#x6301;&#x591A;&#x6B21;&#x6D41;&#x5904;&#x7406;</p>
+</li>
+<li><p>&#x7F3A;&#x70B9;&#xFF1A;&#x6570;&#x636E;&#x91CD;&#x653E;&#x590D;&#x6742;</p>
+</li>
+<li><p>&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5728;&#x7EBF;&#x5904;&#x7406;+&#x79BB;&#x7EBF;&#x5904;&#x7406;&#xFF0C;&#x591A;&#x6B21;&#x6D41;&#x5904;&#x7406;</p>
+</li>
+</ul>
+<h3 id="Unifield&#x67B6;&#x6784;"><a href="#Unifield&#x67B6;&#x6784;" class="headerlink" title="Unifield&#x67B6;&#x6784;"></a>Unifield&#x67B6;&#x6784;</h3><p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445514143.png" alt="Unifield&#x67B6;&#x6784;"></p>
+<ul>
+<li><p>&#x5173;&#x952E;&#xFF1A;Lambda/Kappa+&#x673A;&#x5668;&#x5B66;&#x4E60;</p>
+</li>
+<li><p>&#x4F18;&#x70B9;&#xFF1A;&#x652F;&#x6301;&#x673A;&#x5668;&#x5B66;&#x4E60;</p>
+</li>
+<li><p>&#x7F3A;&#x70B9;&#xFF1A;&#x590D;&#x6742;&#x5EA6;&#x66F4;&#x9AD8;&#xFF0C;&#x5B9E;&#x65BD;&#x96BE;</p>
+</li>
+<li><p>&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5927;&#x6570;&#x636E;+&#x673A;&#x5668;&#x5B66;&#x4E60;</p>
+</li>
+</ul>
+<h3 id="IoTA&#x67B6;&#x6784;"><a href="#IoTA&#x67B6;&#x6784;" class="headerlink" title="IoTA&#x67B6;&#x6784;"></a>IoTA&#x67B6;&#x6784;</h3><p><img src="/2019/03/01/&#x5927;&#x6570;&#x636E;&#x5904;&#x7406;6&#x79CD;&#x6280;&#x672F;&#x67B6;&#x6784;&#x6A21;&#x5F0F;/1551445796337.png" alt="IoTA&#x67B6;&#x6784;"></p>
+<p>&#x901A;&#x8FC7;Common Data Model&#x7684;&#x8BBE;&#x8BA1;&#xFF0C;&#x4E13;&#x6CE8;&#x5728;&#x67D0;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x9886;&#x57DF;&#x7684;&#x6570;&#x636E;&#x6807;&#x51C6;&#x5316;&#x548C;&#x8BA1;&#x7B97;&#xFF0C;&#x4ECE;&#x800C;&#x53EF;&#x4EE5;&#x4ECE;SDK&#x7AEF;&#x5F00;&#x59CB;&#x8BA1;&#x7B97;&#xFF0C;&#x8FB9;&#x7F18;&#x8BA1;&#x7B97;&#xFF0C;&#x4E2D;&#x592E;&#x7AEF;&#x53EA;&#x505A;&#x91C7;&#x96C6;&#x3001;&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;&#x548C;&#x67E5;&#x8BE2;&#xFF0C;&#x63D0;&#x9AD8;&#x6574;&#x4F53;&#x6570;&#x636E;&#x5206;&#x6790;&#x7684;&#x6548;&#x7387;</p>
+<ul>
+<li><p>&#x5173;&#x952E;&#xFF1A;&#x7279;&#x5B9A;&#x9886;&#x57DF;&#x3001;&#x53BB;ETL&#x5316;&#x3001;IoT&#x3001;&#x8FB9;&#x7F18;&#x8BA1;&#x7B97;&#x3001;Ad-hoc&#x67E5;&#x8BE2;&#x3001;&#x5B9E;&#x65F6;</p>
+</li>
+<li><p>&#x4F18;&#x70B9;&#xFF1A;&#x7B80;&#x5316;&#x6570;&#x636E;&#x5904;&#x7406;</p>
+</li>
+<li><p>&#x7F3A;&#x70B9;&#xFF1A;&#x6570;&#x636E;&#x91C7;&#x96C6;&#x8981;&#x6C42;&#x6807;&#x51C6;&#x5316;&#xFF0C;&#x5B9E;&#x65BD;&#x56F0;&#x96BE;</p>
+</li>
+<li><p>&#x9002;&#x7528;&#x573A;&#x666F;&#xFF1A;IoT</p>
+</li>
+</ul>
+<h3 id="&#x7ED3;&#x8BBA;"><a href="#&#x7ED3;&#x8BBA;" class="headerlink" title="&#x7ED3;&#x8BBA;"></a>&#x7ED3;&#x8BBA;</h3><p>Lambda &#x67B6;&#x6784;&#x662F;&#x517C;&#x5BB9;&#x4E86; batch layer, speed layer(real-time processing)&#x7684;&#x67B6;&#x6784;&#xFF0C;Kappa &#x67B6;&#x6784;&#x5219;&#x662F;&#x7528; speed layer(real-time processing) &#x5168;&#x7A0B;&#x5904;&#x7406;&#x5B9E;&#x65F6;&#x6570;&#x636E;&#x548C;&#x5386;&#x53F2;&#x6570;&#x636E;&#xFF0C;Unified &#x67B6;&#x6784;&#x8FDB;&#x4E00;&#x6B65;&#x5F15;&#x5165;&#x4E86;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x80FD;&#x529B;</p>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;"><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;" class="headerlink" title="&#x53C2;&#x8003;&#x8D44;&#x6599;"></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</h3><p>1&#x3001;<a href="https://insights.thoughtworks.cn/common-big-data-infrastructure/" target="_blank" rel="noopener">https://insights.thoughtworks.cn/common-big-data-infrastructure/</a><br>2&#x3001;<a href="https://blog.csdn.net/odailidong/article/details/80035658" target="_blank" rel="noopener">https://blog.csdn.net/odailidong/article/details/80035658</a><br>3&#x3001;<a href="https://blog.csdn.net/wujiandao/article/details/81323209" target="_blank" rel="noopener">https://blog.csdn.net/wujiandao/article/details/81323209</a><br>4&#x3001;<a href="https://blog.csdn.net/u010885548/article/details/79804657" target="_blank" rel="noopener">https://blog.csdn.net/u010885548/article/details/79804657</a></p>
 
           
         
@@ -424,7 +493,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/76/">76</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/78/">78</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -463,7 +532,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">76</span>
+              <span class="site-state-item-count">78</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -471,7 +540,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -480,7 +549,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-count">130</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
