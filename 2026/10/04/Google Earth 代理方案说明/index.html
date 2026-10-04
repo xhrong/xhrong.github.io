@@ -1,0 +1,1169 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Google Earth,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="森.林木" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="Google Earth Pro &amp;#x65E0;&amp;#x6CD5;&amp;#x8054;&amp;#x7F51; &amp;#x2014; &amp;#x95EE;&amp;#x9898;&amp;#x5206;&amp;#x6790;&amp;#x4E0E;&amp;#x89E3;&amp;#x51B3;&amp;#x65B9;&amp;#x6848; &amp;#x6587;&amp;#x6863;&amp;#x751F;&amp;#x6210;&amp;#x65E5;&amp;#x671F;:2026-10-04&amp;#x76F8;&amp;">
+<meta name="keywords" content="Google Earth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google Earth Pro 无法联网 — 问题分析与解决方案">
+<meta property="og:url" content="http://xhrong.github.io/2026/10/04/Google Earth 代理方案说明/index.html">
+<meta property="og:site_name" content="森.林木">
+<meta property="og:description" content="Google Earth Pro &amp;#x65E0;&amp;#x6CD5;&amp;#x8054;&amp;#x7F51; &amp;#x2014; &amp;#x95EE;&amp;#x9898;&amp;#x5206;&amp;#x6790;&amp;#x4E0E;&amp;#x89E3;&amp;#x51B3;&amp;#x65B9;&amp;#x6848; &amp;#x6587;&amp;#x6863;&amp;#x751F;&amp;#x6210;&amp;#x65E5;&amp;#x671F;:2026-10-04&amp;#x76F8;&amp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2026-10-04T14:10:47.551Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Google Earth Pro 无法联网 — 问题分析与解决方案">
+<meta name="twitter:description" content="Google Earth Pro &amp;#x65E0;&amp;#x6CD5;&amp;#x8054;&amp;#x7F51; &amp;#x2014; &amp;#x95EE;&amp;#x9898;&amp;#x5206;&amp;#x6790;&amp;#x4E0E;&amp;#x89E3;&amp;#x51B3;&amp;#x65B9;&amp;#x6848; &amp;#x6587;&amp;#x6863;&amp;#x751F;&amp;#x6210;&amp;#x65E5;&amp;#x671F;:2026-10-04&amp;#x76F8;&amp;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xhrong.github.io/2026/10/04/Google Earth 代理方案说明/">
+
+
+
+
+
+  <title> Google Earth Pro 无法联网 — 问题分析与解决方案 | 森.林木 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">森.林木</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xhrong.github.io/2026/10/04/Google Earth 代理方案说明/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="xhrong">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="森.林木">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="森.林木" src>
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Google Earth Pro 无法联网 — 问题分析与解决方案
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2026-10-04T00:00:00+00:00">
+                2026-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2026/10/04/Google Earth 代理方案说明/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2026/10/04/Google Earth 代理方案说明/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2026/10/04/Google Earth 代理方案说明/" class="leancloud_visitors" data-flag-title="Google Earth Pro 无法联网 — 问题分析与解决方案">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Google-Earth-Pro-&#x65E0;&#x6CD5;&#x8054;&#x7F51;-&#x2014;-&#x95EE;&#x9898;&#x5206;&#x6790;&#x4E0E;&#x89E3;&#x51B3;&#x65B9;&#x6848;"><a href="#Google-Earth-Pro-&#x65E0;&#x6CD5;&#x8054;&#x7F51;-&#x2014;-&#x95EE;&#x9898;&#x5206;&#x6790;&#x4E0E;&#x89E3;&#x51B3;&#x65B9;&#x6848;" class="headerlink" title="Google Earth Pro &#x65E0;&#x6CD5;&#x8054;&#x7F51; &#x2014; &#x95EE;&#x9898;&#x5206;&#x6790;&#x4E0E;&#x89E3;&#x51B3;&#x65B9;&#x6848;"></a>Google Earth Pro &#x65E0;&#x6CD5;&#x8054;&#x7F51; &#x2014; &#x95EE;&#x9898;&#x5206;&#x6790;&#x4E0E;&#x89E3;&#x51B3;&#x65B9;&#x6848;</h1><blockquote>
+<p>&#x6587;&#x6863;&#x751F;&#x6210;&#x65E5;&#x671F;:2026-10-04<br>&#x76F8;&#x5173;&#x6587;&#x4EF6;&#x76EE;&#x5F55;:<code>C:\Users\Administrator\gost-proxy\</code></p>
+</blockquote>
+<hr>
+<h2 id="&#x76EE;&#x5F55;"><a href="#&#x76EE;&#x5F55;" class="headerlink" title="&#x76EE;&#x5F55;"></a>&#x76EE;&#x5F55;</h2><ol>
+<li><a href="#&#x4E00;&#x95EE;&#x9898;&#x73B0;&#x8C61;">&#x95EE;&#x9898;&#x73B0;&#x8C61;</a></li>
+<li><a href="#&#x4E8C;&#x95EE;&#x9898;&#x6839;&#x6E90;&#x9010;&#x5C42;&#x62C6;&#x89E3;">&#x95EE;&#x9898;&#x6839;&#x6E90;</a></li>
+<li><a href="#&#x4E09;&#x6838;&#x5FC3;&#x539F;&#x7406;">&#x6838;&#x5FC3;&#x539F;&#x7406;</a></li>
+<li><a href="#&#x56DB;&#x89E3;&#x51B3;&#x601D;&#x8DEF;">&#x89E3;&#x51B3;&#x601D;&#x8DEF;</a></li>
+<li><a href="#&#x4E94;&#x6280;&#x672F;&#x5B9E;&#x73B0;">&#x6280;&#x672F;&#x5B9E;&#x73B0;</a></li>
+<li><a href="#&#x516D;&#x65B9;&#x6848;&#x7684;&#x9002;&#x7528;&#x8303;&#x56F4;">&#x65B9;&#x6848;&#x7684;&#x9002;&#x7528;&#x8303;&#x56F4;</a></li>
+<li><a href="#&#x4E03;&#x4E00;&#x952E;&#x811A;&#x672C;&#x8BF4;&#x660E;">&#x4E00;&#x952E;&#x811A;&#x672C;&#x8BF4;&#x660E;</a></li>
+<li><a href="#&#x516B;&#x65E5;&#x5E38;&#x4F7F;&#x7528;&#x6B65;&#x9AA4;">&#x65E5;&#x5E38;&#x4F7F;&#x7528;&#x6B65;&#x9AA4;</a></li>
+<li><a href="#&#x4E5D;&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#x4E0E;&#x6545;&#x969C;&#x6392;&#x67E5;">&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#x4E0E;&#x6545;&#x969C;&#x6392;&#x67E5;</a></li>
+<li><a href="#&#x5341;&#x9644;&#x5F55;&#x6587;&#x4EF6;&#x6E05;&#x5355;&#x4E0E;&#x547D;&#x4EE4;">&#x9644;&#x5F55;:&#x6587;&#x4EF6;&#x6E05;&#x5355;&#x4E0E;&#x547D;&#x4EE4;</a></li>
+</ol>
+<hr>
+<h2 id="&#x4E00;&#x3001;&#x95EE;&#x9898;&#x73B0;&#x8C61;"><a href="#&#x4E00;&#x3001;&#x95EE;&#x9898;&#x73B0;&#x8C61;" class="headerlink" title="&#x4E00;&#x3001;&#x95EE;&#x9898;&#x73B0;&#x8C61;"></a>&#x4E00;&#x3001;&#x95EE;&#x9898;&#x73B0;&#x8C61;</h2><p>Google Earth Pro &#x542F;&#x52A8;&#x65F6;&#x62A5;&#x4E24;&#x4E2A;&#x9519;&#x8BEF;:</p>
+<ol>
+<li><strong>&#x300C;&#x65E0;&#x6CD5;&#x8FDE;&#x63A5;&#x5230;&#x767B;&#x5F55;&#x670D;&#x52A1;&#x5668;&#x300D;</strong>,&#x9519;&#x8BEF;&#x4EE3;&#x7801; <code>c000000c</code></li>
+<li><strong>&#x300C;&#x65E0;&#x6CD5;&#x8FDE;&#x63A5;&#x5230;&#x6570;&#x636E;&#x5E93;&#x300D;</strong>,&#x63D0;&#x793A;&#x7F51;&#x5740; <code>http://kh.google.com:80/ &#x53EF;&#x80FD;&#x65E0;&#x6548;</code></li>
+</ol>
+<p>&#x8868;&#x73B0;&#x4E3A;&#x5730;&#x56FE;&#x4E00;&#x7247;&#x7A7A;&#x767D;,&#x536B;&#x661F;&#x5F71;&#x50CF;&#x52A0;&#x8F7D;&#x4E0D;&#x51FA;&#x6765;&#x3002;</p>
+<hr>
+<h2 id="&#x4E8C;&#x3001;&#x95EE;&#x9898;&#x6839;&#x6E90;-&#x9010;&#x5C42;&#x62C6;&#x89E3;"><a href="#&#x4E8C;&#x3001;&#x95EE;&#x9898;&#x6839;&#x6E90;-&#x9010;&#x5C42;&#x62C6;&#x89E3;" class="headerlink" title="&#x4E8C;&#x3001;&#x95EE;&#x9898;&#x6839;&#x6E90;(&#x9010;&#x5C42;&#x62C6;&#x89E3;)"></a>&#x4E8C;&#x3001;&#x95EE;&#x9898;&#x6839;&#x6E90;(&#x9010;&#x5C42;&#x62C6;&#x89E3;)</h2><h3 id="&#x7B2C;-1-&#x5C42;-Google-&#x670D;&#x52A1;&#x88AB;&#x5899;"><a href="#&#x7B2C;-1-&#x5C42;-Google-&#x670D;&#x52A1;&#x88AB;&#x5899;" class="headerlink" title="&#x7B2C; 1 &#x5C42;:Google &#x670D;&#x52A1;&#x88AB;&#x5899;"></a>&#x7B2C; 1 &#x5C42;:Google &#x670D;&#x52A1;&#x88AB;&#x5899;</h3><p><code>kh.google.com</code> &#x662F; Google Earth &#x7684;<strong>&#x536B;&#x661F;&#x5F71;&#x50CF;&#x6570;&#x636E;&#x5E93;&#x670D;&#x52A1;&#x5668;</strong>,<code>*.google.com</code> &#x767B;&#x5F55;&#x670D;&#x52A1;&#x5668;&#x540C;&#x7406;,&#x56FD;&#x5185;&#x76F4;&#x8FDE;&#x4F1A;&#x88AB;&#x963B;&#x65AD;&#x3002;<br>&#x4F46;&#x7531;&#x4E8E;&#x672C;&#x673A;&#x5DF2;&#x5B89;&#x88C5;&#x4EE3;&#x7406;(&#x8682;&#x8681;&#x52A0;&#x901F;&#x5668;)&#x3001;&#x6D4F;&#x89C8;&#x5668;&#x4E5F;&#x80FD;&#x8BBF;&#x95EE; Google,&#x6240;&#x4EE5;&#x95EE;&#x9898;&#x4E0D;&#x6B62;&#x4E8E;&#x6B64;&#x3002;</p>
+<h3 id="&#x7B2C;-2-&#x5C42;-&#x4EE3;&#x7406;&#x5F00;&#x7740;-Google-Earth-&#x5374;&#x7528;&#x4E0D;&#x4E0A;"><a href="#&#x7B2C;-2-&#x5C42;-&#x4EE3;&#x7406;&#x5F00;&#x7740;-Google-Earth-&#x5374;&#x7528;&#x4E0D;&#x4E0A;" class="headerlink" title="&#x7B2C; 2 &#x5C42;:&#x4EE3;&#x7406;&#x5F00;&#x7740;,Google Earth &#x5374;&#x7528;&#x4E0D;&#x4E0A;"></a>&#x7B2C; 2 &#x5C42;:&#x4EE3;&#x7406;&#x5F00;&#x7740;,Google Earth &#x5374;&#x7528;&#x4E0D;&#x4E0A;</h3><p>&#x7ECF;&#x9010;&#x9879;&#x5B9E;&#x6D4B;&#x6392;&#x67E5;:</p>
+<table>
+<thead>
+<tr>
+<th>&#x9A8C;&#x8BC1;&#x9879;</th>
+<th>&#x7ED3;&#x679C;</th>
+<th>&#x7ED3;&#x8BBA;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x8682;&#x8681; SOCKS5 &#x4EE3;&#x7406;(1080)&#x80FD;&#x5426;&#x8FDE; Google</td>
+<td>&#x2705; &#x80FD;(<code>kh.google.com</code> &#x8FD4;&#x56DE; 404 = &#x5DF2;&#x5230;&#x8FBE;&#x670D;&#x52A1;&#x5668;)</td>
+<td>&#x4EE3;&#x7406;&#x672C;&#x8EAB;&#x6B63;&#x5E38;</td>
+</tr>
+<tr>
+<td>&#x8682;&#x8681;&#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;</td>
+<td>&#x4EC5; <strong>1080 (SOCKS5)</strong></td>
+<td>&#x6CA1;&#x6709; HTTP &#x4EE3;&#x7406;&#x7AEF;&#x53E3;</td>
+</tr>
+<tr>
+<td>&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x8BBE;&#x7F6E;</td>
+<td><code>ProxyServer=127.0.0.1:1080</code>,&#x5DF2;&#x542F;&#x7528;</td>
+<td>&#x88AB;&#x5F53;&#x6210; HTTP &#x4EE3;&#x7406;&#x767B;&#x8BB0;</td>
+</tr>
+<tr>
+<td>&#x7528; HTTP &#x4EE3;&#x7406;&#x534F;&#x8BAE;&#x8FDE; 1080</td>
+<td>&#x274C; &#x5931;&#x8D25;(&#x8FD4;&#x56DE; 000)</td>
+<td><strong>1080 &#x53EA;&#x61C2; SOCKS5,&#x4E0D;&#x61C2; HTTP &#x4EE3;&#x7406;&#x534F;&#x8BAE;</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>&#x6839;&#x56E0;</strong>:&#x8682;&#x8681;&#x52A0;&#x901F;&#x5668;&#x628A; Windows &#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x8BBE;&#x6210;&#x4E86; <code>127.0.0.1:1080</code>,&#x4F46;&#x8BE5;&#x7AEF;&#x53E3;&#x5B9E;&#x9645;&#x662F; <strong>SOCKS5 &#x534F;&#x8BAE;</strong>,&#x800C;&#x7CFB;&#x7EDF;&#x628A;&#x5B83;&#x5F53;&#x4F5C; <strong>HTTP &#x4EE3;&#x7406;</strong> &#x4F7F;&#x7528;,&#x4E24;&#x79CD;&#x534F;&#x8BAE;&#x4E0D;&#x5339;&#x914D;&#x3002;</p>
+<hr>
+<h2 id="&#x4E09;&#x3001;&#x6838;&#x5FC3;&#x539F;&#x7406;"><a href="#&#x4E09;&#x3001;&#x6838;&#x5FC3;&#x539F;&#x7406;" class="headerlink" title="&#x4E09;&#x3001;&#x6838;&#x5FC3;&#x539F;&#x7406;"></a>&#x4E09;&#x3001;&#x6838;&#x5FC3;&#x539F;&#x7406;</h2><h3 id="&#x539F;&#x7406;-1-SOCKS5-&#x4EE3;&#x7406;-&#x2260;-HTTP-&#x4EE3;&#x7406;"><a href="#&#x539F;&#x7406;-1-SOCKS5-&#x4EE3;&#x7406;-&#x2260;-HTTP-&#x4EE3;&#x7406;" class="headerlink" title="&#x539F;&#x7406; 1:SOCKS5 &#x4EE3;&#x7406; &#x2260; HTTP &#x4EE3;&#x7406;"></a>&#x539F;&#x7406; 1:SOCKS5 &#x4EE3;&#x7406; &#x2260; HTTP &#x4EE3;&#x7406;</h3><p>&#x4E24;&#x8005;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x201D;&#x63E1;&#x624B;&#x8BED;&#x8A00;&#x201D;:</p>
+<ul>
+<li><strong>HTTP &#x4EE3;&#x7406;</strong>:&#x7A0B;&#x5E8F;&#x5BF9;&#x4EE3;&#x7406;&#x53D1;&#x9001; <code>CONNECT kh.google.com:80 HTTP/1.1</code>,&#x4F7F;&#x7528; HTTP &#x8BED;&#x6CD5;&#x3002;</li>
+<li><strong>SOCKS5 &#x4EE3;&#x7406;</strong>:&#x7A0B;&#x5E8F;&#x4E0E;&#x4EE3;&#x7406;&#x4E4B;&#x95F4;&#x4F7F;&#x7528;&#x4E8C;&#x8FDB;&#x5236;&#x63E1;&#x624B;&#x534F;&#x8BAE;(&#x5148;&#x534F;&#x5546;&#x7248;&#x672C;/&#x8BA4;&#x8BC1;,&#x518D;&#x53D1;&#x9001;&#x76EE;&#x6807;&#x5730;&#x5740;),&#x4E0E; HTTP &#x5B8C;&#x5168;&#x4E0D;&#x540C;&#x3002;</li>
+</ul>
+<p>&#x4E00;&#x4E2A;&#x53EA;&#x5F00; SOCKS5 &#x7684;&#x7AEF;&#x53E3;(1080),&#x82E5;&#x7528; HTTP &#x4EE3;&#x7406;&#x8BED;&#x6CD5;&#x4E0E;&#x4E4B;&#x901A;&#x4FE1;,&#x5B83;&#x65E0;&#x6CD5;&#x7406;&#x89E3; &#x2192; &#x8FDE;&#x63A5;&#x5931;&#x8D25;&#x3002;<br>&#x8FD9;&#x89E3;&#x91CA;&#x4E86;&#x4E3A;&#x4F55; <code>-x http://127.0.0.1:1080</code> &#x8FD4;&#x56DE; 000,&#x800C; <code>--socks5 127.0.0.1:1080</code> &#x6210;&#x529F;&#x3002;</p>
+<h3 id="&#x539F;&#x7406;-2-&#x8682;&#x8681;&#x7684;&#x201D;&#x5168;&#x5C40;&#x6A21;&#x5F0F;&#x201D;&#x9760;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;-&#x4E0D;&#x662F;-TUN"><a href="#&#x539F;&#x7406;-2-&#x8682;&#x8681;&#x7684;&#x201D;&#x5168;&#x5C40;&#x6A21;&#x5F0F;&#x201D;&#x9760;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;-&#x4E0D;&#x662F;-TUN" class="headerlink" title="&#x539F;&#x7406; 2:&#x8682;&#x8681;&#x7684;&#x201D;&#x5168;&#x5C40;&#x6A21;&#x5F0F;&#x201D;&#x9760;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;,&#x4E0D;&#x662F; TUN"></a>&#x539F;&#x7406; 2:&#x8682;&#x8681;&#x7684;&#x201D;&#x5168;&#x5C40;&#x6A21;&#x5F0F;&#x201D;&#x9760;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;,&#x4E0D;&#x662F; TUN</h3><p>&#x4EE3;&#x7406;&#x8F6F;&#x4EF6;&#x8BA9;&#x6D41;&#x91CF;&#x7FFB;&#x5899;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x79CD;&#x673A;&#x5236;:</p>
+<table>
+<thead>
+<tr>
+<th>&#x673A;&#x5236;</th>
+<th>&#x539F;&#x7406;</th>
+<th>&#x54EA;&#x4E9B;&#x7A0B;&#x5E8F;&#x4F1A;&#x88AB;&#x4EE3;&#x7406;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;</strong>(&#x8682;&#x8681;&#x4F7F;&#x7528;)</td>
+<td>&#x5F80;&#x6CE8;&#x518C;&#x8868;&#x5199; <code>ProxyServer</code>,&#x544A;&#x8BC9;&#x7A0B;&#x5E8F;&#x201D;&#x628A;&#x6D41;&#x91CF;&#x53D1;&#x7ED9;&#x6B64;&#x4EE3;&#x7406;&#x201D;</td>
+<td><strong>&#x4EC5;&#x4E3B;&#x52A8;&#x8BFB;&#x53D6;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x3001;&#x4E14;&#x613F;&#x610F;&#x8D70;&#x4EE3;&#x7406;&#x7684;&#x7A0B;&#x5E8F;</strong>(&#x5982;&#x6D4F;&#x89C8;&#x5668;)</td>
+</tr>
+<tr>
+<td><strong>TUN &#x6A21;&#x5F0F; / &#x865A;&#x62DF;&#x7F51;&#x5361;</strong>(Clash&#x3001;v2rayN &#x5177;&#x5907;)</td>
+<td>&#x865A;&#x62DF;&#x4E00;&#x5F20;&#x7F51;&#x5361;,&#x5728;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7F51;&#x7EDC;&#x5C42;&#x52AB;&#x6301;&#x6240;&#x6709;&#x6D41;&#x91CF;</td>
+<td><strong>&#x6240;&#x6709;&#x7A0B;&#x5E8F;,&#x65E0;&#x5DEE;&#x522B;</strong></td>
+</tr>
+</tbody>
+</table>
+<p>&#x8682;&#x8681;&#x52A0;&#x901F;&#x5668;<strong>&#x6CA1;&#x6709; TUN &#x6A21;&#x5F0F;</strong>,&#x5176;&#x201D;&#x5168;&#x5C40;&#x6A21;&#x5F0F;&#x201D;&#x672C;&#x8D28;&#x4ECD;&#x662F;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x3002;<br><strong>&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x662F;&#x201D;&#x8BF7;&#x6C42;&#x5F0F;&#x201D;&#x7684; &#x2014;&#x2014; &#x7A0B;&#x5E8F;&#x5FC5;&#x987B;&#x81EA;&#x5DF1;&#x613F;&#x610F;&#x8BFB;&#x3001;&#x613F;&#x610F;&#x8D70;&#x624D;&#x751F;&#x6548;&#x3002;</strong></p>
+<h3 id="&#x539F;&#x7406;-3-Google-Earth-&#x4E0D;&#x8D70;&#x8FD9;&#x5957;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;"><a href="#&#x539F;&#x7406;-3-Google-Earth-&#x4E0D;&#x8D70;&#x8FD9;&#x5957;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;" class="headerlink" title="&#x539F;&#x7406; 3:Google Earth &#x4E0D;&#x8D70;&#x8FD9;&#x5957;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;"></a>&#x539F;&#x7406; 3:Google Earth &#x4E0D;&#x8D70;&#x8FD9;&#x5957;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;</h3><p>Google Earth Pro &#x4F7F;&#x7528;&#x81EA;&#x5DF1;&#x7684;&#x7F51;&#x7EDC;&#x6808;&#x3002;&#x5B83;&#x8981;&#x4E48;<strong>&#x4E0D;&#x8BFB;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;</strong>,&#x8981;&#x4E48;<strong>&#x5373;&#x4F7F;&#x8BFB;&#x53D6;&#x4E5F;&#x53EA;&#x6309; HTTP &#x4EE3;&#x7406;&#x534F;&#x8BAE;&#x53BB;&#x8FDE;</strong>(&#x800C;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x6307;&#x5411;&#x7684; 1080 &#x662F; SOCKS5,&#x534F;&#x8BAE;&#x4E0D;&#x5339;&#x914D;)&#x3002;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x7ED3;&#x679C;&#x76F8;&#x540C;:<strong>&#x8682;&#x8681;&#x7684;&#x5168;&#x5C40;&#x6A21;&#x5F0F;&#x7BA1;&#x4E0D;&#x5230; Google Earth</strong>&#x3002;</p>
+<blockquote>
+<p><strong>&#x4E00;&#x53E5;&#x8BDD;&#x6839;&#x56E0;:&#x8682;&#x8681;&#x53EA;&#x4F1A;&#x8BF4; SOCKS5,&#x800C; Google Earth &#x53EA;&#x4F1A;&#x542C; HTTP &#x4EE3;&#x7406;,&#x4E2D;&#x95F4;&#x7F3A;&#x5C11;&#x7FFB;&#x8BD1;,&#x53CC;&#x65B9;&#x65E0;&#x6CD5;&#x901A;&#x4FE1;&#x3002;</strong></p>
+</blockquote>
+<h3 id="&#x539F;&#x7406;-4-&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x662F;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x201D;&#x6D41;&#x91CF;&#x8F6C;&#x53D1;&#x201D;&#x7684;"><a href="#&#x539F;&#x7406;-4-&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x662F;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x201D;&#x6D41;&#x91CF;&#x8F6C;&#x53D1;&#x201D;&#x7684;" class="headerlink" title="&#x539F;&#x7406; 4:&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x662F;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x201D;&#x6D41;&#x91CF;&#x8F6C;&#x53D1;&#x201D;&#x7684;"></a>&#x539F;&#x7406; 4:&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x662F;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x201D;&#x6D41;&#x91CF;&#x8F6C;&#x53D1;&#x201D;&#x7684;</h3><p>&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x5E38;&#x89C1;&#x8BEF;&#x89E3;&#x9700;&#x8981;&#x6F84;&#x6E05;:</p>
+<blockquote>
+<p><strong>&#x201C;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x201D;&#x672C;&#x8EAB;&#x5E76;&#x4E0D;&#x8F6C;&#x53D1;&#x6D41;&#x91CF;&#x3002;&#x5B83;&#x53EA;&#x662F;&#x4E00;&#x5757;&#x201D;&#x544A;&#x793A;&#x724C;&#x201D;,&#x771F;&#x6B63;&#x8F6C;&#x53D1;&#x6D41;&#x91CF;&#x7684;&#x662F;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x7A0B;&#x5E8F;(gost&#x3001;&#x8682;&#x8681;)&#x3002;</strong></p>
+</blockquote>
+<h4 id="1-&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x53EA;&#x662F;&#x4E00;&#x6761;&#x914D;&#x7F6E;"><a href="#1-&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x53EA;&#x662F;&#x4E00;&#x6761;&#x914D;&#x7F6E;" class="headerlink" title="(1) &#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x53EA;&#x662F;&#x4E00;&#x6761;&#x914D;&#x7F6E;"></a>(1) &#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x53EA;&#x662F;&#x4E00;&#x6761;&#x914D;&#x7F6E;</h4><p>&#x5B83;&#x5C31;&#x662F;&#x6CE8;&#x518C;&#x8868;&#x91CC;&#x7684;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ProxyEnable = 1</span><br><span class="line">ProxyServer = 127.0.0.1:1088</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x6761;&#x914D;&#x7F6E;&#x672C;&#x8EAB;<strong>&#x4E0D;&#x662F;&#x7A0B;&#x5E8F;&#x3001;&#x4E0D;&#x4F1A;&#x8FD0;&#x884C;&#x3001;&#x4E0D;&#x642C;&#x8FD0;&#x4EFB;&#x4F55;&#x6570;&#x636E;</strong>&#x3002;&#x5B83;&#x7684;&#x552F;&#x4E00;&#x4F5C;&#x7528;&#x662F;<strong>&#x544A;&#x8BC9;&#x7A0B;&#x5E8F;</strong>:&#x201D;&#x8981;&#x4E0A;&#x7F51;&#x522B;&#x81EA;&#x5DF1;&#x76F4;&#x8FDE;,&#x53BB;&#x627E; 127.0.0.1:1088 &#x8FD9;&#x4E2A;&#x4EE3;&#x7406;&#x3002;&#x201D;</p>
+<h4 id="2-&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x5B8C;&#x6574;&#x65C5;&#x7A0B;"><a href="#2-&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x5B8C;&#x6574;&#x65C5;&#x7A0B;" class="headerlink" title="(2) &#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x5B8C;&#x6574;&#x65C5;&#x7A0B;"></a>(2) &#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x5B8C;&#x6574;&#x65C5;&#x7A0B;</h4><p>&#x4EE5;&#x6D4F;&#x89C8;&#x5668;/Google Earth &#x8BBF;&#x95EE; <code>kh.google.com</code> &#x4E3A;&#x4F8B;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. &#x7A0B;&#x5E8F;&#x8981;&#x8BBF;&#x95EE; kh.google.com</span><br><span class="line">2. &#x7A0B;&#x5E8F;&#x8C03;&#x7528; Windows &#x7F51;&#x7EDC;&#x5E93;(WinINet / WinHTTP)</span><br><span class="line">3. &#x8BE5;&#x5E93;&#x8BFB;&#x53D6;&#x6CE8;&#x518C;&#x8868;,&#x53D1;&#x73B0;&#x914D;&#x4E86;&#x4EE3;&#x7406; 127.0.0.1:1088</span><br><span class="line">4. &#x4E8E;&#x662F;&#x5E93;&#x4E0D;&#x53BB;&#x8FDE; kh.google.com,&#x800C;&#x662F;&#x8FDE; 127.0.0.1:1088(gost),</span><br><span class="line">   &#x5E76;&#x544A;&#x8BC9;&#x5B83;:&quot;&#x6211;&#x8981;&#x8BBF;&#x95EE; kh.google.com,&#x5E2E;&#x6211;&#x8F6C;&#x4E00;&#x4E0B;&quot;</span><br><span class="line">5. gost &#x4EE3;&#x66FF;&#x7A0B;&#x5E8F;&#x53BB;&#x8FDE;&#x76EE;&#x6807; &#x2192; &#x53CC;&#x5411;&#x642C;&#x8FD0;&#x6570;&#x636E; &#x2192; &#x8FD4;&#x56DE;&#x7ED9;&#x7A0B;&#x5E8F;</span><br></pre></td></tr></table></figure></p>
+<p><strong>&#x5173;&#x952E;&#x5728;&#x7B2C; 2~3 &#x6B65;</strong>:&#x7A0B;&#x5E8F;&#x4E4B;&#x6240;&#x4EE5;&#x201D;&#x4E56;&#x4E56;&#x53BB;&#x627E;&#x4EE3;&#x7406;&#x201D;,&#x662F;&#x56E0;&#x4E3A;&#x5B83;&#x4F7F;&#x7528;&#x4E86; Windows &#x7684;&#x7F51;&#x7EDC;&#x5E93;(<code>WinINet.dll</code> / <code>WinHTTP.dll</code>),&#x800C;&#x8FD9;&#x4E9B;&#x5E93;&#x88AB;&#x8BBE;&#x8BA1;&#x6210;&#x4F1A;&#x4E3B;&#x52A8;&#x8BFB;&#x53D6;&#x6CE8;&#x518C;&#x8868;&#x91CC;&#x7684;&#x4EE3;&#x7406;&#x914D;&#x7F6E;&#x3002;<br>&#x8FD9;&#x4E5F;&#x89E3;&#x91CA;&#x4E86;:&#x4E0D;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x5E93;&#x3001;&#x76F4;&#x63A5;&#x8D70;&#x539F;&#x59CB; socket &#x7684;&#x7A0B;&#x5E8F;(&#x67D0;&#x4E9B;&#x6E38;&#x620F;&#x3001;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;),&#x6839;&#x672C;&#x4E0D;&#x4F1A;&#x53BB;&#x8BFB;&#x6CE8;&#x518C;&#x8868;,&#x4E5F;&#x5C31;&#x4E0D;&#x4F1A;&#x8D70;&#x4EE3;&#x7406;&#x3002;</p>
+<h4 id="3-&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x662F;&#x600E;&#x4E48;&#x201D;&#x8F6C;&#x53D1;&#x201D;&#x7684;"><a href="#3-&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x662F;&#x600E;&#x4E48;&#x201D;&#x8F6C;&#x53D1;&#x201D;&#x7684;" class="headerlink" title="(3) &#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x662F;&#x600E;&#x4E48;&#x201D;&#x8F6C;&#x53D1;&#x201D;&#x7684;"></a>(3) &#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x662F;&#x600E;&#x4E48;&#x201D;&#x8F6C;&#x53D1;&#x201D;&#x7684;</h4><p>&#x771F;&#x6B63;&#x7684;&#x8F6C;&#x53D1;&#x53D1;&#x751F;&#x5728;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;(gost / &#x8682;&#x8681;)&#x4E00;&#x7AEF;,&#x5206;&#x4E24;&#x79CD;&#x60C5;&#x51B5;:</p>
+<ul>
+<li><strong>&#x666E;&#x901A; HTTP(&#x660E;&#x6587;)</strong>:&#x7A0B;&#x5E8F;&#x628A;&#x6574;&#x6761;&#x8BF7;&#x6C42;&#x53D1;&#x7ED9;&#x4EE3;&#x7406;(<code>GET http://kh.google.com/ ...</code>),&#x4EE3;&#x7406;&#x89E3;&#x6790;&#x51FA;&#x76EE;&#x6807;,&#x4EE3;&#x66FF;&#x7A0B;&#x5E8F;&#x53BB;&#x8BBF;&#x95EE;&#x5E76;&#x56DE;&#x4F20;&#x7ED3;&#x679C;,&#x4EE3;&#x7406;&#x80FD;&#x770B;&#x5230;&#x5185;&#x5BB9;&#x3002;</li>
+<li><strong>HTTPS(&#x52A0;&#x5BC6;,CONNECT &#x96A7;&#x9053;)</strong>:&#x7A0B;&#x5E8F;&#x5148;&#x53D1; <code>CONNECT www.google.com:443</code>,&#x4EE3;&#x7406;&#x5EFA;&#x7ACB;&#x4E00;&#x6761;&#x5230;&#x76EE;&#x6807;&#x7684; TCP &#x96A7;&#x9053;,&#x4E4B;&#x540E;&#x53EA;&#x505A;<strong>&#x5B57;&#x8282;&#x642C;&#x8FD0;</strong>(&#x5185;&#x5BB9;&#x52A0;&#x5BC6;,&#x4EE3;&#x7406;&#x770B;&#x4E0D;&#x5230;)&#x3002;</li>
+</ul>
+<p>&#x8FD9;&#x4E2A;&#x201D;&#x4EE3;&#x66FF;&#x4F60;&#x53BB;&#x8FDE;&#x76EE;&#x6807;&#x3001;&#x53CC;&#x5411;&#x642C;&#x8FD0;&#x6570;&#x636E;&#x201D;&#x7684;&#x52A8;&#x4F5C;,&#x5C31;&#x662F;<strong>&#x8F6C;&#x53D1;(&#x4E2D;&#x7EE7;)</strong>&#x7684;&#x672C;&#x8D28;&#x3002;</p>
+<h4 id="4-&#x7C7B;&#x6BD4;-&#x516C;&#x53F8;&#x524D;&#x53F0;&#x8F6C;&#x63A5;&#x7535;&#x8BDD;"><a href="#4-&#x7C7B;&#x6BD4;-&#x516C;&#x53F8;&#x524D;&#x53F0;&#x8F6C;&#x63A5;&#x7535;&#x8BDD;" class="headerlink" title="(4) &#x7C7B;&#x6BD4;:&#x516C;&#x53F8;&#x524D;&#x53F0;&#x8F6C;&#x63A5;&#x7535;&#x8BDD;"></a>(4) &#x7C7B;&#x6BD4;:&#x516C;&#x53F8;&#x524D;&#x53F0;&#x8F6C;&#x63A5;&#x7535;&#x8BDD;</h4><ul>
+<li><strong>&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x8BBE;&#x7F6E;</strong> = &#x516C;&#x53F8;&#x89C4;&#x5B9A;&#x201D;&#x6240;&#x6709;&#x5916;&#x7EBF;&#x5148;&#x62E8;&#x5206;&#x673A; 1088(&#x524D;&#x53F0;)&#x201D; &#x2014;&#x2014; &#x8FD9;&#x662F;&#x4E00;&#x6761;<strong>&#x89C4;&#x5B9A;</strong>,&#x672C;&#x8EAB;&#x4E0D;&#x4F20;&#x8BDD;&#x3002;</li>
+<li><strong>gost(&#x524D;&#x53F0;)</strong> = &#x771F;&#x6B63;&#x63A5;&#x8D77;&#x7535;&#x8BDD;&#x3001;&#x5E2E;&#x4F60;&#x8F6C;&#x63A5;&#x7684;&#x4EBA;&#x3002;</li>
+<li><strong>&#x8682;&#x8681;(&#x603B;&#x673A;)</strong> = &#x524D;&#x53F0;&#x628A;&#x7535;&#x8BDD;&#x8F6C;&#x7ED9;&#x6709;&#x5916;&#x7EBF;&#x6743;&#x9650;&#x7684;&#x603B;&#x673A;,&#x7531;&#x5B83;&#x62E8;&#x51FA;&#x5883;&#x3002;</li>
+<li><strong>&#x5883;&#x5916;&#x8282;&#x70B9;</strong> = &#x6700;&#x7EC8;&#x5E2E;&#x4F60;&#x63A5;&#x901A;&#x5BF9;&#x65B9;&#x7684;&#x7EBF;&#x8DEF;&#x3002;</li>
+</ul>
+<p>&#x4F60;&#x80FD;&#x6253;&#x901A;&#x7535;&#x8BDD;,&#x9760;&#x7684;&#x662F;&#x201D;&#x524D;&#x53F0;&#x3001;&#x603B;&#x673A;&#x201D;&#x8FD9;&#x4E9B;<strong>&#x4EBA;(&#x7A0B;&#x5E8F;)&#x5728;&#x8F6C;&#x63A5;</strong>;&#x800C;&#x201D;&#x5148;&#x62E8; 1088&#x201D;&#x53EA;&#x662F;&#x8BA9;&#x4F60;&#x77E5;&#x9053;&#x8BE5;&#x627E;&#x8C01; &#x2014;&#x2014; &#x8FD9;&#x5C31;&#x662F;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x7684;&#x89D2;&#x8272;&#x3002;</p>
+<hr>
+<h2 id="&#x56DB;&#x3001;&#x89E3;&#x51B3;&#x601D;&#x8DEF;"><a href="#&#x56DB;&#x3001;&#x89E3;&#x51B3;&#x601D;&#x8DEF;" class="headerlink" title="&#x56DB;&#x3001;&#x89E3;&#x51B3;&#x601D;&#x8DEF;"></a>&#x56DB;&#x3001;&#x89E3;&#x51B3;&#x601D;&#x8DEF;</h2><p>&#x65E2;&#x7136;&#x95EE;&#x9898;&#x662F;&#x201D;&#x8682;&#x8681;&#x53EA;&#x63D0;&#x4F9B; SOCKS5,&#x800C; GE &#x53EA;&#x8BA4; HTTP &#x4EE3;&#x7406;&#x201D;,&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#x662F;&#x5728;&#x4E2D;&#x95F4;&#x52A0;&#x4E00;&#x4E2A;<strong>&#x7FFB;&#x8BD1;&#x5B98;</strong>:</p>
+<blockquote>
+<p>&#x642D;&#x5EFA;&#x4E00;&#x4E2A;<strong>&#x672C;&#x5730; HTTP &#x4EE3;&#x7406;</strong>,&#x63A5;&#x6536; Google Earth &#x7684; HTTP &#x4EE3;&#x7406;&#x8BF7;&#x6C42;,&#x7FFB;&#x8BD1;&#x6210; SOCKS5 &#x540E;&#x8F6C;&#x53D1;&#x7ED9;&#x8682;&#x8681;&#x3002;</p>
+</blockquote>
+<p>&#x8FD9;&#x4E2A;&#x7FFB;&#x8BD1;&#x5B98;&#x4F7F;&#x7528; <strong>gost</strong>(GO Simple Tunnel,&#x8F7B;&#x91CF;&#x7EA7;&#x4EE3;&#x7406;&#x8F6C;&#x53D1;&#x5DE5;&#x5177;)&#x5B9E;&#x73B0;&#x3002;</p>
+<hr>
+<h2 id="&#x4E94;&#x3001;&#x6280;&#x672F;&#x5B9E;&#x73B0;"><a href="#&#x4E94;&#x3001;&#x6280;&#x672F;&#x5B9E;&#x73B0;" class="headerlink" title="&#x4E94;&#x3001;&#x6280;&#x672F;&#x5B9E;&#x73B0;"></a>&#x4E94;&#x3001;&#x6280;&#x672F;&#x5B9E;&#x73B0;</h2><h3 id="1-&#x7528;-gost-&#x642D;&#x5EFA;&#x201D;HTTP-&#x2192;-SOCKS5&#x201D;&#x6865;"><a href="#1-&#x7528;-gost-&#x642D;&#x5EFA;&#x201D;HTTP-&#x2192;-SOCKS5&#x201D;&#x6865;" class="headerlink" title="1. &#x7528; gost &#x642D;&#x5EFA;&#x201D;HTTP &#x2192; SOCKS5&#x201D;&#x6865;"></a>1. &#x7528; gost &#x642D;&#x5EFA;&#x201D;HTTP &#x2192; SOCKS5&#x201D;&#x6865;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gost -L http://127.0.0.1:1088 -F socks5://127.0.0.1:1080</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-L http://127.0.0.1:1088</code>:&#x5728;&#x672C;&#x5730; <strong>1088</strong> &#x7AEF;&#x53E3;&#x5F00;&#x542F;&#x4E00;&#x4E2A; <strong>HTTP &#x4EE3;&#x7406;</strong>(&#x76D1;&#x542C;&#x7AEF;,&#x9762;&#x5411; Google Earth)</li>
+<li><code>-F socks5://127.0.0.1:1080</code>:&#x5C06;&#x6536;&#x5230;&#x7684;&#x6D41;&#x91CF;<strong>&#x8F6C;&#x53D1;</strong>&#x7ED9;&#x8682;&#x8681;&#x7684; <strong>SOCKS5 1080</strong></li>
+</ul>
+<p>gost &#x5373;&#x7FFB;&#x8BD1;&#x5B98;:&#x5DE6;&#x624B;&#x63A5;&#x6536; HTTP &#x4EE3;&#x7406;&#x8BF7;&#x6C42;,&#x53F3;&#x624B;&#x4EE5; SOCKS5 &#x534F;&#x8BAE;&#x8F6C;&#x4EA4;&#x7ED9;&#x8682;&#x8681;&#x3002;</p>
+<h3 id="2-&#x5C06;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x6307;&#x5411;&#x8FD9;&#x5EA7;&#x6865;"><a href="#2-&#x5C06;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x6307;&#x5411;&#x8FD9;&#x5EA7;&#x6865;" class="headerlink" title="2. &#x5C06;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x6307;&#x5411;&#x8FD9;&#x5EA7;&#x6865;"></a>2. &#x5C06;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x6307;&#x5411;&#x8FD9;&#x5EA7;&#x6865;</h3><p>&#x628A;&#x6CE8;&#x518C;&#x8868;&#x4E2D;&#x7684;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x4ECE; <code>127.0.0.1:1080</code>(&#x534F;&#x8BAE;&#x4E0D;&#x5339;&#x914D;)&#x6539;&#x4E3A; <code>127.0.0.1:1088</code>(&#x771F;&#x6B63;&#x7684; HTTP &#x4EE3;&#x7406;)&#x3002;</p>
+<h3 id="3-&#x5B8C;&#x6574;&#x94FE;&#x8DEF;"><a href="#3-&#x5B8C;&#x6574;&#x94FE;&#x8DEF;" class="headerlink" title="3. &#x5B8C;&#x6574;&#x94FE;&#x8DEF;"></a>3. &#x5B8C;&#x6574;&#x94FE;&#x8DEF;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Google Earth</span><br><span class="line">   &#x2502;  (&#x53D1;&#x51FA; HTTP &#x4EE3;&#x7406;&#x8BF7;&#x6C42;)</span><br><span class="line">   &#x25BC;</span><br><span class="line">&#x7CFB;&#x7EDF; HTTP &#x4EE3;&#x7406; 127.0.0.1:1088   &#x2190; gost &#x76D1;&#x542C;&#x7AEF;(&#x7FFB;&#x8BD1;&#x5B98;)</span><br><span class="line">   &#x2502;  (&#x7FFB;&#x8BD1;&#x4E3A; SOCKS5)</span><br><span class="line">   &#x25BC;</span><br><span class="line">&#x8682;&#x8681;&#x52A0;&#x901F;&#x5668; SOCKS5 127.0.0.1:1080</span><br><span class="line">   &#x2502;  (&#x52A0;&#x5BC6;&#x8D70;&#x4EE3;&#x7406;&#x96A7;&#x9053;)</span><br><span class="line">   &#x25BC;</span><br><span class="line">&#x65B0;&#x52A0;&#x5761;&#x8282;&#x70B9; &#x2500;&#x2500;&#x25BA; Google &#x670D;&#x52A1;&#x5668; (kh.google.com) &#x2705;</span><br></pre></td></tr></table></figure>
+<p><strong>&#x5B9E;&#x6D4B;&#x7ED3;&#x679C;</strong>:&#x901A;&#x8FC7; 1088 &#x8BBF;&#x95EE; <code>www.google.com</code> &#x8FD4;&#x56DE; <strong>200</strong>,<code>kh.google.com</code> &#x53EF;&#x8FBE;,Google Earth &#x6B63;&#x5E38;&#x52A0;&#x8F7D;&#x3002;</p>
+<hr>
+<h2 id="&#x516D;&#x3001;&#x65B9;&#x6848;&#x7684;&#x9002;&#x7528;&#x8303;&#x56F4;"><a href="#&#x516D;&#x3001;&#x65B9;&#x6848;&#x7684;&#x9002;&#x7528;&#x8303;&#x56F4;" class="headerlink" title="&#x516D;&#x3001;&#x65B9;&#x6848;&#x7684;&#x9002;&#x7528;&#x8303;&#x56F4;"></a>&#x516D;&#x3001;&#x65B9;&#x6848;&#x7684;&#x9002;&#x7528;&#x8303;&#x56F4;</h2><p><strong>&#x672C;&#x65B9;&#x6848;&#x4E0D;&#x662F;&#x5BF9;&#x6240;&#x6709;&#x7A0B;&#x5E8F;&#x90FD;&#x6709;&#x6548;</strong>,&#x53EA;&#x5BF9;&#x201D;&#x613F;&#x610F;&#x8BFB;&#x53D6;&#x5E76;&#x9075;&#x5B88;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x8BBE;&#x7F6E;&#x201D;&#x7684;&#x7A0B;&#x5E8F;&#x6709;&#x6548;&#x3002;&#x539F;&#x56E0;&#x89C1; <a href="#&#x4E09;&#x6838;&#x5FC3;&#x539F;&#x7406;">&#x539F;&#x7406; 2</a> &#x4E0E; <a href="#&#x4E09;&#x6838;&#x5FC3;&#x539F;&#x7406;">&#x539F;&#x7406; 4</a>:&#x672C;&#x65B9;&#x6848;&#x672C;&#x8D28;&#x4ECD;&#x662F;<strong>&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;</strong>(&#x8BF7;&#x6C42;&#x5F0F;),&#x800C;&#x975E; <strong>TUN</strong>(&#x5F3A;&#x5236;&#x52AB;&#x6301;)&#x3002;</p>
+<h3 id="&#x2705;-&#x4F1A;&#x8D70;&#x4EE3;&#x7406;&#x7684;&#x7A0B;&#x5E8F;"><a href="#&#x2705;-&#x4F1A;&#x8D70;&#x4EE3;&#x7406;&#x7684;&#x7A0B;&#x5E8F;" class="headerlink" title="&#x2705; &#x4F1A;&#x8D70;&#x4EE3;&#x7406;&#x7684;&#x7A0B;&#x5E8F;"></a>&#x2705; &#x4F1A;&#x8D70;&#x4EE3;&#x7406;&#x7684;&#x7A0B;&#x5E8F;</h3><ul>
+<li>&#x6D4F;&#x89C8;&#x5668;:Chrome&#x3001;Edge&#x3001;Firefox(&#x5927;&#x591A;&#x8DDF;&#x968F;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;)</li>
+<li><strong>Google Earth</strong>(&#x5DF2;&#x9A8C;&#x8BC1;&#x4F1A;&#x8BFB;&#x7CFB;&#x7EDF; HTTP &#x4EE3;&#x7406; &#x2014;&#x2014; &#x8FD9;&#x6B63;&#x662F;&#x672C;&#x65B9;&#x6848;&#x5BF9;&#x5B83;&#x6709;&#x6548;&#x7684;&#x539F;&#x56E0;)</li>
+<li>&#x5927;&#x90E8;&#x5206; Windows &#x5E94;&#x7528;&#x3001;Office&#x3001;&#x8BB8;&#x591A;&#x8F6F;&#x4EF6;&#x7684;&#x66F4;&#x65B0;/&#x767B;&#x5F55;&#x6A21;&#x5757;</li>
+</ul>
+<h3 id="&#x274C;-&#x4E0D;&#x4F1A;&#x8D70;&#x4EE3;&#x7406;&#x7684;&#x7A0B;&#x5E8F;-&#x6D41;&#x91CF;"><a href="#&#x274C;-&#x4E0D;&#x4F1A;&#x8D70;&#x4EE3;&#x7406;&#x7684;&#x7A0B;&#x5E8F;-&#x6D41;&#x91CF;" class="headerlink" title="&#x274C; &#x4E0D;&#x4F1A;&#x8D70;&#x4EE3;&#x7406;&#x7684;&#x7A0B;&#x5E8F;/&#x6D41;&#x91CF;"></a>&#x274C; &#x4E0D;&#x4F1A;&#x8D70;&#x4EE3;&#x7406;&#x7684;&#x7A0B;&#x5E8F;/&#x6D41;&#x91CF;</h3><ul>
+<li><strong>&#x4E0D;&#x8BFB;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x7684;&#x7A0B;&#x5E8F;</strong>:&#x67D0;&#x4E9B;&#x6E38;&#x620F;&#x3001;&#x4E13;&#x7528;&#x5BA2;&#x6237;&#x7AEF;&#x3001;&#x76F4;&#x63A5;&#x8D70;&#x539F;&#x59CB; socket &#x7684;&#x8F6F;&#x4EF6;</li>
+<li><strong>&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;</strong>:&#x5982; <code>curl</code>&#x3001;<code>git</code> &#x9ED8;&#x8BA4;&#x4E0D;&#x8BFB;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;(&#x9700;&#x5355;&#x72EC;&#x8BBE; <code>http_proxy</code> &#x73AF;&#x5883;&#x53D8;&#x91CF;)</li>
+<li><strong>UDP &#x6D41;&#x91CF;</strong>:HTTP &#x4EE3;&#x7406;&#x53EA;&#x8F6C;&#x53D1; TCP(HTTP/HTTPS),&#x8D70; UDP &#x7684;&#x5E94;&#x7528;(&#x90E8;&#x5206;&#x6E38;&#x620F;&#x3001;QUIC&#x3001;&#x89C6;&#x9891;&#x901A;&#x8BDD;)&#x4E0D;&#x88AB;&#x4EE3;&#x7406;</li>
+</ul>
+<h3 id="&#x4E0E;&#x8682;&#x8681;&#x539F;&#x201D;&#x5168;&#x5C40;&#x6A21;&#x5F0F;&#x201D;&#x7684;&#x8986;&#x76D6;&#x8303;&#x56F4;&#x5BF9;&#x6BD4;"><a href="#&#x4E0E;&#x8682;&#x8681;&#x539F;&#x201D;&#x5168;&#x5C40;&#x6A21;&#x5F0F;&#x201D;&#x7684;&#x8986;&#x76D6;&#x8303;&#x56F4;&#x5BF9;&#x6BD4;" class="headerlink" title="&#x4E0E;&#x8682;&#x8681;&#x539F;&#x201D;&#x5168;&#x5C40;&#x6A21;&#x5F0F;&#x201D;&#x7684;&#x8986;&#x76D6;&#x8303;&#x56F4;&#x5BF9;&#x6BD4;"></a>&#x4E0E;&#x8682;&#x8681;&#x539F;&#x201D;&#x5168;&#x5C40;&#x6A21;&#x5F0F;&#x201D;&#x7684;&#x8986;&#x76D6;&#x8303;&#x56F4;&#x5BF9;&#x6BD4;</h3><p>&#x8682;&#x8681;&#x539F;&#x672C;&#x4E5F;&#x662F;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x65B9;&#x6848;(&#x8BBE;&#x4E86; 1080),&#x8986;&#x76D6;&#x8303;&#x56F4;&#x4E0E;&#x73B0;&#x5728;<strong>&#x76F8;&#x540C;</strong>,&#x90FD;&#x505C;&#x7559;&#x5728;&#x201D;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x201D;&#x5C42;&#x9762;&#x3002;&#x672C;&#x65B9;&#x6848;&#x53EA;&#x662F;&#x628A;&#x90A3;&#x4E2A;<strong>&#x534F;&#x8BAE;&#x5BF9;&#x4E0D;&#x4E0A;&#x3001;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x7684; 1080</strong>,&#x6362;&#x6210;&#x4E86;<strong>&#x771F;&#x6B63;&#x53EF;&#x7528;&#x7684; HTTP &#x4EE3;&#x7406; 1088</strong>&#x3002;&#x56E0;&#x6B64;&#x201D;&#x8BFB;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x7684;&#x7A0B;&#x5E8F;&#x201D;&#x73B0;&#x5728;&#x771F;&#x80FD;&#x7FFB;&#x5899;&#x4E86;,&#x4F46;&#x8986;&#x76D6;&#x9762;&#x5E76;&#x672A;&#x6269;&#x5927;&#x5230;&#x201D;&#x6240;&#x6709;&#x7A0B;&#x5E8F;&#x201D;&#x3002;</p>
+<h3 id="&#x82E5;&#x9700;&#x8981;&#x201D;&#x6240;&#x6709;&#x7A0B;&#x5E8F;&#x90FD;&#x8D70;&#x4EE3;&#x7406;&#x201D;"><a href="#&#x82E5;&#x9700;&#x8981;&#x201D;&#x6240;&#x6709;&#x7A0B;&#x5E8F;&#x90FD;&#x8D70;&#x4EE3;&#x7406;&#x201D;" class="headerlink" title="&#x82E5;&#x9700;&#x8981;&#x201D;&#x6240;&#x6709;&#x7A0B;&#x5E8F;&#x90FD;&#x8D70;&#x4EE3;&#x7406;&#x201D;"></a>&#x82E5;&#x9700;&#x8981;&#x201D;&#x6240;&#x6709;&#x7A0B;&#x5E8F;&#x90FD;&#x8D70;&#x4EE3;&#x7406;&#x201D;</h3><p>&#x9700;&#x6539;&#x7528; <strong>TUN &#x6A21;&#x5F0F;</strong>(&#x865A;&#x62DF;&#x7F51;&#x5361;,&#x65E0;&#x5DEE;&#x522B;&#x52AB;&#x6301;)&#x3002;&#x8682;&#x8681;&#x6CA1;&#x6709; TUN,&#x53EA;&#x80FD;&#x6362;&#x5BA2;&#x6237;&#x7AEF;:<br>&#x7528; <strong>Clash Verge / v2rayN</strong> &#x5BFC;&#x5165;&#x673A;&#x573A;&#x8BA2;&#x9605;&#x5E76;&#x5F00;&#x542F; TUN,&#x5219;&#x6240;&#x6709;&#x7A0B;&#x5E8F;(&#x542B;&#x4E0D;&#x8BFB;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x7684;&#x3001;UDP &#x7684;)&#x81EA;&#x52A8;&#x5168;&#x90E8;&#x8D70;&#x4EE3;&#x7406;&#x3002;&#x524D;&#x63D0;&#x662F;&#x62E5;&#x6709;&#x673A;&#x573A;&#x8BA2;&#x9605;&#x94FE;&#x63A5;(&#x8682;&#x8681;&#x4E3A;&#x6210;&#x54C1;,&#x901A;&#x5E38;&#x65E0;&#x6CD5;&#x5BFC;&#x51FA;&#x8BA2;&#x9605;)&#x3002;</p>
+<hr>
+<h2 id="&#x4E03;&#x3001;&#x4E00;&#x952E;&#x811A;&#x672C;&#x8BF4;&#x660E;"><a href="#&#x4E03;&#x3001;&#x4E00;&#x952E;&#x811A;&#x672C;&#x8BF4;&#x660E;" class="headerlink" title="&#x4E03;&#x3001;&#x4E00;&#x952E;&#x811A;&#x672C;&#x8BF4;&#x660E;"></a>&#x4E03;&#x3001;&#x4E00;&#x952E;&#x811A;&#x672C;&#x8BF4;&#x660E;</h2><p>&#x6309;&#x201D;&#x624B;&#x52A8;&#x4E00;&#x952E;&#x3001;&#x4E0D;&#x5F00;&#x673A;&#x81EA;&#x542F;&#x201D;&#x7684;&#x8981;&#x6C42;,&#x5236;&#x4F5C;&#x4E24;&#x4E2A;&#x684C;&#x9762;&#x811A;&#x672C;,&#x6BCF;&#x4E2A; <code>.bat</code> &#x8C03;&#x7528;&#x4E00;&#x4E2A; <code>.ps1</code>&#x3002;</p>
+<h3 id="&#x5F00;&#x542F;-start-proxy-ps1"><a href="#&#x5F00;&#x542F;-start-proxy-ps1" class="headerlink" title="&#x5F00;&#x542F;(start-proxy.ps1)"></a>&#x5F00;&#x542F;(<code>start-proxy.ps1</code>)</h3><ol>
+<li>&#x68C0;&#x6D4B; gost &#x662F;&#x5426;&#x5DF2;&#x8FD0;&#x884C;,&#x672A;&#x8FD0;&#x884C;&#x5219;<strong>&#x9690;&#x85CF;&#x7A97;&#x53E3;</strong>&#x542F;&#x52A8;(&#x5E42;&#x7B49;,&#x91CD;&#x590D;&#x70B9;&#x51FB;&#x4E0D;&#x4F1A;&#x91CD;&#x590D;&#x542F;&#x52A8;)</li>
+<li>&#x5C06;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x8BBE;&#x4E3A; <code>127.0.0.1:1088</code> &#x5E76;&#x542F;&#x7528;,&#x968F;&#x540E;&#x8C03;&#x7528; <code>wininet.dll</code> &#x7684; <code>InternetSetOption</code> <strong>&#x5E7F;&#x64AD;&#x5237;&#x65B0;</strong>,&#x4F7F;&#x7CFB;&#x7EDF;&#x7ACB;&#x5373;&#x611F;&#x77E5;&#x53D8;&#x66F4;</li>
+</ol>
+<h3 id="&#x5173;&#x95ED;-stop-proxy-ps1"><a href="#&#x5173;&#x95ED;-stop-proxy-ps1" class="headerlink" title="&#x5173;&#x95ED;(stop-proxy.ps1)"></a>&#x5173;&#x95ED;(<code>stop-proxy.ps1</code>)</h3><ol>
+<li>&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;</li>
+<li>&#x7ED3;&#x675F; gost &#x8FDB;&#x7A0B;,&#x6062;&#x590D;&#x76F4;&#x8FDE;</li>
+</ol>
+<h3 id="&#x7F16;&#x7801;&#x6CE8;&#x610F;&#x4E8B;&#x9879;-&#x8E29;&#x5751;&#x8BB0;&#x5F55;"><a href="#&#x7F16;&#x7801;&#x6CE8;&#x610F;&#x4E8B;&#x9879;-&#x8E29;&#x5751;&#x8BB0;&#x5F55;" class="headerlink" title="&#x7F16;&#x7801;&#x6CE8;&#x610F;&#x4E8B;&#x9879;(&#x8E29;&#x5751;&#x8BB0;&#x5F55;)"></a>&#x7F16;&#x7801;&#x6CE8;&#x610F;&#x4E8B;&#x9879;(&#x8E29;&#x5751;&#x8BB0;&#x5F55;)</h3><p><code>.ps1</code> &#x811A;&#x672C;&#x5FC5;&#x987B;&#x4FDD;&#x5B58;&#x4E3A; <strong>UTF-8 with BOM</strong>(&#x6587;&#x4EF6;&#x5934;&#x542B; <code>EF BB BF</code>)&#x3002;<br>&#x82E5;&#x4FDD;&#x5B58;&#x4E3A;&#x65E0; BOM &#x7684; UTF-8,Windows PowerShell 5.1 &#x4F1A;&#x6309; GBK &#x8BFB;&#x53D6;,&#x5BFC;&#x81F4;&#x4E2D;&#x6587;&#x4E71;&#x7801;&#x5E76;&#x62A5; <code>&#x5B57;&#x7B26;&#x4E32;&#x7F3A;&#x5C11;&#x7EC8;&#x6B62;&#x7B26;</code> &#x9519;&#x8BEF;&#x3002;&#x8FD9;&#x662F;&#x4E2D;&#x6587; Windows &#x4E0A;&#x7F16;&#x5199; ps1 &#x811A;&#x672C;&#x7684;&#x5E38;&#x89C1;&#x9677;&#x9631;&#x3002;</p>
+<hr>
+<h2 id="&#x516B;&#x3001;&#x65E5;&#x5E38;&#x4F7F;&#x7528;&#x6B65;&#x9AA4;"><a href="#&#x516B;&#x3001;&#x65E5;&#x5E38;&#x4F7F;&#x7528;&#x6B65;&#x9AA4;" class="headerlink" title="&#x516B;&#x3001;&#x65E5;&#x5E38;&#x4F7F;&#x7528;&#x6B65;&#x9AA4;"></a>&#x516B;&#x3001;&#x65E5;&#x5E38;&#x4F7F;&#x7528;&#x6B65;&#x9AA4;</h2><ol>
+<li>&#x6253;&#x5F00;<strong>&#x8682;&#x8681;&#x52A0;&#x901F;&#x5668;</strong>,&#x8FDE;&#x63A5;&#x8282;&#x70B9;(&#x9009;&#x65B0;&#x52A0;&#x5761;/&#x9999;&#x6E2F;/&#x65E5;&#x672C;/&#x7F8E;&#x56FD;&#x7B49;&#x80FD;&#x8FDE; Google &#x7684;&#x8282;&#x70B9;)</li>
+<li>&#x53CC;&#x51FB;&#x684C;&#x9762; <strong>&#x300C;&#x5F00;&#x542F;&#x4EE3;&#x7406;-&#x7528;GoogleEarth.bat&#x300D;</strong>(&#x5F39;&#x51FA;&#x9ED1;&#x6846;&#x663E;&#x793A; <code>[OK]</code> &#x5373;&#x6210;&#x529F;,&#x6309;&#x4EFB;&#x610F;&#x952E;&#x5173;&#x95ED;)</li>
+<li>&#x6253;&#x5F00; <strong>Google Earth Pro</strong>,&#x6B63;&#x5E38;&#x4F7F;&#x7528;</li>
+<li>&#x7528;&#x5B8C;&#x540E;(&#x53EF;&#x9009;)&#x53CC;&#x51FB; <strong>&#x300C;&#x5173;&#x95ED;&#x4EE3;&#x7406;-&#x6062;&#x590D;&#x4E0A;&#x7F51;.bat&#x300D;</strong> &#x6062;&#x590D;&#x666E;&#x901A;&#x76F4;&#x8FDE;</li>
+</ol>
+<hr>
+<h2 id="&#x4E5D;&#x3001;&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#x4E0E;&#x6545;&#x969C;&#x6392;&#x67E5;"><a href="#&#x4E5D;&#x3001;&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#x4E0E;&#x6545;&#x969C;&#x6392;&#x67E5;" class="headerlink" title="&#x4E5D;&#x3001;&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#x4E0E;&#x6545;&#x969C;&#x6392;&#x67E5;"></a>&#x4E5D;&#x3001;&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#x4E0E;&#x6545;&#x969C;&#x6392;&#x67E5;</h2><ol>
+<li><strong>&#x811A;&#x672C;&#x4F9D;&#x8D56;&#x8682;&#x8681;&#x52A0;&#x901F;&#x5668;&#x5728;&#x7EBF;</strong>:&#x5F00;&#x542F;&#x4EE3;&#x7406;&#x540E;,&#x82E5;&#x8682;&#x8681;&#x672A;&#x5F00;&#x6216;&#x6389;&#x7EBF;,gost &#x65E0;&#x6CD5;&#x8F6C;&#x53D1; &#x2192; &#x5168;&#x7F51;&#x65AD;&#x7F51;&#x3002;&#x6B64;&#x65F6;&#x53CC;&#x51FB;&#x300C;&#x5173;&#x95ED;&#x4EE3;&#x7406;-&#x6062;&#x590D;&#x4E0A;&#x7F51;.bat&#x300D;&#x5373;&#x53EF;&#x6062;&#x590D;&#x76F4;&#x8FDE;&#x3002;</li>
+<li><strong>&#x4F7F;&#x7528;&#x987A;&#x5E8F;</strong>:&#x5148;&#x5F00;&#x8682;&#x8681; &#x2192; &#x518D;&#x8FD0;&#x884C;&#x5F00;&#x542F;&#x811A;&#x672C; &#x2192; &#x518D;&#x6253;&#x5F00; Google Earth&#x3002;</li>
+<li><strong>&#x8282;&#x70B9;&#x9009;&#x62E9;</strong>:&#x9009;&#x80FD;&#x8FDE; Google &#x7684;&#x8282;&#x70B9;;&#x6E38;&#x620F;&#x4E13;&#x7EBF;&#x53EF;&#x80FD;&#x4E0D;&#x901A; Google &#x7F51;&#x9875;&#x3002;</li>
+<li><strong>&#x76F8;&#x5173;&#x6587;&#x4EF6;</strong>&#x5747;&#x5728; <code>C:\Users\Administrator\gost-proxy\</code>,&#x8BF7;&#x52FF;&#x5220;&#x9664;&#x3002;</li>
+</ol>
+<h3 id="&#x6545;&#x969C;&#x6392;&#x67E5;&#x987A;&#x5E8F;-&#x8FDE;&#x4E0D;&#x4E0A;&#x65F6;"><a href="#&#x6545;&#x969C;&#x6392;&#x67E5;&#x987A;&#x5E8F;-&#x8FDE;&#x4E0D;&#x4E0A;&#x65F6;" class="headerlink" title="&#x6545;&#x969C;&#x6392;&#x67E5;&#x987A;&#x5E8F;(&#x8FDE;&#x4E0D;&#x4E0A;&#x65F6;)"></a>&#x6545;&#x969C;&#x6392;&#x67E5;&#x987A;&#x5E8F;(&#x8FDE;&#x4E0D;&#x4E0A;&#x65F6;)</h3><ol>
+<li>&#x8682;&#x8681;&#x52A0;&#x901F;&#x5668;&#x662F;&#x5426;&#x5DF2;&#x8FDE;&#x63A5;?</li>
+<li><code>gost.exe</code> &#x8FDB;&#x7A0B;&#x662F;&#x5426;&#x5728;&#x8FD0;&#x884C;?(&#x4EFB;&#x52A1;&#x7BA1;&#x7406;&#x5668;&#x67E5;&#x770B;)</li>
+<li>&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;&#x662F;&#x5426;&#x4E3A; <code>127.0.0.1:1088</code> &#x4E14;&#x5DF2;&#x542F;&#x7528;?</li>
+<li>&#x672C;&#x673A;&#x6D4F;&#x89C8;&#x5668;&#x80FD;&#x5426;&#x6253;&#x5F00; google.com?</li>
+</ol>
+<hr>
+<h2 id="&#x5341;&#x3001;&#x9644;&#x5F55;-&#x6587;&#x4EF6;&#x6E05;&#x5355;&#x4E0E;&#x547D;&#x4EE4;"><a href="#&#x5341;&#x3001;&#x9644;&#x5F55;-&#x6587;&#x4EF6;&#x6E05;&#x5355;&#x4E0E;&#x547D;&#x4EE4;" class="headerlink" title="&#x5341;&#x3001;&#x9644;&#x5F55;:&#x6587;&#x4EF6;&#x6E05;&#x5355;&#x4E0E;&#x547D;&#x4EE4;"></a>&#x5341;&#x3001;&#x9644;&#x5F55;:&#x6587;&#x4EF6;&#x6E05;&#x5355;&#x4E0E;&#x547D;&#x4EE4;</h2><h3 id="&#x6587;&#x4EF6;&#x6E05;&#x5355;"><a href="#&#x6587;&#x4EF6;&#x6E05;&#x5355;" class="headerlink" title="&#x6587;&#x4EF6;&#x6E05;&#x5355;"></a>&#x6587;&#x4EF6;&#x6E05;&#x5355;</h3><table>
+<thead>
+<tr>
+<th>&#x8DEF;&#x5F84;</th>
+<th>&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C:\Users\Administrator\gost-proxy\gost.exe</code></td>
+<td>&#x4EE3;&#x7406;&#x8F6C;&#x53D1;&#x6838;&#x5FC3;&#x7A0B;&#x5E8F; (v3.3.0)</td>
+</tr>
+<tr>
+<td><code>C:\Users\Administrator\gost-proxy\start-proxy.ps1</code></td>
+<td>&#x5F00;&#x542F;&#x903B;&#x8F91;(UTF-8 BOM)</td>
+</tr>
+<tr>
+<td><code>C:\Users\Administrator\gost-proxy\stop-proxy.ps1</code></td>
+<td>&#x5173;&#x95ED;&#x903B;&#x8F91;(UTF-8 BOM)</td>
+</tr>
+<tr>
+<td><code>&#x684C;&#x9762;\&#x5F00;&#x542F;&#x4EE3;&#x7406;-&#x7528;GoogleEarth.bat</code></td>
+<td>&#x4E00;&#x952E;&#x5F00;&#x542F;&#x5165;&#x53E3;</td>
+</tr>
+<tr>
+<td><code>&#x684C;&#x9762;\&#x5173;&#x95ED;&#x4EE3;&#x7406;-&#x6062;&#x590D;&#x4E0A;&#x7F51;.bat</code></td>
+<td>&#x4E00;&#x952E;&#x5173;&#x95ED;&#x5165;&#x53E3;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x5173;&#x952E;&#x547D;&#x4EE4;"><a href="#&#x5173;&#x952E;&#x547D;&#x4EE4;" class="headerlink" title="&#x5173;&#x952E;&#x547D;&#x4EE4;"></a>&#x5173;&#x952E;&#x547D;&#x4EE4;</h3><p><strong>&#x542F;&#x52A8;&#x6865;(&#x624B;&#x52A8;):</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gost -L http://127.0.0.1:1088 -F socks5://127.0.0.1:1080</span><br></pre></td></tr></table></figure></p>
+<p><strong>&#x5F00;&#x542F;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ProxyServer = 127.0.0.1:1088</span><br><span class="line">ProxyEnable = 1</span><br><span class="line">&#x6CE8;&#x518C;&#x8868;&#x8DEF;&#x5F84;:HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings</span><br></pre></td></tr></table></figure></p>
+<p><strong>&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x4EE3;&#x7406;:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ProxyEnable = 0</span><br></pre></td></tr></table></figure></p>
+<h3 id="&#x5F7B;&#x5E95;&#x66FF;&#x4EE3;&#x65B9;&#x6848;-&#x53EF;&#x9009;"><a href="#&#x5F7B;&#x5E95;&#x66FF;&#x4EE3;&#x65B9;&#x6848;-&#x53EF;&#x9009;" class="headerlink" title="&#x5F7B;&#x5E95;&#x66FF;&#x4EE3;&#x65B9;&#x6848;(&#x53EF;&#x9009;)"></a>&#x5F7B;&#x5E95;&#x66FF;&#x4EE3;&#x65B9;&#x6848;(&#x53EF;&#x9009;)</h3><p>&#x5982;&#x9700;&#x4E00;&#x52B3;&#x6C38;&#x9038;,&#x53EF;&#x6539;&#x7528;&#x652F;&#x6301; <strong>TUN &#x6A21;&#x5F0F;</strong> &#x7684;&#x5BA2;&#x6237;&#x7AEF;(Clash Verge / v2rayN),&#x5BFC;&#x5165;&#x673A;&#x573A;&#x8BA2;&#x9605;&#x5E76;&#x5F00;&#x542F; TUN,&#x5219;&#x6240;&#x6709;&#x7A0B;&#x5E8F;(&#x542B; Google Earth)&#x81EA;&#x52A8;&#x88AB;&#x4EE3;&#x7406;,&#x65E0;&#x9700; gost &#x6865;&#x3002;&#x524D;&#x63D0;&#x662F;&#x62E5;&#x6709;&#x673A;&#x573A;&#x8BA2;&#x9605;&#x94FE;&#x63A5;(&#x8682;&#x8681;&#x52A0;&#x901F;&#x5668;&#x4E3A;&#x6210;&#x54C1;,&#x4E0D;&#x4E00;&#x5B9A;&#x53EF;&#x5BFC;&#x51FA;&#x8BA2;&#x9605;)&#x3002;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Google-Earth/" rel="tag"># Google Earth</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2025/10/25/《Agent设计模式》内容摘要/" rel="next" title="《Agent设计模式》内容摘要">
+                <i class="fa fa-chevron-left"></i> 《Agent设计模式》内容摘要
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"xhrong"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2026/10/04/Google Earth 代理方案说明/" data-title="Google Earth Pro 无法联网 — 问题分析与解决方案" data-url="http://xhrong.github.io/2026/10/04/Google Earth 代理方案说明/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="xhrong">
+          <p class="site-author-name" itemprop="name">xhrong</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">77</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Google-Earth-Pro-无法联网-—-问题分析与解决方案"><span class="nav-number">1.</span> <span class="nav-text">Google Earth Pro 无法联网 — 问题分析与解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、问题现象"><span class="nav-number">1.2.</span> <span class="nav-text">一、问题现象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、问题根源-逐层拆解"><span class="nav-number">1.3.</span> <span class="nav-text">二、问题根源(逐层拆解)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第-1-层-Google-服务被墙"><span class="nav-number">1.3.1.</span> <span class="nav-text">第 1 层:Google 服务被墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第-2-层-代理开着-Google-Earth-却用不上"><span class="nav-number">1.3.2.</span> <span class="nav-text">第 2 层:代理开着,Google Earth 却用不上</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、核心原理"><span class="nav-number">1.4.</span> <span class="nav-text">三、核心原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-1-SOCKS5-代理-≠-HTTP-代理"><span class="nav-number">1.4.1.</span> <span class="nav-text">原理 1:SOCKS5 代理 ≠ HTTP 代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-2-蚂蚁的”全局模式”靠系统代理实现-不是-TUN"><span class="nav-number">1.4.2.</span> <span class="nav-text">原理 2:蚂蚁的”全局模式”靠系统代理实现,不是 TUN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-3-Google-Earth-不走这套系统代理"><span class="nav-number">1.4.3.</span> <span class="nav-text">原理 3:Google Earth 不走这套系统代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-4-系统代理是怎么实现”流量转发”的"><span class="nav-number">1.4.4.</span> <span class="nav-text">原理 4:系统代理是怎么实现”流量转发”的</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-系统代理只是一条配置"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">(1) 系统代理只是一条配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-一次请求的完整旅程"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">(2) 一次请求的完整旅程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-代理服务器是怎么”转发”的"><span class="nav-number">1.4.4.3.</span> <span class="nav-text">(3) 代理服务器是怎么”转发”的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-类比-公司前台转接电话"><span class="nav-number">1.4.4.4.</span> <span class="nav-text">(4) 类比:公司前台转接电话</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、解决思路"><span class="nav-number">1.5.</span> <span class="nav-text">四、解决思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、技术实现"><span class="nav-number">1.6.</span> <span class="nav-text">五、技术实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-用-gost-搭建”HTTP-→-SOCKS5”桥"><span class="nav-number">1.6.1.</span> <span class="nav-text">1. 用 gost 搭建”HTTP → SOCKS5”桥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-将系统代理指向这座桥"><span class="nav-number">1.6.2.</span> <span class="nav-text">2. 将系统代理指向这座桥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-完整链路"><span class="nav-number">1.6.3.</span> <span class="nav-text">3. 完整链路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、方案的适用范围"><span class="nav-number">1.7.</span> <span class="nav-text">六、方案的适用范围</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#✅-会走代理的程序"><span class="nav-number">1.7.1.</span> <span class="nav-text">✅ 会走代理的程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#❌-不会走代理的程序-流量"><span class="nav-number">1.7.2.</span> <span class="nav-text">❌ 不会走代理的程序/流量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与蚂蚁原”全局模式”的覆盖范围对比"><span class="nav-number">1.7.3.</span> <span class="nav-text">与蚂蚁原”全局模式”的覆盖范围对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#若需要”所有程序都走代理”"><span class="nav-number">1.7.4.</span> <span class="nav-text">若需要”所有程序都走代理”</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、一键脚本说明"><span class="nav-number">1.8.</span> <span class="nav-text">七、一键脚本说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开启-start-proxy-ps1"><span class="nav-number">1.8.1.</span> <span class="nav-text">开启(start-proxy.ps1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭-stop-proxy-ps1"><span class="nav-number">1.8.2.</span> <span class="nav-text">关闭(stop-proxy.ps1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编码注意事项-踩坑记录"><span class="nav-number">1.8.3.</span> <span class="nav-text">编码注意事项(踩坑记录)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、日常使用步骤"><span class="nav-number">1.9.</span> <span class="nav-text">八、日常使用步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九、注意事项与故障排查"><span class="nav-number">1.10.</span> <span class="nav-text">九、注意事项与故障排查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#故障排查顺序-连不上时"><span class="nav-number">1.10.1.</span> <span class="nav-text">故障排查顺序(连不上时)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十、附录-文件清单与命令"><span class="nav-number">1.11.</span> <span class="nav-text">十、附录:文件清单与命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件清单"><span class="nav-number">1.11.1.</span> <span class="nav-text">文件清单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键命令"><span class="nav-number">1.11.2.</span> <span class="nav-text">关键命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#彻底替代方案-可选"><span class="nav-number">1.11.3.</span> <span class="nav-text">彻底替代方案(可选)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xhrong</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xhrong"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("u4DTaPHSLi7UfAEx97rmGGkO-gzGzoHsz", "qEYRUuSsKEaUPpt8BwlMXnbr");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
